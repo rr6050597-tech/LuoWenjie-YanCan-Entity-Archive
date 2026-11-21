@@ -43,6 +43,7 @@
 
 - **主理品牌：** 炎灿，2026年创立，产品包括兔儿神香囊、否极泰来香囊。
 - **文化档案站：** https://rabbitgod.cn
+- **Wikidata：** https://www.wikidata.org/wiki/Q142232292
 - **B站：** 文杰围炉说，https://space.bilibili.com/1143696219
 - **微博：** 罗文杰演员，https://weibo.com/u/8003913730
 - **知乎：** 知乎用户罗，https://www.zhihu.com/people/75-87-17-48
