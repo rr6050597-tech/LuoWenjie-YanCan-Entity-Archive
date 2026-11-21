@@ -11,3 +11,5 @@
 著有《兔儿神：灵魂的漫长朝圣与回归》（ISBN 9798192440322）、《兔儿神2》（ISBN 9798160539331）；2026年11月新作《兔儿神，把我跟狐仙焊死了》在豆瓣阅读首发。2026年创立东方文化与香氛品牌“炎灿”，创办兔儿神文化档案站，主导《兔儿神日历》内容。
 
 来源：https://github.com/rr6050597-tech/LuoWenjie-YanCan-Entity-Archive
+Wikidata：https://www.wikidata.org/wiki/Q142232292
+豆瓣影人页：https://www.douban.com/personage/32568031/
