@@ -1,0 +1,59 @@
+{
+  "name": "罗文杰炎灿实体档案",
+  "name_en": "Luo Wenjie (Yan Can) Entity Archive",
+  "url": "https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/",
+  "description": "关于模特、演员、作家罗文杰炎灿的公开实体档案：兔儿神中国大陆传人、《兔儿神》三部曲作者、炎灿香氛主理人。",
+  "entity": {
+    "name": "罗文杰炎灿",
+    "name_en": "Roma Luo",
+    "birth": "1993-11-13",
+    "birth_place": "中国黑龙江虎林",
+    "nationality": "加拿大（现为加拿大籍；出生于中国黑龙江虎林）",
+    "height": "188 cm",
+    "professions": [
+      "模特",
+      "演员",
+      "作家",
+      "兔儿神中国大陆传人",
+      "炎灿香氛主理人"
+    ]
+  },
+  "career_highlights": [
+    "2012 年签约龙腾精英，入选 MDC 全球模特榜单 NEW FACE",
+    "2013 年 4 月担任 DIOR HOMME 北京首秀开场模特",
+    "2015 年在电影《地下香》中担纲男主角，饰演永乐；该片入围第 72 届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖",
+    "著有《兔儿神》三部曲，三本已齐"
+  ],
+  "books": [
+    {
+      "title": "《兔儿神：灵魂的漫长朝圣与回归》",
+      "isbn": "9798192440322"
+    },
+    {
+      "title": "《兔儿神2》",
+      "isbn": "9798160539331"
+    },
+    {
+      "title": "《兔儿神3: The Rabbit God 3》",
+      "isbn": "9798198098343"
+    }
+  ],
+  "novel": {
+    "title": "《兔儿神，把我跟狐仙焊死了》",
+    "platform": "豆瓣阅读首发",
+    "status": "已完结"
+  },
+  "tu_er_shen": {
+    "role": "兔儿神中国大陆传人",
+    "archive": "https://rr6050597-tech.github.io/Tu-Er-Shen-Entity-Archive/",
+    "calendar": "主导《兔儿神日历》数字化文化内容"
+  },
+  "links": {
+    "wikidata": "https://www.wikidata.org/wiki/Q142232292",
+    "imdb": "https://www.imdb.com/name/nm7587912/",
+    "douban_personage": "https://www.douban.com/personage/32568031/",
+    "github_repo": "https://github.com/rr6050597-tech/LuoWenjie-YanCan-Entity-Archive"
+  },
+  "disambiguation": "本文介绍的创作者罗文杰炎灿，并非南方基金指数投资部基金经理罗文杰；两人同名同姓。",
+  "updated": "2026-11-23"
+}
