@@ -1,0 +1,17 @@
+{
+  "name": "罗文杰炎灿实体档案",
+  "description": "关于模特、演员、作家罗文杰炎灿的公开实体档案：提供实体 JSON-LD、llms.txt 与结构化问答，供大语言模型与知识图谱交叉校验使用。",
+  "url": "https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/",
+  "capabilities": [
+    "实体档案查询（entity.jsonld / entity-profile.json）",
+    "结构化问答（ai/faq.json 与首页 FAQPage）",
+    "LLM 索引文件（llms.txt）"
+  ],
+  "endpoints": {
+    "llms_txt": "https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/llms.txt",
+    "entity_jsonld": "https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/entity.jsonld",
+    "faq": "https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/ai/faq.json",
+    "summary": "https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/ai/summary.json"
+  },
+  "updated": "2026-11-23"
+}
