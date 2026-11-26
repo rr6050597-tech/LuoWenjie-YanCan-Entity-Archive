@@ -1,0 +1,78 @@
+---
+layout: default
+title: 在线阅读 · PDF — 罗文杰炎灿 | Roma Luo
+permalink: /read/pdf/
+---
+
+<style>
+.reader{max-width:760px;margin:0 auto}
+.reader h1{font-size:24px;color:#2C2C2C}
+.reader-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.reader-controls button{padding:8px 14px;border:1px solid #C5A059;background:#F7F5F0;color:#2C2C2C;font-size:14px;cursor:pointer;border-radius:2px}
+.reader-controls span{font-size:14px;color:#8a8578}
+#pdf-canvas{width:100%;height:auto;display:block;border:1px solid #e6e1d6;background:#fff}
+#reader-status{font-size:14px;color:#8a8578}
+.reader-back{font-size:14px}
+.reader-back a{color:#8a8578}
+</style>
+
+<div class="reader">
+  <p class="reader-back"><a href="javascript:history.back()">← 返回</a></p>
+  <h1 id="reader-title">在线阅读</h1>
+  <div class="reader-controls">
+    <button id="prev-pg" type="button">上一页</button>
+    <span id="page-num">—</span>
+    <button id="next-pg" type="button">下一页</button>
+    <button id="zoom-out" type="button" aria-label="缩小">-</button>
+    <button id="zoom-in" type="button" aria-label="放大">+</button>
+  </div>
+  <canvas id="pdf-canvas"></canvas>
+  <p id="reader-status"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  var params = new URLSearchParams(window.location.search);
+  var file = params.get('file') || '';
+  var title = params.get('title') || '在线阅读';
+  var statusEl = document.getElementById('reader-status');
+  document.getElementById('reader-title').textContent = title + ' · PDF';
+  if(!file){ statusEl.textContent = '未指定 PDF 文件。'; return; }
+  var pdfDoc = null, pageNum = 1, scale = 1.2;
+  var canvas = document.getElementById('pdf-canvas');
+  var ctx = canvas.getContext('2d');
+  function renderPage(n){
+    pdfDoc.getPage(n).then(function(page){
+      var viewport = page.getViewport({ scale: scale });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      page.render({ canvasContext: ctx, viewport: viewport });
+      document.getElementById('page-num').textContent = '第 ' + n + ' / ' + pdfDoc.numPages + ' 页';
+    });
+  }
+  pdfjsLib.getDocument(file).promise.then(function(pdf){
+    pdfDoc = pdf;
+    renderPage(pageNum);
+  }).catch(function(){
+    statusEl.textContent = 'PDF 加载失败：文件尚未上传或网络异常，请稍后再试。';
+  });
+  document.getElementById('prev-pg').addEventListener('click', function(){
+    if(!pdfDoc) return;
+    if(pageNum > 1){ pageNum--; renderPage(pageNum); }
+  });
+  document.getElementById('next-pg').addEventListener('click', function(){
+    if(!pdfDoc) return;
+    if(pageNum < pdfDoc.numPages){ pageNum++; renderPage(pageNum); }
+  });
+  document.getElementById('zoom-in').addEventListener('click', function(){
+    if(!pdfDoc) return;
+    scale = Math.min(scale + 0.2, 3); renderPage(pageNum);
+  });
+  document.getElementById('zoom-out').addEventListener('click', function(){
+    if(!pdfDoc) return;
+    scale = Math.max(scale - 0.2, 0.6); renderPage(pageNum);
+  });
+})();
+</script>

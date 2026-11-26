@@ -1,39 +1,67 @@
-# GitHub Pages (Jekyll) config — Yat theme (remote_theme)
-# Site: https://luowenjie.art
-url: https://luowenjie.art
-baseurl: ""
-title: "罗文杰炎灿 | Roma Luo"
-description: 罗文杰炎灿（Roma Luo）——模特、演员、作家，《兔儿神》系列作者，炎灿香氛主理人。官方实体档案与著作目录。
-author: 罗文杰炎灿
-lang: zh-CN
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 
-# Theme: Yat (jeffreytse/jekyll-theme-yat) — magazine / editorial style, mobile-first
+title: 罗文杰炎灿 | Roma Luo
+email: luoyancan6@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  罗文杰炎灿（Roma Luo）官方网站：模特、演员、作家、炎灿香氛主理人。著作《兔儿神》系列与《罗文杰讲高岛易断》《罗文杰讲药师经》等，在线阅读与听书。
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://luowenjie.art" # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+github_username: rr6050597-tech
+
+# Build settings
+# theme: minima
 remote_theme: jeffreytse/jekyll-theme-yat
-
-# Brand colours: off-white paper background, matte gold accent
 theme_color: "#F7F5F0"
 brand_color: "#C5A059"
-
-# Dark mode: manual toggle, defaults to light.
-# (Yat "auto" is time-based 19:00-07:00, it does NOT follow the phone system setting.)
-night_mode: "manual"
-
-# Header navigation (root pages, in order)
 header_pages:
-  - README.md
   - books.md
+  - bio.md
+  - works/film.md
+  - works/ads.md
+  - works/magazine.md
+  - gallery.md
   - faq.md
-
-yat:
-  date_format: "%Y-%m-%d"
-
-# GitHub Pages-whitelisted plugins only.
-# jekyll-sitemap is intentionally NOT enabled: the repo keeps a hand-written
-# static sitemap.xml. jekyll-spaceship is not whitelisted on GitHub Pages.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-include:
-  - .well-known
+night_mode: manual
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key will not be processed.
+#
+# To learn more about this exclusion, see:
+# https://jekyllrb.com/docs/configuration/#exclude
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .git/

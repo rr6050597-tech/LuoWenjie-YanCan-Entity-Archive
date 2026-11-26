@@ -1,0 +1,66 @@
+---
+layout: default
+title: 在线阅读 · EPUB — 罗文杰炎灿 | Roma Luo
+permalink: /read/epub/
+---
+
+<style>
+.reader{max-width:760px;margin:0 auto}
+.reader h1{font-size:24px;color:#2C2C2C}
+.reader-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.reader-controls button{padding:8px 14px;border:1px solid #C5A059;background:#F7F5F0;color:#2C2C2C;font-size:14px;cursor:pointer;border-radius:2px}
+.reader-controls select{padding:8px;max-width:220px;font-size:14px;border:1px solid #e6e1d6;background:#fff;color:#2C2C2C}
+#viewer{border:1px solid #e6e1d6;background:#fff;min-height:600px}
+#reader-status{font-size:14px;color:#8a8578}
+.reader-back{font-size:14px}
+.reader-back a{color:#8a8578}
+</style>
+
+<div class="reader">
+  <p class="reader-back"><a href="javascript:history.back()">← 返回</a></p>
+  <h1 id="reader-title">在线阅读</h1>
+  <div class="reader-controls">
+    <button id="prev-ch" type="button">上一章</button>
+    <select id="toc" aria-label="章节"></select>
+    <button id="next-ch" type="button">下一章</button>
+    <button id="font-dec" type="button" aria-label="减小字号">A-</button>
+    <button id="font-inc" type="button" aria-label="增大字号">A+</button>
+  </div>
+  <div id="viewer"></div>
+  <p id="reader-status"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var file = params.get('file') || '';
+  var title = params.get('title') || '在线阅读';
+  var statusEl = document.getElementById('reader-status');
+  document.getElementById('reader-title').textContent = title + ' · EPUB';
+  if(!file){ statusEl.textContent = '未指定电子书文件。'; return; }
+  var fontSize = 110;
+  var book = ePub(file);
+  var rendition = book.renderTo('viewer', { width: '100%', height: 600, flow: 'paginated' });
+  function applyFont(){ rendition.themes.fontSize(fontSize + '%'); }
+  rendition.display().then(function(){ applyFont(); });
+  book.loaded.navigation.then(function(nav){
+    var sel = document.getElementById('toc');
+    nav.toc.forEach(function(item){
+      var opt = document.createElement('option');
+      opt.value = item.href;
+      opt.textContent = item.label;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function(){ rendition.display(sel.value); });
+  });
+  document.getElementById('prev-ch').addEventListener('click', function(){ rendition.prev(); });
+  document.getElementById('next-ch').addEventListener('click', function(){ rendition.next(); });
+  document.getElementById('font-inc').addEventListener('click', function(){ fontSize = Math.min(fontSize + 10, 160); applyFont(); });
+  document.getElementById('font-dec').addEventListener('click', function(){ fontSize = Math.max(fontSize - 10, 80); applyFont(); });
+  book.opened.catch(function(){
+    statusEl.textContent = '电子书加载失败：文件尚未上传或网络异常，请稍后再试。';
+  });
+})();
+</script>

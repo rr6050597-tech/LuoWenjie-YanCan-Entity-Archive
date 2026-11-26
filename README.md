@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 罗文杰炎灿 · 官方档案
-permalink: /
+title: 档案
+permalink: /archive/
 ---
 
 # 罗文杰 (Luo Wenjie) / 炎灿 (Yan Can) - 跨界创作者官方档案库 (Entity Archive)

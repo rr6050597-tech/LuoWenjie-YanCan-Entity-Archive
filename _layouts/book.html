@@ -1,0 +1,153 @@
+---
+layout: default
+---
+{% assign book = site.data.books | where: "id", page.book_id | first %}
+<style>
+.book-detail{max-width:720px;margin:0 auto;padding:0 4px}
+.book-crumb{font-size:14px;color:#8a8578}
+.book-crumb a{color:#8a8578;text-decoration:underline}
+.book-detail h1{font-size:30px;line-height:1.3;margin:8px 0 4px;color:#2C2C2C}
+.book-en{font-size:15px;color:#8a8578;margin:0 0 18px}
+.book-covers{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 20px}
+.book-covers figure{margin:0;flex:1 1 220px;max-width:320px}
+.book-covers img{width:100%;height:auto;display:block;cursor:zoom-in;border:1px solid #e6e1d6;background:#F7F5F0}
+.book-covers figcaption{font-size:13px;color:#8a8578;text-align:center;margin-top:6px}
+.cover-placeholder{border:1px dashed #C5A059;color:#8a8578;text-align:center;padding:48px 16px;font-size:15px;background:#F7F5F0}
+.book-desc{font-size:17px;line-height:1.9;color:#2C2C2C}
+.book-meta{font-size:14px;color:#8a8578}
+.book-detail blockquote{border-left:3px solid #C5A059;margin:20px 0;padding:4px 0 4px 16px;color:#55524a;font-size:15px;line-height:1.9}
+.book-detail blockquote cite{display:block;font-size:13px;color:#8a8578;margin-top:8px;font-style:normal}
+.book-detail h2{font-size:20px;margin:32px 0 12px;color:#2C2C2C;border-bottom:1px solid #e6e1d6;padding-bottom:8px}
+.read-lang{font-weight:700;margin:16px 0 8px}
+.btn{display:inline-block;margin:0 10px 10px 0;padding:10px 18px;border:1px solid #C5A059;color:#2C2C2C;background:#F7F5F0;text-decoration:none;border-radius:2px;font-size:15px}
+.btn:hover{background:#C5A059;color:#fff}
+.btn-disabled{display:inline-block;margin:0 10px 10px 0;padding:10px 18px;border:1px dashed #c9c2b2;color:#a39d8f;background:transparent;border-radius:2px;font-size:15px}
+.book-note{font-size:14px;color:#8a8578;line-height:1.8}
+.book-platforms{list-style:none;padding:0}
+.book-platforms li{margin:8px 0;font-size:15px}
+.book-platforms a{color:#2C2C2C;text-decoration:underline}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:94vw;max-height:86vh;width:auto;height:auto}
+.lightbox button{margin-top:14px;background:none;border:1px solid #fff;color:#fff;padding:8px 20px;font-size:15px;cursor:pointer}
+</style>
+
+<article class="book-detail">
+  <p class="book-crumb"><a href="/books/">著作</a> · {{ book.status_label }}</p>
+  <h1>{{ book.title }}</h1>
+  {% if book.en_title %}<p class="book-en">{{ book.en_title }}</p>{% endif %}
+
+  <div class="book-covers">
+    {% if book.cover_en and book.cover_zh %}
+      {% assign _ce = site.static_files | where: "path", book.cover_en | first %}
+      {% assign _cz = site.static_files | where: "path", book.cover_zh | first %}
+      {% if _ce %}<figure><img src="{{ book.cover_en }}" alt="{{ book.title }} 英文版封面" data-full="{{ book.cover_en }}"><figcaption>英文版封面 · 点开放大</figcaption></figure>{% endif %}
+      {% if _cz %}<figure><img src="{{ book.cover_zh }}" alt="{{ book.title }} 中文版封面" data-full="{{ book.cover_zh }}"><figcaption>中文版封面 · 点开放大</figcaption></figure>{% endif %}
+      {% unless _ce or _cz %}<div class="cover-placeholder">封面待补充</div>{% endunless %}
+    {% elsif book.cover %}
+      {% assign _c = site.static_files | where: "path", book.cover | first %}
+      {% if _c %}<figure><img src="{{ book.cover }}" alt="{{ book.title }} 封面" data-full="{{ book.cover }}"><figcaption>点开放大</figcaption></figure>{% else %}<div class="cover-placeholder">封面待补充</div>{% endif %}
+    {% else %}
+      <div class="cover-placeholder">封面待补充</div>
+    {% endif %}
+  </div>
+
+  <p class="book-desc">{{ book.desc }}</p>
+  <p class="book-meta">
+    {% if book.isbn %}ISBN {{ book.isbn }}{% endif %}{% if book.published %} · {{ book.published }}出版{% endif %}
+  </p>
+  {% if book.author_note %}
+  <blockquote>{{ book.author_note }}{% if book.author_note_source %}<cite>—— {{ book.author_note_source }}</cite>{% endif %}</blockquote>
+  {% endif %}
+
+  <h2>在线阅读</h2>
+  {% if book.read_zh %}
+    <p class="read-lang">中文版</p>
+    <p>
+    {% for item in book.read_zh %}
+      {% if item.format == "web" %}
+        <a class="btn" href="{{ item.file }}">{{ item.label }}</a>
+      {% else %}
+        {% assign _f = site.static_files | where: "path", item.file | first %}
+        {% if _f %}
+          {% if item.format == "epub" %}<a class="btn" href="/read/epub/?file={{ item.file }}&amp;title={{ book.title | uri_escape }}">{{ item.label }}</a>
+          {% elsif item.format == "pdf" %}<a class="btn" href="/read/pdf/?file={{ item.file }}&amp;title={{ book.title | uri_escape }}">{{ item.label }}</a>{% endif %}
+        {% else %}
+          <span class="btn-disabled">{{ item.label }} · 文件待上传</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    </p>
+  {% endif %}
+  {% if book.read_en %}
+    <p class="read-lang">英文版</p>
+    <p>
+    {% for item in book.read_en %}
+      {% if item.format == "web" %}
+        <a class="btn" href="{{ item.file }}">{{ item.label }}</a>
+      {% else %}
+        {% assign _f = site.static_files | where: "path", item.file | first %}
+        {% if _f %}
+          {% if item.format == "epub" %}<a class="btn" href="/read/epub/?file={{ item.file }}&amp;title={{ book.title | uri_escape }}">{{ item.label }}</a>
+          {% elsif item.format == "pdf" %}<a class="btn" href="/read/pdf/?file={{ item.file }}&amp;title={{ book.title | uri_escape }}">{{ item.label }}</a>{% endif %}
+        {% else %}
+          <span class="btn-disabled">{{ item.label }} · 文件待上传</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    </p>
+  {% endif %}
+  {% unless book.read_zh or book.read_en %}
+    <p class="book-note">本书全文尚未上线阅读，敬请期待。</p>
+  {% endunless %}
+  {% if book.read_zh and book.read_en == nil %}
+    <p class="book-note">英文版全文待补充。</p>
+  {% endif %}
+  {% if book.read_en and book.read_zh == nil %}
+    <p class="book-note">中文版全文待补充。</p>
+  {% endif %}
+
+  <h2>在线听书</h2>
+  {% if book.audio %}
+    {% assign _a = site.static_files | where: "path", book.audio.file | first %}
+    {% if _a %}
+      <p><audio controls preload="none" src="{{ book.audio.file }}" style="width:100%"></audio></p>
+      <p class="book-note">{{ book.audio.label }} · 本书的播客导读，非整本朗读。</p>
+    {% else %}
+      <p class="book-note">音频文件待上传：{{ book.audio.label }}。</p>
+    {% endif %}
+  {% else %}
+    <p class="book-note">本书暂无音频。整本朗读需作者录音做声音克隆，敬请期待。</p>
+  {% endif %}
+
+  <h2>在其他平台读</h2>
+  {% if book.platforms %}
+    <ul class="book-platforms">
+    {% for p in book.platforms %}
+      <li>{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}{% if p.note %} · {{ p.note }}{% endif %}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p class="book-note">暂无其他平台链接。</p>
+  {% endif %}
+
+  <p style="margin-top:32px"><a href="/books/">← 返回著作目录</a> · <a href="/">返回首页</a></p>
+</article>
+
+<div class="lightbox" id="lightbox" hidden><img id="lightbox-img" alt=""><button id="lightbox-close" type="button">关闭</button></div>
+<script>
+(function(){
+  var box=document.getElementById('lightbox');
+  var img=document.getElementById('lightbox-img');
+  var nodes=document.querySelectorAll('.book-covers img');
+  for(var i=0;i<nodes.length;i++){
+    nodes[i].addEventListener('click',function(){
+      img.src=this.getAttribute('data-full')||this.src;
+      img.alt=this.alt||'';
+      box.hidden=false;
+    });
+  }
+  document.getElementById('lightbox-close').addEventListener('click',function(){box.hidden=true;});
+  box.addEventListener('click',function(){box.hidden=true;});
+})();
+</script>
