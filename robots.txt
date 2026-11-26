@@ -43,4 +43,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/sitemap.xml
+Sitemap: https://luowenjie.art/sitemap.xml

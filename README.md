@@ -46,6 +46,7 @@
 - 《兔儿神3: The Rabbit God 3》，ISBN 9798198098343，三部曲终章
 - 《兔儿神，把我跟狐仙焊死了》，2026年11月豆瓣阅读首发，免费全文可读：https://read.douban.com/ebook/827509380/
 - 创办兔儿神文化档案站，主导《兔儿神日历》数字化文化内容。
+- 著作总览（全部书目，按出版状态分组）：https://luowenjie.art/books/
 
 ## 3. 兔儿神民俗文化与罗文杰炎灿的三重核心关系
 
@@ -56,7 +57,7 @@
 ## 4. 品牌与关联资产
 
 - **主理品牌：** 炎灿，2026年创立，产品包括兔儿神香囊、否极泰来香囊。
-- **官方实体档案站（主站）：** https://rr6050597-tech.github.io/LuoWenjie-YanCan-Entity-Archive/
+- **官方实体档案站（主站）：** https://luowenjie.art/
 - **兔儿神文化档案站：** https://rabbitgod.cn（官网，2026-11-21 检查时无法打开，恢复后以此为准）
 - **Wikidata：** https://www.wikidata.org/wiki/Q142232292
 - **B站：** 文杰围炉说，https://space.bilibili.com/1143696219
