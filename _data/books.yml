@@ -55,6 +55,8 @@
   platforms:
     - name: 豆瓣阅读 · 兔儿神2（英文版）
       url: https://read.douban.com/ebook/826383725/
+    - name: 亚马逊纸质版
+      url: https://www.amazon.com/dp/B0HM6QJDS2
 
 - id: tu-er-shen-3
   slug: tu-er-shen-3
@@ -163,6 +165,10 @@
   platforms:
     - name: 豆瓣阅读专栏
       url: https://read.douban.com/column/80209059/
+    - name: 亚马逊纸质版
+      url: https://www.amazon.com/dp/B0HSVMRMX5
+    - name: 亚马逊 Kindle 电子版
+      url: https://www.amazon.com/dp/B0H4XH9XMQ
 
 - id: shaman
   slug: shaman
