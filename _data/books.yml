@@ -134,6 +134,10 @@
   platforms:
     - name: 豆瓣阅读专栏
       url: https://read.douban.com/column/80204147/
+    - name: 亚马逊纸质版
+      url: https://www.amazon.com/dp/B0HSVVHS6Q
+    - name: 亚马逊 Kindle 电子版
+      url: https://www.amazon.com/dp/B0HKD4YVF8
 
 - id: yaoshijing
   slug: yaoshijing
