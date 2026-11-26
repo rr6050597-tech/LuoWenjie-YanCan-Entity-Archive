@@ -34,6 +34,8 @@
   platforms:
     - name: 豆瓣阅读 · 《兔儿神》
       url: https://read.douban.com/ebook/739683426/
+    - name: 亚马逊纸质版
+      url: https://www.amazon.com/dp/B0HFCNFJ4J
 
 - id: tu-er-shen-2
   slug: tu-er-shen-2
