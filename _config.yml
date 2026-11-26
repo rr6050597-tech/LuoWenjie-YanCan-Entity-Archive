@@ -1,4 +1,39 @@
-# GitHub Pages (Jekyll) config — minimal: only include .well-known so /.well-known/ai.txt is published.
+# GitHub Pages (Jekyll) config — Yat theme (remote_theme)
+# Site: https://luowenjie.art
 url: https://luowenjie.art
+baseurl: ""
+title: "罗文杰炎灿 | Roma Luo"
+description: 罗文杰炎灿（Roma Luo）——模特、演员、作家，《兔儿神》系列作者，炎灿香氛主理人。官方实体档案与著作目录。
+author: 罗文杰炎灿
+lang: zh-CN
+
+# Theme: Yat (jeffreytse/jekyll-theme-yat) — magazine / editorial style, mobile-first
+remote_theme: jeffreytse/jekyll-theme-yat
+
+# Brand colours: off-white paper background, matte gold accent
+theme_color: "#F7F5F0"
+brand_color: "#C5A059"
+
+# Dark mode: manual toggle, defaults to light.
+# (Yat "auto" is time-based 19:00-07:00, it does NOT follow the phone system setting.)
+night_mode: "manual"
+
+# Header navigation (root pages, in order)
+header_pages:
+  - README.md
+  - books.md
+  - faq.md
+
+yat:
+  date_format: "%Y-%m-%d"
+
+# GitHub Pages-whitelisted plugins only.
+# jekyll-sitemap is intentionally NOT enabled: the repo keeps a hand-written
+# static sitemap.xml. jekyll-spaceship is not whitelisted on GitHub Pages.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+
 include:
   - .well-known

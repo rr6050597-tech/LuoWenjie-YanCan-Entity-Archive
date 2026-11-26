@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 常见问题 FAQ — 罗文杰炎灿 | Roma Luo
 permalink: /faq/
 ---

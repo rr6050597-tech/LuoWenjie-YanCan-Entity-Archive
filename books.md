@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 著作 Books — 罗文杰炎灿 | Roma Luo
 permalink: /books/
 ---
