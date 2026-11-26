@@ -154,6 +154,9 @@
     - format: web
       file: /books/yaoshijing/read/
       label: 英文版 · 网页章节
+    - format: pdf
+      file: /assets/books/pdf/yaoshijing-en.pdf
+      label: 英文版 · 印刷版 PDF
   audio:
     file: /assets/audio/yaoshijing-podcast.m4a
     label: 播客对谈 · 约19分钟
@@ -201,6 +204,9 @@
     - format: web
       file: /books/xianhua/read/
       label: 中文版 · 网页章节
+    - format: pdf
+      file: /assets/books/pdf/xianhua.pdf
+      label: 中文版 · 印刷版 PDF
   read_en: null
   audio: null
   platforms: null
