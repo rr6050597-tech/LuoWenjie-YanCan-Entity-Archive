@@ -18,7 +18,7 @@
   desc: 兔儿神系列开篇，讲回家。一个关于回家的故事：深夜对话，清代胡天保民间传说，写孤独、接纳与找回自己。
   author_note: 写下《兔儿神》，最初只是源于深夜里对自我、欲望与人间执念的不断追问。我希望借由一场跨越时空与身份的对话，剥开世俗标签的裹挟，去触碰人性最本真、也最脆弱的角落。这不仅是一次关于古老传说与现代灵魂的碰撞，更是一场写给所有在迷茫中寻找自我之人的心灵独白。愿你在这些对话里，照见自己的影子，也获得一份直面内心的坦然与力量。
   author_note_source: 豆瓣阅读作者自述
-  cover: null
+  cover: /assets/covers/tu-er-shen.jpg
   read_zh:
     - format: web
       file: /books/tu-er-shen/read/
@@ -45,7 +45,7 @@
   published: 2026年10月
   desc: 神住下来了，人也住下来了。无墙之庙，写安放与接纳。
   author_note: null
-  cover: null
+  cover: /assets/covers/tu-er-shen-2.jpg
   read_zh: null
   read_en:
     - format: pdf
@@ -95,7 +95,7 @@
   published: null
   desc: 十八个夜晚的对话。DIALOGUES WITH TU'ER SHEN，对坐长谈。
   author_note: null
-  cover: null
+  cover: /assets/covers/dialogues.jpg
   read_zh: null
   read_en:
     - format: pdf
@@ -174,7 +174,12 @@
   published: null
   desc: 三卷本。上册世界角度，中册中国角度，下册与宗教的渊源。
   author_note: null
-  cover: null
+  cover: /assets/covers/shaman-world.jpg
+  covers:
+    - file: /assets/covers/shaman-china.jpg
+      label: 中国篇
+    - file: /assets/covers/shaman-religion.jpg
+      label: 宗教篇
   read_zh:
     - format: pdf
       file: /assets/books/pdf/shaman-world.pdf

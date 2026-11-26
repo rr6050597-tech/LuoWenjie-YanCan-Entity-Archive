@@ -46,6 +46,9 @@ permalink: /
 .home-products{font-size:15px;line-height:1.9;color:#2C2C2C}
 .home-products .prod{border:1px solid #e6e1d6;padding:14px 16px;margin:10px 0;background:#F7F5F0}
 .home-products .prod b{color:#2C2C2C}
+.home-products .prod-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+.home-products .prod-imgs img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border:1px solid #e6e1d6;background:#fff}
+@media (max-width:560px){.home-products .prod-imgs{grid-template-columns:1fr}}
 /* —— 页脚：仅留“档案”小字入口 —— */
 .home-foot{margin:56px 0 8px;text-align:center;font-size:13px;color:#a39d8f}
 .home-foot a{color:#a39d8f;text-decoration:underline}
@@ -118,9 +121,18 @@ permalink: /
 
 <h2 class="home-sec">炎灿香氛</h2>
 <div class="home-products">
-  <div class="prod"><b>兔儿神香囊</b> · 草本调熏香，车挂、随身多用。¥298 · <a href="https://v.douyin.com/Cn5nHlyH8Ps/" target="_blank" rel="noopener">抖音商城购买 →</a></div>
-  <div class="prod"><b>妲己香囊</b> · 熏香。¥298 · <a href="https://v.douyin.com/Pbe2uTeAyTc/" target="_blank" rel="noopener">抖音商城购买 →</a></div>
-  <div class="prod"><b>米缸香囊</b> · 国风草本刺绣，清新留香，随身多用挂件。¥298 · <a href="https://v.douyin.com/s9ryhyQnQ3Y/" target="_blank" rel="noopener">抖音商城购买 →</a></div>
+  <div class="prod">
+    <div class="prod-imgs"><img src="/assets/products/sachet-tuershen.jpg" alt="兔儿神香囊"><img src="/assets/products/sachet-tuershen-scene.jpg" alt="兔儿神香囊 · 二十一味东方香材"></div>
+    <b>兔儿神香囊</b> · 草本调熏香，车挂、随身多用。¥298 · <a href="https://v.douyin.com/Cn5nHlyH8Ps/" target="_blank" rel="noopener">抖音商城购买 →</a>
+  </div>
+  <div class="prod">
+    <div class="prod-imgs"><img src="/assets/products/sachet-daji.jpg" alt="妲己香囊"><img src="/assets/products/sachet-daji-scene.jpg" alt="妲己香囊 · 21味东方香材"></div>
+    <b>妲己香囊</b> · 熏香。¥298 · <a href="https://v.douyin.com/Pbe2uTeAyTc/" target="_blank" rel="noopener">抖音商城购买 →</a>
+  </div>
+  <div class="prod">
+    <div class="prod-imgs"><img src="/assets/products/sachet-migang.jpg" alt="米缸香囊"><img src="/assets/products/sachet-migang-scene.jpg" alt="米缸香囊 · 米缸与稻穗"></div>
+    <b>米缸香囊</b> · 国风草本刺绣，清新留香，随身多用挂件。¥298 · <a href="https://v.douyin.com/s9ryhyQnQ3Y/" target="_blank" rel="noopener">抖音商城购买 →</a>
+  </div>
 </div>
 
 <p class="home-foot"><a href="/archive/">档案</a></p>
