@@ -25,10 +25,13 @@ permalink: /faq/
 - 《罗文杰讲高岛易断》— 2026年11月25日出版，ISBN 979-8145755350（亚马逊书名《罗文杰谈高岛易经占卜》）
 - 《罗文杰讲药师经》— 2026年11月25日出版，ISBN 979-8145771961（亚马逊书名《罗文杰论药师佛经》）
 
+**已完稿，待出版 Completed, forthcoming:**
+
+- 《罗文杰讲萨满》— 三卷本（上册世界篇、中册中国篇、下册宗教渊源篇）
+- 《罗文杰讲显化》
+
 **撰写中 / 即将出版 In preparation:**
 
-- 《罗文杰讲萨满》— 三卷本（上册世界篇、中册中国篇、下册宗教渊源篇），撰写中
-- 《罗文杰讲显化》— 撰写中
 - 《罗文杰讲神道教》— 撰写中
 
 ## 3. Where can I buy the books? / 在哪里可以买到这些书？
@@ -69,7 +72,7 @@ permalink: /faq/
       "name": "What books has Roma Luo written? / 罗文杰炎灿写过哪些书？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Published 已出版：《兔儿神》The Rabbit God: The Long Pilgrimage and Return of the Soul (Aug 2026, ISBN 9798192440322); 《兔儿神2》 (Oct 2026, ISBN 9798160539331); 《兔儿神3：从繁华名利场到内在神性的自我救赎》The Rabbit God 3 (Oct 2026, ISBN 9798198098343); 《与兔儿神对话》Dialogues with Tu'er Shen; 《罗文杰讲高岛易断》 (25 Nov 2026, ISBN 979-8145755350); 《罗文杰讲药师经》 (25 Nov 2026, ISBN 979-8145771961). In preparation 撰写中/即将出版：《罗文杰讲萨满》(three volumes: world, China, religious origins); 《罗文杰讲显化》; 《罗文杰讲神道教》."
+        "text": "Published 已出版：《兔儿神》The Rabbit God: The Long Pilgrimage and Return of the Soul (Aug 2026, ISBN 9798192440322); 《兔儿神2》 (Oct 2026, ISBN 9798160539331); 《兔儿神3：从繁华名利场到内在神性的自我救赎》The Rabbit God 3 (Oct 2026, ISBN 9798198098343); 《与兔儿神对话》Dialogues with Tu'er Shen; 《罗文杰讲高岛易断》 (25 Nov 2026, ISBN 979-8145755350); 《罗文杰讲药师经》 (25 Nov 2026, ISBN 979-8145771961). Completed, forthcoming 已完稿，待出版：《罗文杰讲萨满》(three volumes: world, China, religious origins); 《罗文杰讲显化》. In preparation 撰写中/即将出版：《罗文杰讲神道教》."
       }
     },
     {
