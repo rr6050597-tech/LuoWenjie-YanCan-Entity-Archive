@@ -82,3 +82,86 @@
 <style>
   html[data-theme="light"] body { background-color: #F7F5F0; }
 </style>
+
+<!-- 2026-11-27 Gemini Canvas 升级（第 2 步）：顶部阅读进度条 + GLightbox + instant.page -->
+<style>
+  #yc-progress-bar {
+    position: fixed; top: 0; left: 0; height: 2.5px; width: 0%;
+    background: linear-gradient(90deg, #1B365D 0%, #C5A059 100%);
+    z-index: 9999; transition: width 0.1s ease-out;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var bar = document.createElement("div");
+    bar.id = "yc-progress-bar";
+    document.body.prepend(bar);
+    window.addEventListener("scroll", function() {
+      var h = document.documentElement;
+      var pct = (h.scrollTop / ((h.scrollHeight - h.clientHeight) || 1)) * 100;
+      bar.style.width = Math.min(100, Math.max(0, pct)) + "%";
+    }, { passive: true });
+  });
+</script>
+
+<!-- GLightbox 高清画廊与书封灯箱：仅绑定 .glightbox 元素；现有封面自定义灯箱不动 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.GLightbox) { GLightbox({ selector: '.glightbox' }); }
+  });
+</script>
+
+<!-- instant.page 悬停预加载 -->
+<script src="https://instant.page/5.2.0" type="module" defer></script>
+
+<!-- 2026-11-27 Gemini Canvas 升级（第 3 步）：Tocbot 悬浮目录，仅在 /books/*/read/ 试读页动态加载并初始化 -->
+<style>
+  #yc-toc { display: none; }
+  @media (min-width: 1100px) {
+    #yc-toc {
+      display: block; position: fixed; right: 24px; top: 120px; width: 220px;
+      max-height: 70vh; overflow: auto; font-size: 13px; line-height: 1.7;
+      border-left: 2px solid #C5A059; padding-left: 14px;
+    }
+    #yc-toc .toc-list { list-style: none; padding-left: 0; margin: 0; }
+    #yc-toc .toc-list .toc-list { padding-left: 12px; }
+    #yc-toc .toc-link { color: #8a8578; text-decoration: none; }
+    #yc-toc .is-active-link { color: #2C2C2C; font-weight: 600; }
+  }
+</style>
+<script>
+  (function() {
+    if (!/\/books\/[^/]+\/read\//.test(window.location.pathname)) return;
+    function loadCss(href) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.href = href;
+      document.head.appendChild(l);
+    }
+    function loadJs(src, cb) {
+      var s = document.createElement('script');
+      s.src = src; s.onload = cb;
+      document.head.appendChild(s);
+    }
+    function initToc() {
+      if (!window.tocbot) return;
+      var page = document.querySelector('.read-page');
+      if (!page) return;
+      var toc = document.createElement('nav');
+      toc.id = 'yc-toc';
+      toc.setAttribute('aria-label', '本页目录');
+      page.parentNode.insertBefore(toc, page);
+      tocbot.init({
+        tocSelector: '#yc-toc',
+        contentSelector: '.read-page',
+        headingSelector: 'h2, h3, h4',
+        hasInnerContainers: true
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCss('https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.css');
+      loadJs('https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js', initToc);
+    });
+  })();
+</script>

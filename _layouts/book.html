@@ -111,7 +111,22 @@ layout: default
   {% if book.audio %}
     {% assign _a = site.static_files | where: "path", book.audio.file | first %}
     {% if _a %}
-      <p><audio controls preload="none" src="{{ book.audio.file }}" style="width:100%"></audio></p>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shikwasa@2.2.1/dist/style.css">
+      <div id="yc-podcast-player" style="margin: 24px 0;"></div>
+      <script src="https://cdn.jsdelivr.net/npm/shikwasa@2.2.1/dist/shikwasa.min.js"></script>
+      <script>
+        new Shikwasa.Player({
+          container: function() { return document.getElementById("yc-podcast-player"); },
+          themeColor: "#C5A059",
+          audio: {
+            title: "{{ book.title }} · 播客导读",
+            artist: "罗文杰炎灿 (Roma Luo)",
+            cover: "{{ book.cover | default: '/assets/covers/gaodao-yiduan.jpg' }}",
+            src: "{{ book.audio.file }}"
+          },
+          speedOptions: [0.75, 1.0, 1.25, 1.5, 2.0]
+        });
+      </script>
       <p class="book-note">{{ book.audio.label }} · 本书的播客导读，非整本朗读。</p>
     {% else %}
       <p class="book-note">音频文件待上传：{{ book.audio.label }}。</p>

@@ -8,6 +8,21 @@ permalink: /faq/
 
 以下为关于罗文杰炎灿及其图书的常见问题。Frequently asked questions about Roma Luo (罗文杰炎灿) and his books.
 
+<style>
+.yc-search{margin:20px 0 8px}
+.yc-search input{width:100%;max-width:420px;padding:10px 14px;font-size:15px;color:#2C2C2C;background:#fff;border:1px solid #C5A059;border-radius:2px;outline:none}
+.yc-search input:focus{box-shadow:0 0 0 2px rgba(197,160,89,.35)}
+.yc-search-results{list-style:none;padding:0;margin:10px 0 0}
+.yc-search-results li{margin:6px 0;font-size:15px;line-height:1.6}
+.yc-search-results a{color:#2C2C2C}
+.yc-search-results .yc-no-result{color:#8a8578;font-size:14px}
+</style>
+
+<div class="yc-search">
+  <input id="yc-search-input" type="search" placeholder="搜书名、ISBN、问题…" aria-label="站内搜索" autocomplete="off">
+  <ul id="yc-search-results" class="yc-search-results"></ul>
+</div>
+
 ## 1. Who is 罗文杰炎灿？ / 罗文杰炎灿是谁？
 
 **English:** Roma Luo (罗文杰炎灿) is a Chinese model, actor, writer, and the founder of the Yan Can fragrance brand. Born on 13 November 1993 in Hulin, Heilongjiang, he signed with Longteng Elite in 2012, opened the DIOR HOMME Beijing debut show in April 2013, and played the lead role Yong Le in the film *Underground Fragrance* (2015), which was selected for the Venice Days section of the 72nd Venice Film Festival and won the Fedeora Best Film award in that section.
@@ -101,4 +116,28 @@ permalink: /faq/
     }
   ]
 }
+</script>
+
+<script>
+(function(){
+  var input = document.getElementById('yc-search-input');
+  var box = document.getElementById('yc-search-results');
+  if (!input || !box) return;
+  function init() {
+    if (!window.SimpleJekyllSearch) return;
+    SimpleJekyllSearch({
+      searchInput: input,
+      resultsContainer: box,
+      json: '/search.json',
+      searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+      noResultsText: '<li class="yc-no-result">没有找到相关内容</li>',
+      limit: 10,
+      fuzzy: false
+    });
+  }
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js';
+  s.onload = init;
+  document.head.appendChild(s);
+})();
 </script>
