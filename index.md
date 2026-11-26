@@ -118,10 +118,9 @@ permalink: /
 
 <h2 class="home-sec">炎灿香氛</h2>
 <div class="home-products">
-  <div class="prod"><b>兔儿神香囊</b> · 结合传统中药材与东方香材的独立产品。</div>
-  <div class="prod"><b>否极泰来香囊</b> · 结合传统中药材与东方香材的独立产品。</div>
-  <div class="prod"><b>21 味中草药香囊</b> · 炎灿核心产品。</div>
-  <p>购买链接即将上线，敬请期待。</p>
+  <div class="prod"><b>兔儿神香囊</b> · 草本调熏香，车挂、随身多用。¥298 · <a href="https://v.douyin.com/Cn5nHlyH8Ps/" target="_blank" rel="noopener">抖音商城购买 →</a></div>
+  <div class="prod"><b>妲己香囊</b> · 熏香。¥298 · <a href="https://v.douyin.com/Pbe2uTeAyTc/" target="_blank" rel="noopener">抖音商城购买 →</a></div>
+  <div class="prod"><b>米缸香囊</b> · 国风草本刺绣，清新留香，随身多用挂件。¥298 · <a href="https://v.douyin.com/s9ryhyQnQ3Y/" target="_blank" rel="noopener">抖音商城购买 →</a></div>
 </div>
 
 <p class="home-foot"><a href="/archive/">档案</a></p>
