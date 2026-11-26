@@ -1,0 +1,159 @@
+<!-- 太极阴阳开关（2026-11-27）：覆盖 Yat 主题默认的 Light/Dark 文字 pill。
+     机制与主题原版完全一致（localStorage 'theme' + html[data-theme]），只换外观：
+     一个太极图做开关——浅色模式阳（白）在上，深色模式阴（黑）在上，点按旋转 180° 切换。 -->
+<div class="theme-toggle taiji-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch" aria-label="切换深色 / 浅色模式" title="切换深色 / 浅色模式">
+    <svg class="taiji" viewBox="0 0 100 100" width="38" height="38" aria-hidden="true">
+      <circle cx="50" cy="50" r="49" fill="none" stroke="#C5A059" stroke-width="2.5"/>
+      <circle cx="50" cy="50" r="48" fill="#ffffff"/>
+      <path d="M50 2 A48 48 0 0 0 50 98 Z" fill="#2C2C2C"/>
+      <circle cx="50" cy="26" r="24" fill="#2C2C2C"/>
+      <circle cx="50" cy="74" r="24" fill="#ffffff"/>
+      <circle cx="50" cy="26" r="7" fill="#ffffff"/>
+      <circle cx="50" cy="74" r="7" fill="#2C2C2C"/>
+    </svg>
+  </label>
+</div>
+
+<style>
+/* 太极开关：覆盖 Yat 默认的 Light/Dark 文字 pill 样式 */
+.theme-toggle.taiji-toggle {
+  width: 40px;
+  height: 40px;
+  margin-top: 8px;
+  margin-right: 60px;
+  margin-left: auto;
+}
+.theme-toggle.taiji-toggle label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.theme-toggle.taiji-toggle [type="checkbox"] {
+  display: none;
+}
+.theme-toggle.taiji-toggle .taiji {
+  display: block;
+  width: 38px;
+  height: 38px;
+  /* 浅色模式：阳（白）在上 */
+  transform: rotate(180deg);
+  transition: transform .45s cubic-bezier(.4,.03,0,1);
+}
+/* 深色模式：阴（黑）在上 */
+.theme-toggle.taiji-toggle [type="checkbox"]:checked ~ label .taiji {
+  transform: rotate(0deg);
+}
+@media (max-width: 1024px) {
+  .theme-toggle.taiji-toggle { margin-right: 35px; }
+}
+@media (max-width: 800px) {
+  .theme-toggle.taiji-toggle { margin-right: 20px; }
+}
+</style>
+
+{%- assign name = 'night_mode' -%}
+{%- include functions.html func='get_value' default='auto' -%}
+{%- assign night_mode = return -%}
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('{{ night_mode }}' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+        document.dispatchEvent(new Event('theme-changed'));
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
