@@ -249,7 +249,7 @@
     --yc-glass-shadow-sm:0 4px 14px rgba(0,0,0,.28);
   }
   /* 顶部导航栏：磨砂玻璃 */
-  header.site-header{background:var(--yc-glass-bg);backdrop-filter:blur(26px) saturate(1.6);-webkit-backdrop-filter:blur(26px) saturate(1.6);border-bottom:1px solid var(--yc-glass-border-soft);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(255,255,255,.25)}
+  header.site-header{background:var(--yc-glass-bg);backdrop-filter:blur(26px) saturate(1.6);-webkit-backdrop-filter:blur(26px) saturate(1.6);border:1px solid var(--yc-glass-border-soft);border-radius:24px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(255,255,255,.25);margin:12px 16px 0}
   html[data-theme="dark"] header.site-header{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -1px 0 rgba(255,255,255,.07)}
   /* 黑白切换 pill：透明玻璃 */
   .theme-toggle{background:var(--yc-glass-bg);backdrop-filter:blur(26px) saturate(1.6);-webkit-backdrop-filter:blur(26px) saturate(1.6);border:1px solid var(--yc-glass-border);border-radius:999px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(255,255,255,.25)}
@@ -284,10 +284,10 @@
   .book-detail>p:last-child a{font-size:15px}
   /* 图集：图片玻璃框 */
   .gallery-page .gallery-grid img{border:1px solid var(--yc-glass-border);border-radius:8px;box-shadow:var(--yc-glass-shadow-sm)}
-  /* 书卡封面按语言显示：默认中文封面；仅中英双版的书在英文模式下显示英文封面（单封面书不受影响） */
-  .yc-cover-en{display:none}
-  html[data-yc-lang="en"] .yc-cover-en{display:block}
-  html[data-yc-lang="en"] .yc-cover-zh{display:none}
+  /* 书卡封面按语言显示：默认中文封面；仅中英双版的书在英文模式下显示英文封面（单封面书不受影响）。注意：books.md 内嵌样式的 .book-card-img{display:block}（0,1,0）在 body 中后于 head，会压过单 class 规则，故此处用双 class 特异度 (0,2,0) 锁定——否则中文模式下中英封面会同时显示。 */
+  .books-grid .yc-cover-en,.works-grid .yc-cover-en{display:none}
+  html[data-yc-lang="en"] .books-grid .yc-cover-en,html[data-yc-lang="en"] .works-grid .yc-cover-en{display:block}
+  html[data-yc-lang="en"] .books-grid .yc-cover-zh,html[data-yc-lang="en"] .works-grid .yc-cover-zh{display:none}
   /* 首页权威链接：玻璃小药丸 */
   .home .home-auth{margin:40px 0 8px;text-align:center}
   .home .home-auth h2{font-size:15px;color:#8a8578;font-weight:500;margin:0 0 10px;letter-spacing:.1em}
@@ -318,6 +318,7 @@
     html[data-header-transparent] header.site-header,header.site-header{position:sticky;top:0;height:64px;overflow:visible}
     html[data-scroll-status='down'] header.site-header{top:0}
     html[data-scroll-status='top'] header.site-header-transparent{height:64px;margin-top:0}
+    html[data-scroll-status='top'] header.site-header-transparent.site-header{margin-top:12px}
     html[data-scroll-status='top'] header.site-header-transparent.site-header .site-brand-inner{color:#2C2C2C}
     html[data-theme="dark"][data-scroll-status='top'] header.site-header-transparent.site-header .site-brand-inner{color:#F7F5F0}
     header.site-header .site-nav{display:none}
@@ -346,7 +347,7 @@
   html[data-theme="dark"] .yc-lang-switch button{color:#a39d8f}
   html[data-theme="dark"] .yc-lang-switch button[aria-pressed="true"]{color:#F7F5F0}
   .site-header,.site-header .wrapper,.site-header-inner{overflow:visible}
-  .yc-lang-dropdown{position:relative;display:inline-flex;align-items:center;flex:none;align-self:center;margin-right:12px}
+  .yc-lang-dropdown{position:relative;display:inline-flex;align-items:center;flex:none;align-self:center;margin-right:12px;z-index:10005;pointer-events:auto}
   .yc-lang-dropbtn{appearance:none;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 12px;font-size:12px;letter-spacing:.08em;color:var(--yc-glass-ink,#2C2C2C);background:var(--yc-glass-bg);border:1px solid var(--yc-glass-border);border-radius:999px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(255,255,255,.25);backdrop-filter:blur(26px) saturate(1.6);-webkit-backdrop-filter:blur(26px) saturate(1.6);cursor:pointer}
   html[data-theme="dark"] .yc-lang-dropbtn{box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -1px 0 rgba(255,255,255,.07)}
   .yc-lang-caret{font-size:10px;opacity:.7;line-height:1}
