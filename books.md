@@ -13,8 +13,8 @@ permalink: /books/
 .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(156px,1fr));gap:22px;margin:20px 0 32px}
 .book-card{display:block;text-decoration:none;color:#2C2C2C;transition:transform .25s ease}
 .book-card:hover{transform:translateY(-4px)}
-.book-card-img{width:100%;height:auto;display:block;border:1px solid #E2DDD2;background:#F7F5F0;aspect-ratio:2/3;object-fit:cover;box-shadow:0 6px 18px rgba(44,44,44,.06);border-radius:8px}
-.book-card-ph{display:flex;align-items:center;justify-content:center;aspect-ratio:2/3;background:linear-gradient(160deg,#FAF8F3 0%,#EFECE4 100%);border:1px solid #D6C6A5;outline:1px solid rgba(197,160,89,.45);outline-offset:-7px;color:#2C2C2C;font-family:"Songti SC","Noto Serif SC",serif;font-size:16px;font-weight:600;letter-spacing:.06em;text-align:center;padding:18px 14px;box-shadow:0 6px 18px rgba(44,44,44,.04);border-radius:8px}
+.book-card-img{width:100%;height:auto;display:block;border:1px solid #E2DDD2;background:#F7F5F0;aspect-ratio:2/3;object-fit:cover;box-shadow:0 6px 18px rgba(44,44,44,.06);border-radius:24px}
+.book-card-ph{display:flex;align-items:center;justify-content:center;aspect-ratio:2/3;background:linear-gradient(160deg,#FAF8F3 0%,#EFECE4 100%);border:1px solid #D6C6A5;outline:1px solid rgba(197,160,89,.45);outline-offset:-7px;color:#2C2C2C;font-family:"Songti SC","Noto Serif SC",serif;font-size:16px;font-weight:600;letter-spacing:.06em;text-align:center;padding:18px 14px;box-shadow:0 6px 18px rgba(44,44,44,.04);border-radius:24px}
 .book-card-title{display:block;font-family:"Songti SC","Noto Serif SC",serif;font-size:15.5px;font-weight:500;margin-top:10px;line-height:1.45;color:#2C2C2C}
 .book-card-meta{display:block;font-size:12.5px;color:#78736A;margin-top:3px;font-family:monospace}
 .yc-search{margin:20px 0 8px}
