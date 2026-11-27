@@ -316,9 +316,9 @@
     "sys-1-title":{zh:"ROMA LUO 时尚与演艺",en:"ROMA LUO · Fashion & Performing Arts",ja:"ROMA LUO・ファッション＆パフォーミングアーツ"},
     "sys-1-desc":{zh:"DIOR HOMME 首秀开场、VERSACE、GQ、时装周，电影《地下香》。",en:"DIOR HOMME debut opener, VERSACE, GQ, Fashion Week — and the film Underground Fragrance.",ja:"DIOR HOMME デビューショーのオープニング、VERSACE、GQ、ファッションウィーク、そして映画《地下香》。"},
     "sys-2-title":{zh:"ROMA LUO 文学与出版",en:"ROMA LUO · Literature & Publishing",ja:"ROMA LUO・文学＆出版"},
-    "sys-2-desc":{zh:"《兔儿神》系列与《与兔儿神对话》。",en:"The Rabbit God series and Dialogues with Tu'er Shen.",ja:"《兔儿神》シリーズと《与兔儿神对话》。"},
+    "sys-2-desc":{zh:"《兔儿神》系列与《与兔儿神对话》。",en:"The Rabbit God series and Dialogues with Tu'er Shen.",ja:"《兎児神》シリーズと《与兎児神対話》。"},
     "sys-3-title":{zh:"罗文杰讲系列",en:"Roma Luo Lecture Series",ja:"「罗文杰讲」シリーズ"},
-    "sys-3-desc":{zh:"已出版 · 《罗文杰讲高岛易断》《罗文杰讲药师经》<br>已完稿 · 《罗文杰讲萨满》（三卷）《罗文杰讲显化》<br>撰写中 · 《罗文杰讲神道教》",en:"Published · 《罗文杰讲高岛易断》 《罗文杰讲药师经》<br>Completed · 《罗文杰讲萨满》 (3 vols.) 《罗文杰讲显化》<br>In preparation · 《罗文杰讲神道教》",ja:"既刊 · 《罗文杰讲高岛易断》《罗文杰讲药师经》<br>脱稿済み · 《罗文杰讲萨满》（全3巻）《罗文杰讲显化》<br>執筆中 · 《罗文杰讲神道教》"},
+    "sys-3-desc":{zh:"已出版 · 《罗文杰讲高岛易断》《罗文杰讲药师经》<br>已完稿 · 《罗文杰讲萨满》（三卷）《罗文杰讲显化》<br>撰写中 · 《罗文杰讲神道教》",en:"Published · Roma Luo on the Takashima Ekidan · Roma Luo on the Medicine Buddha Sutra<br>Completed · Roma Luo on Shamanism (3 vols.) · Roma Luo on Manifestation<br>In preparation · Roma Luo on Shinto",ja:"既刊 · 《羅文傑講高島易断》《羅文傑講薬師経》<br>脱稿済み · 《羅文傑講薩満》（全3巻）《羅文傑講顕化》<br>執筆中 · 《羅文傑講神道教》"},
     "sys-4-title":{zh:"炎灿 YANCAN 东方香氛",en:"YANCAN Oriental Fragrance",ja:"炎灿 YANCAN オリエンタルフレグランス"},
     "sys-4-desc":{zh:"兔儿神香囊、妲己香囊、米缸香囊。",en:"Rabbit God sachet, Daji sachet, Rice Jar sachet.",ja:"兔儿神サシェ、妲己サシェ、米甕サシェ。"},
     "wk-fashion-title":{zh:"个人时尚大片",en:"Fashion Editorials",ja:"パーソナル・ファッション・エディトリアル"},
@@ -417,6 +417,17 @@
       if(v==null)continue;
       if(HTML_KEYS[k]){els[i].innerHTML=v;}else{els[i].textContent=v;}
     }
+    var bts=document.querySelectorAll('[data-book-title]');
+    for(var t=0;t<bts.length;t++){
+      var bel=bts[t];
+      if(!bel.getAttribute('data-title-zh')){bel.setAttribute('data-title-zh',bel.textContent);}
+      var bzh=bel.getAttribute('data-title-zh');
+      var bv=lang==='zh'?bzh:(bel.getAttribute('data-title-'+lang)||bzh);
+      bel.textContent=bv;
+    }
+    var bh1=document.querySelector('.book-detail h1[data-book-title]');
+    var ben=document.querySelector('.book-detail .book-en');
+    if(bh1&&ben){ben.style.display=(ben.textContent.trim()===bh1.textContent.trim())?'none':'';}
     var phs=document.querySelectorAll('[data-i18n-ph]');
     for(var j=0;j<phs.length;j++){
       var k2=phs[j].getAttribute('data-i18n-ph');
