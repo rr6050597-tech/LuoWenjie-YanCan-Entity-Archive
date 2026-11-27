@@ -86,7 +86,7 @@ permalink: /
 </div>
 
 <div class="manifesto">
-  <p data-i18n="home-manifesto">以文字记录思想，以影像记录时代，<br>以东方文化探索生命，以气味连接记忆。</p>
+  <p data-i18n="home-manifesto"><span class="m-line">以文字记录思想，</span><span class="m-line">以影像记录时代，</span><br class="m-br"><span class="m-line">以东方文化探索生命，</span><span class="m-line">以气味连接记忆。</span></p>
   <hr class="m-rule">
 </div>
 
@@ -130,12 +130,12 @@ permalink: /
     </div>
     <span class="work-card-title">《地下香》</span>
   </a>
-  {% assign _t1 = site.data.books | where: "id", "tu-er-shen" | first %}
-  {% include book-card.html book=_t1 %}
   {% assign _g1 = site.data.books | where: "id", "gaodao-yiduan" | first %}
   {% include book-card.html book=_g1 %}
   {% assign _y1 = site.data.books | where: "id", "yaoshijing" | first %}
   {% include book-card.html book=_y1 %}
+  {% assign _t1 = site.data.books | where: "id", "tu-er-shen" | first %}
+  {% include book-card.html book=_t1 %}
   <a class="work-card" href="#fragrance">
     <div class="work-card-dark">
       <p class="wk-en">Yancan Fragrance</p>

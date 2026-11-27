@@ -246,6 +246,21 @@
   html[data-theme="dark"] #yc-search-input{color:#F7F5F0;background:rgba(255,255,255,.22)}
   html[data-theme="dark"] .home .home-foot a,
   html[data-theme="dark"] .bio-page p a{background:rgba(255,255,255,.22)}
+  /* 宣言：手机端按逗号断行（每句单独成行），绝不拆词 */
+  .home .manifesto .m-line{display:inline}
+  /* 手机端 header：禁用主题的滚动隐藏与透明塌陷，固定 64px 正常栏；主题导航收进自定义目录面板 */
+  @media (max-width:860px){
+    .home .manifesto p{font-size:20px;line-height:2.0}
+    .home .manifesto .m-line{display:block;overflow-wrap:normal;word-break:keep-all}
+    .home .manifesto .m-br{display:none}
+    html[data-header-transparent] header.site-header,header.site-header{position:sticky;top:0;height:64px;overflow:visible}
+    html[data-scroll-status='down'] header.site-header{top:0}
+    html[data-scroll-status='top'] header.site-header-transparent{height:64px;margin-top:0}
+    html[data-scroll-status='top'] header.site-header-transparent.site-header .site-brand-inner{color:#2C2C2C}
+    html[data-theme="dark"][data-scroll-status='top'] header.site-header-transparent.site-header .site-brand-inner{color:#F7F5F0}
+    header.site-header .site-nav{display:none}
+    header.site-header .site-brand-inner{white-space:nowrap}
+  }
   @media (prefers-reduced-motion: reduce){
     header.site-header,.theme-toggle,.yc-lang-switch,#yc-search-input{transition:none}
   }
@@ -292,7 +307,7 @@
   var LANGS=['zh','en','ja'];
   var LABELS={zh:'中文',en:'EN',ja:'日本語'};
   var DICT={
-    "home-manifesto":{zh:"以文字记录思想，以影像记录时代，<br>以东方文化探索生命，以气味连接记忆。",en:"Record thought in words, record the age in images —<br>explore life through Eastern culture, and hold memory in scent.",ja:"言葉に思想を刻み、映像に時代を映す。<br>東洋文化を通じて生を探求し、香りに記憶を宿す。"},
+    "home-manifesto":{zh:"<span class=\"m-line\">以文字记录思想，</span><span class=\"m-line\">以影像记录时代，</span><br class=\"m-br\"><span class=\"m-line\">以东方文化探索生命，</span><span class=\"m-line\">以气味连接记忆。</span>",en:"<span class=\"m-line\">Record thought in words,</span> <span class=\"m-line\">record the age in images —</span><br class=\"m-br\"><span class=\"m-line\">explore life through Eastern culture,</span> <span class=\"m-line\">and hold memory in scent.</span>",ja:"<span class=\"m-line\">言葉に思想を刻み、</span><span class=\"m-line\">映像に時代を映す。</span><br class=\"m-br\"><span class=\"m-line\">東洋文化を通じて生を探求し、</span><span class=\"m-line\">香りに記憶を宿す。</span>"},
     "home-sec-systems":{zh:"四大体系",en:"Four Pillars",ja:"4つの柱"},
     "home-sec-works":{zh:"精选作品",en:"Selected Works",ja:"主要作品"},
     "home-sec-bio":{zh:"个人档案",en:"Profile",ja:"プロフィール"},
@@ -352,7 +367,9 @@
     "nav-home":{zh:"首页",en:"Home",ja:"ホーム"},
     "nav-books":{zh:"著作",en:"Books",ja:"著作"},
     "nav-film":{zh:"影视",en:"Film & TV",ja:"映画・映像"},
+    "nav-ads":{zh:"广告",en:"Advertising",ja:"広告"},
     "nav-magazine":{zh:"杂志",en:"Magazine",ja:"雑誌"},
+    "nav-gallery":{zh:"图集",en:"Gallery",ja:"ギャラリー"},
     "nav-bio":{zh:"履历",en:"Biography",ja:"経歴"},
     "nav-faq":{zh:"常见问题",en:"FAQ",ja:"よくある質問"},
     "nav-fragrance":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス"},
@@ -454,7 +471,7 @@
     closeRow.appendChild(closeBtn);
     panel.appendChild(closeRow);
     panel.appendChild(ycBuildSwitcher('yc-lang-panel'));
-    var items=[['/','nav-home'],['/books/','nav-books'],['/works/film/','nav-film'],['/works/magazine/','nav-magazine'],['/bio/','nav-bio'],['/faq/','nav-faq'],['/#fragrance','nav-fragrance']];
+    var items=[['/','nav-home'],['/books/','nav-books'],['/works/film/','nav-film'],['/works/ads/','nav-ads'],['/works/magazine/','nav-magazine'],['/gallery/','nav-gallery'],['/bio/','nav-bio'],['/faq/','nav-faq'],['/#fragrance','nav-fragrance']];
     items.forEach(function(it){
       var a=document.createElement('a');
       a.className='yc-menu-item';
