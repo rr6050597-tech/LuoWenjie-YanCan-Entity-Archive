@@ -39,6 +39,7 @@ header_pages:
   - works/ads.md
   - works/magazine.md
   - gallery.md
+  - readings.md
   - faq.md
 plugins:
   - jekyll-feed
