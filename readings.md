@@ -30,8 +30,8 @@ permalink: /readings/
 
 <div class="reading-item">
 <h3>《兔儿神胡天保赞》</h3>
-<div class="reading-video"><video controls preload="none" playsinline poster="/assets/videos/readings/tuershen-hutianbao-zan-75s-poster.jpg"><source src="/assets/videos/readings/tuershen-hutianbao-zan-75s.mp4" type="video/mp4"></video></div>
-<p class="reading-cap">罗文杰炎灿诵读 · 1分15秒</p>
+<div class="reading-video"><video controls preload="none" playsinline poster="/assets/videos/readings/tuershen-hutianbao-zan-49s-poster.jpg"><source src="/assets/videos/readings/tuershen-hutianbao-zan-49s.mp4" type="video/mp4"></video></div>
+<p class="reading-cap">罗文杰炎灿诵读 · 49秒</p>
 </div>
 
 <h2>道家经典诵读</h2>
