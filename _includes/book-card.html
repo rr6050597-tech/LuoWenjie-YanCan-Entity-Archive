@@ -1,8 +1,10 @@
+{% if include.book %}
 {% assign _thumb = nil %}{% assign _tf = nil %}
 {% if include.book.cover %}{% assign _thumb = include.book.cover %}{% elsif include.book.cover_en %}{% assign _thumb = include.book.cover_en %}{% endif %}
 {% if _thumb %}{% assign _tf = site.static_files | where: "path", _thumb | first %}{% endif %}
 <a class="book-card" href="/books/{{ include.book.slug }}/">
   {% if _tf %}<img class="book-card-img" src="{{ _thumb }}" alt="{{ include.book.title }} 封面">
-  {% else %}<span class="book-card-ph">{{ include.book.title }}</span>{% endif %}
-  <span class="book-card-title">{{ include.book.title }}</span>
+  {% else %}<span class="book-card-ph" data-book-title data-title-en="{{ include.book.title_en | escape }}" data-title-ja="{{ include.book.title_ja | escape }}">{{ include.book.title }}</span>{% endif %}
+  <span class="book-card-title" data-book-title data-title-en="{{ include.book.title_en | escape }}" data-title-ja="{{ include.book.title_ja | escape }}">{{ include.book.title }}</span>
 </a>
+{% endif %}

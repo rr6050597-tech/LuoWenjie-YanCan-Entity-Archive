@@ -9,6 +9,8 @@
 - id: gaodao-yiduan
   slug: gaodao-yiduan
   title: 《罗文杰讲高岛易断》
+  title_en: "Roma Luo on the Takashima Ekidan"
+  title_ja: "《羅文傑講高島易断》"
   en_title: null
   status: published
   status_label: 已出版
@@ -39,6 +41,8 @@
 - id: yaoshijing
   slug: yaoshijing
   title: 《罗文杰讲药师经》
+  title_en: "Roma Luo on the Medicine Buddha Sutra"
+  title_ja: "《羅文傑講薬師経》"
   en_title: "The Lapis Lazuli Light: Roma Luo on the Medicine Buddha Sutra"
   status: published
   status_label: 已出版
@@ -72,38 +76,71 @@
       url: https://www.amazon.com/dp/B0HSVMRMX5
     - name: 亚马逊 Kindle 电子版
       url: https://www.amazon.com/dp/B0H4XH9XMQ
-- id: shaman
-  slug: shaman
-  title: 《罗文杰讲萨满》
+- id: shaman-world
+  slug: shaman-world
+  title: 《罗文杰讲萨满（世界篇）》
+  title_en: "Roma Luo on Shamanism: The World"
+  title_ja: "《羅文傑講薩満（世界篇）》"
   en_title: null
   status: manuscript
   status_label: 已完稿，待出版
   isbn: null
   published: null
-  desc: 三卷本。上册世界角度，中册中国角度，下册与宗教的渊源。站内仅提供前 25% 试读，全文将于出版后开放购买。
+  desc: 《罗文杰讲萨满》三卷本之一：上册，世界角度。站内仅提供前 25% 试读，全文将于出版后开放购买。
   author_note: null
   cover: /assets/covers/shaman-world.jpg
-  covers:
-    - file: /assets/covers/shaman-china.jpg
-      label: 中国篇
-    - file: /assets/covers/shaman-religion.jpg
-      label: 宗教篇
   read_zh:
     - format: pdf
       file: /assets/books/pdf/shaman-world-preview.pdf
-      label: 上卷 · 世界（前 25% 试读）
+      label: 世界篇（前 25% 试读）
+  read_en: null
+  audio: null
+  platforms: null
+- id: shaman-china
+  slug: shaman-china
+  title: 《罗文杰讲萨满（中国篇）》
+  title_en: "Roma Luo on Shamanism: China"
+  title_ja: "《羅文傑講薩満（中國篇）》"
+  en_title: null
+  status: manuscript
+  status_label: 已完稿，待出版
+  isbn: null
+  published: null
+  desc: 《罗文杰讲萨满》三卷本之一：中册，中国角度。站内仅提供前 25% 试读，全文将于出版后开放购买。
+  author_note: null
+  cover: /assets/covers/shaman-china.jpg
+  read_zh:
     - format: pdf
       file: /assets/books/pdf/shaman-china-preview.pdf
-      label: 中卷 · 中国（前 25% 试读）
+      label: 中国篇（前 25% 试读）
+  read_en: null
+  audio: null
+  platforms: null
+- id: shaman-religion
+  slug: shaman-religion
+  title: 《罗文杰讲萨满（宗教篇）》
+  title_en: "Roma Luo on Shamanism: Religion"
+  title_ja: "《羅文傑講薩満（宗教篇）》"
+  en_title: null
+  status: manuscript
+  status_label: 已完稿，待出版
+  isbn: null
+  published: null
+  desc: 《罗文杰讲萨满》三卷本之一：下册，与宗教的渊源。站内仅提供前 25% 试读，全文将于出版后开放购买。
+  author_note: null
+  cover: /assets/covers/shaman-religion.jpg
+  read_zh:
     - format: pdf
       file: /assets/books/pdf/shaman-religion-preview.pdf
-      label: 下卷 · 宗教渊源（前 25% 试读）
+      label: 宗教篇（前 25% 试读）
   read_en: null
   audio: null
   platforms: null
 - id: xianhua
   slug: xianhua
   title: 《罗文杰讲显化》
+  title_en: "Roma Luo on Manifestation"
+  title_ja: "《羅文傑講顕化》"
   en_title: null
   status: manuscript
   status_label: 已完稿，待出版
@@ -125,6 +162,8 @@
 - id: shinto
   slug: shinto
   title: 《罗文杰讲神道教》
+  title_en: "Roma Luo on Shinto"
+  title_ja: "《羅文傑講神道教》"
   en_title: null
   status: writing
   status_label: 撰写中
@@ -132,7 +171,7 @@
   published: null
   desc: 六卷二十二章（框架）。以日本原始资料为主，撰写中。
   author_note: null
-  cover: null
+  cover: /assets/covers/shinto.jpg
   read_zh: null
   read_en: null
   audio: null
@@ -140,6 +179,8 @@
 - id: fengshui
   slug: fengshui
   title: 《罗文杰讲风水》
+  title_en: "Roma Luo on Feng Shui"
+  title_ja: "《羅文傑講風水》"
   en_title: null
   status: planned
   status_label: 规划中
@@ -155,6 +196,8 @@
 - id: daodejing
   slug: daodejing
   title: 《罗文杰讲道德经》
+  title_en: "Roma Luo on the Daodejing"
+  title_ja: "《羅文傑講道徳経》"
   en_title: null
   status: planned
   status_label: 规划中
@@ -162,7 +205,7 @@
   published: null
   desc: 风水之后，规划中。
   author_note: null
-  cover: null
+  cover: /assets/covers/daodejing.jpg
   read_zh: null
   read_en: null
   audio: null
@@ -170,6 +213,8 @@
 - id: bazi
   slug: bazi
   title: 《罗文杰讲八字》
+  title_en: "Roma Luo on BaZi"
+  title_ja: "《羅文傑講八字》"
   en_title: null
   status: planned
   status_label: 规划中
@@ -185,6 +230,8 @@
 - id: tu-er-shen
   slug: tu-er-shen
   title: 《兔儿神》
+  title_en: "The Rabbit God: The Long Pilgrimage and Return of the Soul"
+  title_ja: "《兎児神》"
   en_title: "The Rabbit God: The Long Pilgrimage and Return of the Soul"
   status: published
   status_label: 已出版
@@ -214,6 +261,8 @@
 - id: tu-er-shen-2
   slug: tu-er-shen-2
   title: 《兔儿神2：无墙之庙》
+  title_en: "The Rabbit God Book Two: The Temple Without Walls"
+  title_ja: "《兎児神2：無牆之廟》"
   en_title: "The Rabbit God Book Two: The Temple Without Walls"
   status: published
   status_label: 已出版
@@ -236,6 +285,8 @@
 - id: tu-er-shen-3
   slug: tu-er-shen-3
   title: 《兔儿神3：身后之事》
+  title_en: "The Rabbit God Book Three: What Survives Us"
+  title_ja: "《兎児神3：身後之事》"
   en_title: "The Rabbit God Book Three: What Survives Us"
   status: published
   status_label: 已出版
@@ -264,6 +315,8 @@
 - id: dialogues
   slug: dialogues
   title: 《与兔儿神对话》
+  title_en: "DIALOGUES WITH TU'ER SHEN"
+  title_ja: "《与兎児神対話》"
   en_title: "DIALOGUES WITH TU'ER SHEN"
   status: published
   status_label: 已出版
@@ -282,6 +335,8 @@
 - id: fox-fairy
   slug: fox-fairy
   title: 《兔儿神，把我跟狐仙焊死了》
+  title_en: "The Rabbit God Welded Me to the Fox Fairy"
+  title_ja: "《兎児神，把我跟狐仙焊死了》"
   en_title: null
   status: serial
   status_label: 网络连载，已完结
@@ -290,7 +345,7 @@
   desc: 幻想言情 · 强强 · 仙侠 · 爽文。一桩荒诞又带点宿命感的奇遇，写着写着成了财库、契约与姻缘纠缠的闹剧。站内仅提供前 25% 试读，全文请前往豆瓣阅读 / QQ阅读。
   author_note: 原本想写一桩荒诞又带点宿命感的奇遇，写着写着成了财库、契约与姻缘纠缠的闹剧。神仙妖怪各有算盘，偏偏账本算得最清的是人心。笑闹之间，把该还的因果一一还清。
   author_note_source: 豆瓣阅读作者自述
-  cover: null
+  cover: /assets/covers/fox-fairy.jpg
   read_zh:
     - format: web
       file: /books/fox-fairy/read/

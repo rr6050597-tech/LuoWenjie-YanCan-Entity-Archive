@@ -48,7 +48,7 @@ permalink: /books/
 </div>
 
 <div class="books-grid">
-{% assign _slugs = "shaman,xianhua,shinto,fox-fairy,fengshui,daodejing,bazi" | split: "," %}
+{% assign _slugs = "shaman-world,shaman-china,shaman-religion,xianhua,shinto,fox-fairy,fengshui,daodejing,bazi" | split: "," %}
 {% for _slug in _slugs %}{% for b in site.data.books %}{% if b.slug == _slug %}{% include book-card.html book=b %}{% endif %}{% endfor %}{% endfor %}
 </div>
 

@@ -34,7 +34,7 @@ layout: default
 
 <article class="book-detail">
   <p class="book-crumb"><a href="/books/">著作</a> · {{ book.status_label }}</p>
-  <h1>{{ book.title }}</h1>
+  <h1 data-book-title data-title-en="{{ book.title_en | escape }}" data-title-ja="{{ book.title_ja | escape }}">{{ book.title }}</h1>
   {% if book.en_title %}<p class="book-en">{{ book.en_title }}</p>{% endif %}
 
   <div class="book-covers">
