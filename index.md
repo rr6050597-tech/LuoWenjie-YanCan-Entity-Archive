@@ -77,7 +77,7 @@ permalink: /
 <div class="home">
 
 <div class="hero-full">
-  <img class="hero-img" src="/assets/img/portrait-white.jpg" alt="罗文杰炎灿白底肖像">
+  <img class="hero-img" src="/assets/img/portrait-white-cutout.png" alt="罗文杰炎灿">
   <div class="hero-veil"></div>
   <div class="hero-copy">
     <p class="hero-en">Roma Luo</p>
@@ -86,47 +86,47 @@ permalink: /
 </div>
 
 <div class="manifesto">
-  <p>以文字记录思想，以影像记录时代，<br>以东方文化探索生命，以气味连接记忆。</p>
+  <p data-i18n="home-manifesto">以文字记录思想，以影像记录时代，<br>以东方文化探索生命，以气味连接记忆。</p>
   <hr class="m-rule">
 </div>
 
-<h2 class="home-sec">四大体系</h2>
+<h2 class="home-sec" data-i18n="home-sec-systems">四大体系</h2>
 <div class="sys-grid">
   <a class="sys-card" href="/works/film/">
     <p class="sys-en">01 · Fashion &amp; Performing Arts</p>
-    <p class="sys-title">ROMA LUO 时尚与演艺</p>
-    <p class="sys-desc">DIOR HOMME 首秀开场、VERSACE、GQ、时装周，电影《地下香》。</p>
+    <p class="sys-title" data-i18n="sys-1-title">ROMA LUO 时尚与演艺</p>
+    <p class="sys-desc" data-i18n="sys-1-desc">DIOR HOMME 首秀开场、VERSACE、GQ、时装周，电影《地下香》。</p>
   </a>
   <a class="sys-card sys-red" href="/books/">
     <p class="sys-en">02 · Literature &amp; Publishing</p>
-    <p class="sys-title">ROMA LUO 文学与出版</p>
-    <p class="sys-desc">《兔儿神》系列与《与兔儿神对话》。</p>
+    <p class="sys-title" data-i18n="sys-2-title">ROMA LUO 文学与出版</p>
+    <p class="sys-desc" data-i18n="sys-2-desc">《兔儿神》系列与《与兔儿神对话》。</p>
   </a>
   <a class="sys-card sys-gold" href="/books/">
-    <p class="sys-en">03 · Eastern Philosophy</p>
-    <p class="sys-title">东方哲学与传统文化</p>
-    <p class="sys-desc">《罗文杰讲高岛易断》《罗文杰讲药师经》。</p>
+    <p class="sys-en">03 · Roma Luo Lecture Series</p>
+    <p class="sys-title" data-i18n="sys-3-title">罗文杰讲系列</p>
+    <p class="sys-desc" data-i18n="sys-3-desc">已出版 · 《罗文杰讲高岛易断》《罗文杰讲药师经》<br>已完稿 · 《罗文杰讲萨满》（三卷）《罗文杰讲显化》<br>撰写中 · 《罗文杰讲神道教》</p>
   </a>
   <a class="sys-card" href="#fragrance">
     <p class="sys-en">04 · Yancan Fragrance</p>
-    <p class="sys-title">炎灿 YANCAN 东方香氛</p>
-    <p class="sys-desc">兔儿神香囊、妲己香囊、米缸香囊。</p>
+    <p class="sys-title" data-i18n="sys-4-title">炎灿 YANCAN 东方香氛</p>
+    <p class="sys-desc" data-i18n="sys-4-desc">兔儿神香囊、妲己香囊、米缸香囊。</p>
   </a>
 </div>
 
-<h2 class="home-sec">精选作品</h2>
+<h2 class="home-sec" data-i18n="home-sec-works">精选作品</h2>
 <div class="works-grid">
   <a class="work-card" href="/works/magazine/">
     <div class="work-card-dark">
       <p class="wk-en">Fashion Editorial</p>
-      <p class="wk-title">个人时尚大片</p>
+      <p class="wk-title" data-i18n="wk-fashion-title">个人时尚大片</p>
     </div>
-    <span class="work-card-title">时尚大片</span>
+    <span class="work-card-title" data-i18n="wk-fashion-name">时尚大片</span>
   </a>
   <a class="work-card" href="/works/film/">
     <div class="work-card-dark work-red">
       <p class="wk-en">Film</p>
-      <p class="wk-title">电影《地下香》</p>
+      <p class="wk-title" data-i18n="wk-film-title">电影《地下香》</p>
     </div>
     <span class="work-card-title">《地下香》</span>
   </a>
@@ -139,68 +139,68 @@ permalink: /
   <a class="work-card" href="#fragrance">
     <div class="work-card-dark">
       <p class="wk-en">Yancan Fragrance</p>
-      <p class="wk-title">炎灿香氛</p>
+      <p class="wk-title" data-i18n="wk-fragrance-title">炎灿香氛</p>
     </div>
-    <span class="work-card-title">炎灿香氛</span>
+    <span class="work-card-title" data-i18n="wk-fragrance-name">炎灿香氛</span>
   </a>
 </div>
 
-<h2 class="home-sec">个人档案</h2>
+<h2 class="home-sec" data-i18n="home-sec-bio">个人档案</h2>
 <div class="timeline">
   <div class="tl-item">
     <p class="tl-year">2012</p>
-    <p class="tl-text">签约龙腾精英，入选 MDC NEW FACE。</p>
+    <p class="tl-text" data-i18n="tl-2012">签约龙腾精英，入选 MDC NEW FACE。</p>
   </div>
   <div class="tl-item">
     <p class="tl-year">2013</p>
-    <p class="tl-text">DIOR HOMME 中国北京首秀开场模特。</p>
+    <p class="tl-text" data-i18n="tl-2013">DIOR HOMME 中国北京首秀开场模特。</p>
   </div>
   <div class="tl-item">
     <p class="tl-year">2015</p>
-    <p class="tl-text">主演《地下香》，威尼斯日 Fedeora 最佳影片奖。</p>
+    <p class="tl-text" data-i18n="tl-2015">主演《地下香》，威尼斯日 Fedeora 最佳影片奖。</p>
   </div>
   <div class="tl-item">
     <p class="tl-year">2018</p>
-    <p class="tl-text">创立哈尔滨莱亚文化传媒。</p>
+    <p class="tl-text" data-i18n="tl-2018">创立哈尔滨莱亚文化传媒。</p>
   </div>
   <div class="tl-item">
     <p class="tl-year">2026</p>
-    <p class="tl-text">六本书出版；创立炎灿东方香氛品牌。</p>
+    <p class="tl-text" data-i18n="tl-2026">六本书出版；创立炎灿东方香氛品牌。</p>
   </div>
 </div>
 
-<p class="home-sec-sub" style="margin-top:18px"><a href="/bio/">完整履历 →</a></p>
+<p class="home-sec-sub" style="margin-top:18px"><a href="/bio/" data-i18n="bio-link">完整履历 →</a></p>
 
-<h2 class="home-sec" id="fragrance">炎灿香氛</h2>
+<h2 class="home-sec" id="fragrance" data-i18n="home-sec-fragrance">炎灿香氛</h2>
 <div class="home-products">
   <div class="prod">
     <a href="https://v.douyin.com/Cn5nHlyH8Ps/" target="_blank" rel="noopener"><img src="/assets/products/sachet-tuershen.jpg" alt="兔儿神香囊"></a>
-    <b>兔儿神香囊</b> · ¥298 · <a href="https://v.douyin.com/Cn5nHlyH8Ps/" target="_blank" rel="noopener">抖音商城购买 →</a>
+    <b>兔儿神香囊</b> · ¥298 · <a href="https://v.douyin.com/Cn5nHlyH8Ps/" target="_blank" rel="noopener" data-i18n="fragrance-buy">抖音商城购买 →</a>
   </div>
   <div class="prod">
     <a href="https://v.douyin.com/Pbe2uTeAyTc/" target="_blank" rel="noopener"><img src="/assets/products/sachet-daji.jpg" alt="妲己香囊"></a>
-    <b>妲己香囊</b> · ¥298 · <a href="https://v.douyin.com/Pbe2uTeAyTc/" target="_blank" rel="noopener">抖音商城购买 →</a>
+    <b>妲己香囊</b> · ¥298 · <a href="https://v.douyin.com/Pbe2uTeAyTc/" target="_blank" rel="noopener" data-i18n="fragrance-buy">抖音商城购买 →</a>
   </div>
   <div class="prod">
     <a href="https://v.douyin.com/s9ryhyQnQ3Y/" target="_blank" rel="noopener"><img src="/assets/products/sachet-migang.jpg" alt="米缸香囊"></a>
-    <b>米缸香囊</b> · ¥298 · <a href="https://v.douyin.com/s9ryhyQnQ3Y/" target="_blank" rel="noopener">抖音商城购买 →</a>
+    <b>米缸香囊</b> · ¥298 · <a href="https://v.douyin.com/s9ryhyQnQ3Y/" target="_blank" rel="noopener" data-i18n="fragrance-buy">抖音商城购买 →</a>
   </div>
 </div>
 
-<h2 class="home-sec">品牌与商业合作</h2>
+<h2 class="home-sec" data-i18n="home-sec-biz">品牌与商业合作</h2>
 <div class="biz-grid">
   <a class="biz-card" href="/books/">
     <p class="biz-en">Publishing</p>
-    <p class="biz-title">出版合作</p>
-    <p class="biz-desc">已出版 6 本，另有待出版与撰写中作品。</p>
+    <p class="biz-title" data-i18n="biz-1-title">出版合作</p>
+    <p class="biz-desc" data-i18n="biz-1-desc">已出版 6 本，另有待出版与撰写中作品。</p>
   </a>
   <a class="biz-card" href="/bio/">
     <p class="biz-en">Media &amp; Business</p>
-    <p class="biz-title">媒体与商务联系</p>
-    <p class="biz-desc">请通过微信公众号“兔儿神胡天保”或 Instagram @luoyancan 联系。</p>
+    <p class="biz-title" data-i18n="biz-2-title">媒体与商务联系</p>
+    <p class="biz-desc" data-i18n="biz-2-desc">请通过微信公众号“兔儿神胡天保”或 Instagram @luoyancan 联系。</p>
   </a>
 </div>
 
-<p class="home-foot"><a href="/archive/">档案</a> · <a href="/books/">全部著作</a></p>
+<p class="home-foot"><a href="/archive/" data-i18n="foot-archive">档案</a> · <a href="/books/" data-i18n="foot-books">全部著作</a></p>
 
 </div>

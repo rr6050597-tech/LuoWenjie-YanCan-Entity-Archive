@@ -27,51 +27,31 @@ permalink: /books/
 .books-list{list-style:none;padding:0;margin:0}
 .books-list li{font-size:15px;line-height:2.0;color:#2C2C2C;border-bottom:1px solid #efebe2;padding:6px 0}
 .books-list li a{color:#2C2C2C}
-.books-list .bk-meta{color:#8a8578;font-size:13px}
 .books-foot{margin-top:36px;font-size:15px}
 .books-foot a{color:#2C2C2C;text-decoration:underline}
 </style>
 
 <div class="books-landing">
 
-# 著作
-
-已出版 6 本 · 已完稿待出版 2 本 · 撰写中 1 本 · 连载已完结 1 本 · 规划中 3 本
+<h1 data-i18n="books-h1">著作</h1>
 
 <div class="yc-search">
-  <input id="yc-search-input" type="search" placeholder="搜书名、ISBN、问题…" aria-label="站内搜索" autocomplete="off">
+  <input id="yc-search-input" type="search" placeholder="搜书名、ISBN、问题…" data-i18n-ph="books-search-ph" aria-label="站内搜索" autocomplete="off">
   <ul id="yc-search-results" class="yc-search-results"></ul>
 </div>
 
-## 已出版
+<h2 data-i18n="books-sec-pub">已出版</h2>
 
 <div class="books-grid">
 {% assign _pub = site.data.books | where: "status", "published" %}
 {% for book in _pub %}{% include book-card.html book=book %}{% endfor %}
 </div>
 
-## 已完稿，待出版
-
 <ul class="books-list">
-<li><a href="/books/shaman/">《罗文杰讲萨满》</a> <span class="bk-meta">三卷本 · 试读前 28%</span></li>
-<li><a href="/books/xianhua/">《罗文杰讲显化》</a> <span class="bk-meta">四部十五章</span></li>
-</ul>
-
-## 撰写中
-
-<ul class="books-list">
-<li><a href="/books/shinto/">《罗文杰讲神道教》</a> <span class="bk-meta">六卷二十二章框架</span></li>
-</ul>
-
-## 网络连载已完结
-
-<ul class="books-list">
-<li><a href="/books/fox-fairy/">《兔儿神，把我跟狐仙焊死了》</a> <span class="bk-meta">豆瓣阅读、QQ阅读</span></li>
-</ul>
-
-## 规划中
-
-<ul class="books-list">
+<li><a href="/books/shaman/">《罗文杰讲萨满》</a></li>
+<li><a href="/books/xianhua/">《罗文杰讲显化》</a></li>
+<li><a href="/books/shinto/">《罗文杰讲神道教》</a></li>
+<li><a href="/books/fox-fairy/">《兔儿神，把我跟狐仙焊死了》</a></li>
 <li><a href="/books/fengshui/">《罗文杰讲风水》</a></li>
 <li><a href="/books/daodejing/">《罗文杰讲道德经》</a></li>
 <li><a href="/books/bazi/">《罗文杰讲八字》</a></li>
@@ -79,8 +59,8 @@ permalink: /books/
 
 ---
 
-- 完整履历：[履历](/bio/)
-- 常见问题：[FAQ](https://luowenjie.art/faq/)
+- <a href="/bio/" data-i18n="books-foot-bio">完整履历 →</a>
+- <a href="https://luowenjie.art/faq/" data-i18n="books-foot-faq">常见问题 →</a>
 
 </div>
 

@@ -9,17 +9,20 @@ permalink: /bio/
 .bio-page h1{font-size:28px;line-height:1.3;color:#2C2C2C;font-weight:500}
 .bio-page h2{font-size:20px;margin:32px 0 12px;color:#2C2C2C;border-bottom:1px solid #e6e1d6;padding-bottom:8px;font-weight:500}
 .bio-page p{font-size:16px;line-height:2.0;color:#2C2C2C}
+.bio-portrait{display:block;width:100%;max-width:720px;margin:20px auto 4px;border-radius:16px}
 </style>
 
 <div class="bio-page">
 
 # 罗文杰（炎灿）个人简介
 
+<img class="bio-portrait" src="/assets/img/portrait-white-cutout.png" alt="罗文杰炎灿">
+
 罗文杰，笔名炎灿，1993年11月13日生于黑龙江省虎林市，身高188厘米，现居深圳、广州与温哥华。跨界文化创业者、作家、前国际超模。
 
 ## 时尚与演艺生涯
 
-2012年签约龙腾精英，入选MDC全球模特榜单NEW FACE。2013年4月担任DIOR HOMME中国北京首秀开场模特，曾为VERSACE及中国国际时装周走秀，登上《GQ》《时尚先生》《时尚芭莎》，代言三星、速写、AGATHA等品牌。2015年主演电影《地下香》（永乐），影片入围第72届威尼斯电影节“威尼斯日”单元，获该单元Fedeora最佳影片奖。
+2012年签约龙腾精英，入选MDC全球模特榜单NEW FACE。2013年4月担任DIOR HOMME中国北京首秀开场模特，曾为VERSACE及中国国际时装周走秀，登上 GQ、时尚先生、时尚芭莎，代言三星、速写、AGATHA 等品牌。2015年主演电影《地下香》（永乐），影片入围第72届威尼斯电影节“威尼斯日”单元，获该单元Fedeora最佳影片奖。
 
 ## 商业构建与品牌运营
 

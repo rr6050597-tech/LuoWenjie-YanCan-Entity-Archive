@@ -45,7 +45,7 @@ permalink: /gallery/
 ## 肖像
 
 <div class="gallery-grid">
-  <figure><img src="/assets/img/profile.jpg" alt="罗文杰炎灿肖像"><figcaption>罗文杰炎灿</figcaption></figure>
+  <figure><img src="/assets/img/profile-cutout.png" alt="罗文杰炎灿肖像"><figcaption>罗文杰炎灿</figcaption></figure>
 </div>
 
 <p><a href="/">返回首页</a></p>
