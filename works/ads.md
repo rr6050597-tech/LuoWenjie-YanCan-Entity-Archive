@@ -97,14 +97,6 @@ permalink: /works/ads/
   <p class="car-count">1 / 1</p>
 </div>
 
-### VERSACE
-
-<p class="brand-empty">照片待补充。</p>
-
-### 三星 Samsung
-
-<p class="brand-empty">照片待补充。</p>
-
 ### 速写
 
 <div class="brand-carousel" data-carousel>
