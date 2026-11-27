@@ -12,17 +12,17 @@ permalink: /works/ads/
 .works-page h3{font-family:"Songti SC","Noto Serif SC",serif;font-size:19px;margin:28px 0 12px;color:#2C2C2C;font-weight:600}
 .works-page p{font-size:16px;line-height:2.0;color:#2C2C2C}
 .works-page .work-meta{font-size:14px;color:#8a8578;line-height:1.9}
-.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:16px 0;background:#000}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:16px 0;background:#000;border-radius:16px}
 .video-embed iframe, .video-embed video{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .video-cap{font-size:14px;color:#8a8578;line-height:1.9;margin:0 0 8px}
 .video-cap a{color:#2C2C2C;text-decoration:underline}
 .brand-empty{color:#8a8578;font-size:15px;margin:0 0 8px}
-.brand-carousel{position:relative;height:440px;overflow:hidden;background:var(--yc-glass-bg);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid var(--yc-glass-border);border-radius:12px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.22)}
+.brand-carousel{position:relative;height:440px;overflow:hidden;background:var(--yc-glass-bg);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid var(--yc-glass-border);border-radius:24px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.22)}
 .brand-carousel figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
 .brand-carousel figure.active{opacity:1;pointer-events:auto}
-.brand-carousel img{width:100%;height:100%;object-fit:contain;display:block;cursor:zoom-in}
+.brand-carousel img{width:100%;height:100%;object-fit:contain;display:block;cursor:zoom-in;border-radius:16px}
 .ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:16px 0}
-.ads-grid img{width:100%;height:auto;display:block;cursor:zoom-in;border:1px solid var(--yc-glass-border);border-radius:8px;box-shadow:var(--yc-glass-shadow-sm)}
+.ads-grid img{width:100%;height:auto;display:block;cursor:zoom-in;border:1px solid var(--yc-glass-border);border-radius:16px;box-shadow:var(--yc-glass-shadow-sm)}
 .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--yc-glass-bg-strong);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);color:var(--yc-glass-ink);border:1px solid var(--yc-glass-border);width:40px;height:40px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;z-index:2;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.75)}
 .car-prev{left:10px}
 .car-next{right:10px}
@@ -38,11 +38,11 @@ permalink: /works/ads/
 
 <div class="works-page">
 
-# 广告
+<h1>广告</h1>
 
 2013年4月，罗文杰担任DIOR HOMME中国北京首秀开场模特，并曾为VERSACE及中国国际时装周走秀。期间担任三星、速写、AGATHA等十余个知名品牌的商业面孔。
 
-## 视频
+<h2>视频</h2>
 
 <div class="video-embed"><video controls preload="metadata" src="/assets/videos/ira-01.mp4" title="罗文杰炎灿 IRA FAHRENHEIT 品牌大使宣传片"></video></div>
 <p class="video-cap">IRA FAHRENHEIT 品牌大使宣传片 · 60秒</p>
@@ -63,13 +63,13 @@ permalink: /works/ads/
 <p class="video-cap">个人微电影 · 3分25秒 · 配乐完成版 · 双语字幕</p>
 <p class="video-cap">音乐：Soularflair《Soundscape 29》、TurtleBeats《Obilivion Echo》</p>
 
-## 组图
+<h2>组图</h2>
 
 <p class="work-meta">按品牌分类，点击图片可放大查看。</p>
 
 <!-- 加图方法：在对应品牌组的 .brand-carousel 里加一个 <figure><img src="..." alt="..."></figure> 即可，轮播、计数与放大自动适配，无需改 JS。 -->
 
-### IRA FAHRENHEIT
+<h3>IRA FAHRENHEIT</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/ira-fahrenheit-ca/luo-wenjie-ira-fahrenheit-ambassador.jpg" alt="罗文杰炎灿 IRA FAHRENHEIT 品牌大使"></figure>
@@ -88,7 +88,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 11</p>
 </div>
 
-### DIOR HOMME
+<h3>DIOR HOMME</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/dior-debut/luo-wenjie-dior-homme-debut-2013.jpg" alt="2013 年 DIOR HOMME 中国北京首秀开场"></figure>
@@ -97,7 +97,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 1</p>
 </div>
 
-### 速写
+<h3>速写</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/sohu-2022-suxie-ad/sohu-2022-suxie-ad-01.jpg" alt="速写广告"></figure>
@@ -106,7 +106,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 1</p>
 </div>
 
-### AGATHA
+<h3>AGATHA</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/brand-agatha/agatha-bathrobe-bottle.jpg" alt="AGATHA · 浴袍与香水瓶"></figure>
@@ -117,7 +117,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 3</p>
 </div>
 
-### LANVIN
+<h3>LANVIN</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/brand-lanvin/lanvin-angel-wings-antiques.jpg" alt="LANVIN"></figure>
@@ -134,7 +134,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 9</p>
 </div>
 
-### HUGO BOSS
+<h3>HUGO BOSS</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/brand-hugo-boss/luo-wenjie-hugo-boss-event.jpg" alt="HUGO BOSS"></figure>
@@ -143,7 +143,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 1</p>
 </div>
 
-### JIHE
+<h3>JIHE</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/brand-jihe/luo-wenjie-jihe-poster-fan-photo.jpg" alt="JIHE"></figure>
@@ -152,7 +152,7 @@ permalink: /works/ads/
   <p class="car-count">1 / 1</p>
 </div>
 
-### SVC
+<h3>SVC</h3>
 
 <div class="brand-carousel" data-carousel>
   <figure class="active"><img src="/visual_assets/brand-svc/luo-wenjie-portrait-svc-hooded-ambassador.jpg" alt="SVC"></figure>
