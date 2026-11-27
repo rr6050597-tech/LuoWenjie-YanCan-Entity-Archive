@@ -48,10 +48,8 @@ permalink: /books/
 </div>
 
 <div class="books-grid">
-{% for _slug in "shaman,xianhua,shinto,fox-fairy,fengshui,daodejing,bazi" | split: "," %}
-{% assign _b = site.data.books | where: "slug", _slug | first %}
-{% include book-card.html book=_b %}
-{% endfor %}
+{% assign _slugs = "shaman,xianhua,shinto,fox-fairy,fengshui,daodejing,bazi" | split: "," %}
+{% for _slug in _slugs %}{% for b in site.data.books %}{% if b.slug == _slug %}{% include book-card.html book=b %}{% endif %}{% endfor %}{% endfor %}
 </div>
 
 ---
