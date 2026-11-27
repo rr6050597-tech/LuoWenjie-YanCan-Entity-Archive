@@ -103,16 +103,18 @@
   title_ja: "《羅文傑講神道教》"
   title_es: "Roma Luo sobre el sintoísmo"
   en_title: null
-  status: writing
-  status_label: 撰写中
+  status: manuscript
+  status_label: 已完稿，待出版
   isbn: null
   published: null
-  desc: 六卷二十二章（框架）。以日本原始资料为主，撰写中。
+  desc: 六卷二十二章，卷首四篇。以日本原始资料为主，全本已完稿，待出版。
   author_note: null
   cover: /assets/covers/shinto.jpg
   read_zh: null
   read_en: null
-  audio: null
+  audio:
+    file: /assets/audio/shinto-podcast.m4a
+    label: 播客对谈 · 约19分钟
   platforms: null
 - id: shaman-world
   slug: shaman-world
@@ -263,7 +265,9 @@
       file: /assets/books/pdf/tu-er-shen-full-preview.pdf
       label: 中文版 · PDF（A4 版，前 25% 试读）
   read_en: null
-  audio: null
+  audio:
+    file: /assets/audio/tuershen1-podcast.m4a
+    label: 播客对谈 · 约20分钟
   platforms:
     - name: 豆瓣阅读 · 《兔儿神》
       url: https://read.douban.com/ebook/739683426/
