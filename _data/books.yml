@@ -11,6 +11,7 @@
   title: 《罗文杰讲高岛易断》
   title_en: "Roma Luo on the Takashima Ekidan"
   title_ja: "《羅文傑講高島易断》"
+  title_es: "Roma Luo sobre el Takashima Ekidan"
   en_title: null
   status: published
   status_label: 已出版
@@ -43,6 +44,7 @@
   title: 《罗文杰讲药师经》
   title_en: "Roma Luo on the Medicine Buddha Sutra"
   title_ja: "《羅文傑講薬師経》"
+  title_es: "Roma Luo sobre el Sutra del Buda de la Medicina"
   en_title: "The Lapis Lazuli Light: Roma Luo on the Medicine Buddha Sutra"
   status: published
   status_label: 已出版
@@ -76,11 +78,48 @@
       url: https://www.amazon.com/dp/B0HSVMRMX5
     - name: 亚马逊 Kindle 电子版
       url: https://www.amazon.com/dp/B0H4XH9XMQ
+- id: daodejing
+  slug: daodejing
+  title: 《罗文杰讲道德经》
+  title_en: "Roma Luo on the Daodejing"
+  title_ja: "《羅文傑講道徳経》"
+  title_es: "Roma Luo sobre el Daodejing"
+  en_title: null
+  status: planned
+  status_label: 规划中
+  isbn: null
+  published: null
+  desc: 风水之后，规划中。
+  author_note: null
+  cover: /assets/covers/daodejing.jpg
+  read_zh: null
+  read_en: null
+  audio: null
+  platforms: null
+- id: shinto
+  slug: shinto
+  title: 《罗文杰讲神道教》
+  title_en: "Roma Luo on Shinto"
+  title_ja: "《羅文傑講神道教》"
+  title_es: "Roma Luo sobre el sintoísmo"
+  en_title: null
+  status: writing
+  status_label: 撰写中
+  isbn: null
+  published: null
+  desc: 六卷二十二章（框架）。以日本原始资料为主，撰写中。
+  author_note: null
+  cover: /assets/covers/shinto.jpg
+  read_zh: null
+  read_en: null
+  audio: null
+  platforms: null
 - id: shaman-world
   slug: shaman-world
   title: 《罗文杰讲萨满（世界篇）》
   title_en: "Roma Luo on Shamanism: The World"
   title_ja: "《羅文傑講薩満（世界篇）》"
+  title_es: "Roma Luo sobre el chamanismo: el mundo"
   en_title: null
   status: manuscript
   status_label: 已完稿，待出版
@@ -101,6 +140,7 @@
   title: 《罗文杰讲萨满（中国篇）》
   title_en: "Roma Luo on Shamanism: China"
   title_ja: "《羅文傑講薩満（中國篇）》"
+  title_es: "Roma Luo sobre el chamanismo: China"
   en_title: null
   status: manuscript
   status_label: 已完稿，待出版
@@ -121,6 +161,7 @@
   title: 《罗文杰讲萨满（宗教篇）》
   title_en: "Roma Luo on Shamanism: Religion"
   title_ja: "《羅文傑講薩満（宗教篇）》"
+  title_es: "Roma Luo sobre el chamanismo: la religión"
   en_title: null
   status: manuscript
   status_label: 已完稿，待出版
@@ -141,6 +182,7 @@
   title: 《罗文杰讲显化》
   title_en: "Roma Luo on Manifestation"
   title_ja: "《羅文傑講顕化》"
+  title_es: "Roma Luo sobre la manifestación"
   en_title: null
   status: manuscript
   status_label: 已完稿，待出版
@@ -148,7 +190,7 @@
   published: null
   desc: 从〈秘密〉、七脉轮到东方心法。四部十五章：吸引力法则为核，七脉轮与吠陀瑜伽，辅以心理学。站内仅提供前 25% 试读，全文将于出版后开放购买。
   author_note: null
-  cover: null
+  cover: /assets/covers/xianhua.jpg
   read_zh:
     - format: web
       file: /books/xianhua/read/
@@ -159,28 +201,12 @@
   read_en: null
   audio: null
   platforms: null
-- id: shinto
-  slug: shinto
-  title: 《罗文杰讲神道教》
-  title_en: "Roma Luo on Shinto"
-  title_ja: "《羅文傑講神道教》"
-  en_title: null
-  status: writing
-  status_label: 撰写中
-  isbn: null
-  published: null
-  desc: 六卷二十二章（框架）。以日本原始资料为主，撰写中。
-  author_note: null
-  cover: /assets/covers/shinto.jpg
-  read_zh: null
-  read_en: null
-  audio: null
-  platforms: null
 - id: fengshui
   slug: fengshui
   title: 《罗文杰讲风水》
   title_en: "Roma Luo on Feng Shui"
   title_ja: "《羅文傑講風水》"
+  title_es: "Roma Luo sobre el Feng Shui"
   en_title: null
   status: planned
   status_label: 规划中
@@ -193,28 +219,12 @@
   read_en: null
   audio: null
   platforms: null
-- id: daodejing
-  slug: daodejing
-  title: 《罗文杰讲道德经》
-  title_en: "Roma Luo on the Daodejing"
-  title_ja: "《羅文傑講道徳経》"
-  en_title: null
-  status: planned
-  status_label: 规划中
-  isbn: null
-  published: null
-  desc: 风水之后，规划中。
-  author_note: null
-  cover: /assets/covers/daodejing.jpg
-  read_zh: null
-  read_en: null
-  audio: null
-  platforms: null
 - id: bazi
   slug: bazi
   title: 《罗文杰讲八字》
   title_en: "Roma Luo on BaZi"
   title_ja: "《羅文傑講八字》"
+  title_es: "Roma Luo sobre el BaZi"
   en_title: null
   status: planned
   status_label: 规划中
@@ -232,6 +242,7 @@
   title: 《兔儿神》
   title_en: "The Rabbit God: The Long Pilgrimage and Return of the Soul"
   title_ja: "《兎児神》"
+  title_es: "El Dios Conejo: La larga peregrinación y el retorno del alma"
   en_title: "The Rabbit God: The Long Pilgrimage and Return of the Soul"
   status: published
   status_label: 已出版
@@ -263,6 +274,7 @@
   title: 《兔儿神2：无墙之庙》
   title_en: "The Rabbit God Book Two: The Temple Without Walls"
   title_ja: "《兎児神2：無牆之廟》"
+  title_es: "El Dios Conejo, libro segundo: El templo sin muros"
   en_title: "The Rabbit God Book Two: The Temple Without Walls"
   status: published
   status_label: 已出版
@@ -287,6 +299,7 @@
   title: 《兔儿神3：身后之事》
   title_en: "The Rabbit God Book Three: What Survives Us"
   title_ja: "《兎児神3：身後之事》"
+  title_es: "El Dios Conejo, libro tercero: Lo que nos sobrevive"
   en_title: "The Rabbit God Book Three: What Survives Us"
   status: published
   status_label: 已出版
@@ -317,6 +330,7 @@
   title: 《与兔儿神对话》
   title_en: "DIALOGUES WITH TU'ER SHEN"
   title_ja: "《与兎児神対話》"
+  title_es: "Diálogos con Tu'er Shen"
   en_title: "DIALOGUES WITH TU'ER SHEN"
   status: published
   status_label: 已出版
@@ -337,6 +351,7 @@
   title: 《兔儿神，把我跟狐仙焊死了》
   title_en: "The Rabbit God Welded Me to the Fox Fairy"
   title_ja: "《兎児神，把我跟狐仙焊死了》"
+  title_es: "El Dios Conejo me soldó al hada zorro"
   en_title: null
   status: serial
   status_label: 网络连载，已完结

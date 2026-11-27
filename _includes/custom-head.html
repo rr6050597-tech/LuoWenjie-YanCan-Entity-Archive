@@ -268,13 +268,14 @@
 
 <!-- 2026-11-27 中/英/日三语切换 + 手机端目录（原生 CSS/JS，无插件） -->
 <script>
-  (function(){try{var l=localStorage.getItem('yc-lang')||'zh';if(['zh','en','ja'].indexOf(l)<0)l='zh';document.documentElement.setAttribute('data-yc-lang',l);document.documentElement.lang=l==='zh'?'zh-CN':l;}catch(e){document.documentElement.setAttribute('data-yc-lang','zh');}})();
+  (function(){try{var l=localStorage.getItem('yc-lang')||'zh';if(['zh','en','ja','es'].indexOf(l)<0)l='zh';document.documentElement.setAttribute('data-yc-lang',l);document.documentElement.lang=l==='zh'?'zh-CN':l;}catch(e){document.documentElement.setAttribute('data-yc-lang','zh');}})();
 </script>
 <style>
   .yc-lang-block{display:block}
   html[data-yc-lang="zh"] .yc-lang-block:not([data-lang="zh"]){display:none}
   html[data-yc-lang="en"] .yc-lang-block:not([data-lang="en"]){display:none}
   html[data-yc-lang="ja"] .yc-lang-block:not([data-lang="ja"]){display:none}
+  html[data-yc-lang="es"] .yc-lang-block:not([data-lang="es"]){display:none}
   html:not([data-yc-lang]) .yc-lang-block:not([data-lang="zh"]){display:none}
   .yc-lang-switch{display:inline-flex;align-items:center;margin-left:8px;vertical-align:middle}
   .yc-lang-switch button{appearance:none;background:transparent;border:0;padding:4px 7px;font-size:11px;letter-spacing:.1em;color:#8a8578;cursor:pointer;border-radius:6px;line-height:1.4}
@@ -282,6 +283,18 @@
   .yc-lang-switch button+button{margin-left:2px}
   html[data-theme="dark"] .yc-lang-switch button{color:#a39d8f}
   html[data-theme="dark"] .yc-lang-switch button[aria-pressed="true"]{color:#F7F5F0}
+  .site-header,.site-header .wrapper,.site-header-inner{overflow:visible}
+  .yc-lang-dropdown{position:relative;display:inline-flex;align-items:center;flex:none;align-self:center;margin-right:12px}
+  .yc-lang-dropbtn{appearance:none;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 12px;font-size:12px;letter-spacing:.08em;color:var(--yc-glass-ink,#2C2C2C);background:var(--yc-glass-bg);border:1px solid var(--yc-glass-border);border-radius:999px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);cursor:pointer}
+  html[data-theme="dark"] .yc-lang-dropbtn{box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.08)}
+  .yc-lang-caret{font-size:10px;opacity:.7;line-height:1}
+  .yc-lang-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:132px;padding:6px;background:var(--yc-glass-bg);border:1px solid var(--yc-glass-border);border-radius:14px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);display:none;z-index:10002}
+  .yc-lang-dropdown.open .yc-lang-menu{display:block}
+  .yc-lang-opt{display:flex;width:100%;appearance:none;background:transparent;border:0;padding:9px 12px;font-size:13px;color:var(--yc-glass-ink,#2C2C2C);cursor:pointer;border-radius:8px;text-align:left}
+  .yc-lang-opt:hover{background:rgba(197,160,89,.12)}
+  .yc-lang-opt[aria-pressed="true"]{font-weight:600}
+  .yc-lang-opt[aria-pressed="true"]::after{content:"✓";margin-left:auto;color:#C5A059}
+  @media (max-width:860px){.yc-lang-dropbtn{height:24px;padding:0 10px;font-size:11px}.yc-lang-dropdown{margin-right:8px}}
   .yc-menu-btn{display:none}
   .yc-menu-panel,.yc-menu-backdrop{display:none}
   @media (max-width:860px){
@@ -304,106 +317,106 @@
 </style>
 <script>
 (function(){
-  var LANGS=['zh','en','ja'];
-  var LABELS={zh:'中文',en:'EN',ja:'日本語'};
+  var LANGS=['zh','en','ja','es'];
+  var LABELS={zh:'中文',en:'EN',ja:'日本語',es:'ES'};
   var DICT={
-    "home-manifesto":{zh:"<span class=\"m-line\">以文字记录思想，</span><span class=\"m-line\">以影像记录时代，</span><br class=\"m-br\"><span class=\"m-line\">以东方文化探索生命，</span><span class=\"m-line\">以气味连接记忆。</span>",en:"<span class=\"m-line\">Record thought in words,</span> <span class=\"m-line\">record the age in images —</span><br class=\"m-br\"><span class=\"m-line\">explore life through Eastern culture,</span> <span class=\"m-line\">and hold memory in scent.</span>",ja:"<span class=\"m-line\">言葉に思想を刻み、</span><span class=\"m-line\">映像に時代を映す。</span><br class=\"m-br\"><span class=\"m-line\">東洋文化を通じて生を探求し、</span><span class=\"m-line\">香りに記憶を宿す。</span>"},
-    "home-sec-systems":{zh:"四大体系",en:"Four Pillars",ja:"4つの柱"},
-    "home-sec-works":{zh:"精选作品",en:"Selected Works",ja:"主要作品"},
-    "home-sec-bio":{zh:"个人档案",en:"Profile",ja:"プロフィール"},
-    "home-sec-fragrance":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス"},
-    "home-sec-biz":{zh:"品牌与商业合作",en:"Brand & Business",ja:"ブランド＆ビジネス"},
-    "sys-1-title":{zh:"ROMA LUO 时尚与演艺",en:"ROMA LUO · Fashion & Performing Arts",ja:"ROMA LUO・ファッション＆パフォーミングアーツ"},
-    "sys-1-desc":{zh:"DIOR HOMME 首秀开场、VERSACE、GQ、时装周，电影《地下香》。",en:"DIOR HOMME debut opener, VERSACE, GQ, Fashion Week — and the film Underground Fragrance.",ja:"DIOR HOMME デビューショーのオープニング、VERSACE、GQ、ファッションウィーク、そして映画《地下香》。"},
-    "sys-2-title":{zh:"ROMA LUO 文学与出版",en:"ROMA LUO · Literature & Publishing",ja:"ROMA LUO・文学＆出版"},
-    "sys-2-desc":{zh:"《兔儿神》系列与《与兔儿神对话》。",en:"The Rabbit God series and Dialogues with Tu'er Shen.",ja:"《兎児神》シリーズと《与兎児神対話》。"},
-    "sys-3-title":{zh:"罗文杰讲系列",en:"Roma Luo Lecture Series",ja:"「罗文杰讲」シリーズ"},
-    "sys-3-desc":{zh:"已出版 · 《罗文杰讲高岛易断》《罗文杰讲药师经》<br>已完稿 · 《罗文杰讲萨满》（三卷）《罗文杰讲显化》<br>撰写中 · 《罗文杰讲神道教》",en:"Published · Roma Luo on the Takashima Ekidan · Roma Luo on the Medicine Buddha Sutra<br>Completed · Roma Luo on Shamanism (3 vols.) · Roma Luo on Manifestation<br>In preparation · Roma Luo on Shinto",ja:"既刊 · 《羅文傑講高島易断》《羅文傑講薬師経》<br>脱稿済み · 《羅文傑講薩満》（全3巻）《羅文傑講顕化》<br>執筆中 · 《羅文傑講神道教》"},
-    "sys-4-title":{zh:"炎灿 YANCAN 东方香氛",en:"YANCAN Oriental Fragrance",ja:"炎灿 YANCAN オリエンタルフレグランス"},
-    "sys-4-desc":{zh:"兔儿神香囊、妲己香囊、米缸香囊。",en:"Rabbit God sachet, Daji sachet, Rice Jar sachet.",ja:"兔儿神サシェ、妲己サシェ、米甕サシェ。"},
-    "wk-fashion-title":{zh:"个人时尚大片",en:"Fashion Editorials",ja:"パーソナル・ファッション・エディトリアル"},
-    "wk-fashion-name":{zh:"时尚大片",en:"Fashion Editorial",ja:"ファッション・エディトリアル"},
-    "wk-film-title":{zh:"电影《地下香》",en:"The Film Underground Fragrance",ja:"映画《地下香》"},
-    "wk-fragrance-title":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス"},
-    "wk-fragrance-name":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス"},
-    "tl-2012":{zh:"签约龙腾精英，入选 MDC NEW FACE。",en:"Signed with Longteng Elite; named MDC NEW FACE.",ja:"龍騰精英と契約、MDC NEW FACE に選出。"},
-    "tl-2013":{zh:"DIOR HOMME 中国北京首秀开场模特。",en:"Opened the DIOR HOMME Beijing debut show.",ja:"DIOR HOMME 中国・北京デビューショーでオープニングモデルを務める。"},
-    "tl-2015":{zh:"主演《地下香》，威尼斯日 Fedeora 最佳影片奖。",en:"Starred in Underground Fragrance — Fedeora Best Film, Venice Days.",ja:"《地下香》に主演。ヴェネチア・デイズにて Fedeora 最優秀作品賞を受賞。"},
-    "tl-2018":{zh:"创立哈尔滨莱亚文化传媒。",en:"Founded Harbin Laiya Culture Media.",ja:"ハルビン莱亜文化メディアを設立。"},
-    "tl-2026":{zh:"六本书出版；创立炎灿东方香氛品牌。",en:"Six books published; founded the Yancan fragrance brand.",ja:"著書6冊を刊行、東洋フレグランスブランド「炎灿」を創設。"},
-    "bio-link":{zh:"完整履历 →",en:"Full Biography →",ja:"全経歴を見る →"},
-    "bio-h1":{zh:"罗文杰（炎灿）个人简介",en:"Roma Luo (Yan Can) — Personal Profile",ja:"罗文杰（炎灿）プロフィール"},
-    "bio-p-1":{zh:"罗文杰，笔名炎灿，1993年11月13日生于黑龙江省虎林市，身高188厘米，现居深圳、广州与温哥华。跨界文化创业者、作家、前国际超模。",en:"Roma Luo, pen name Yan Can, was born on 13 November 1993 in Hulin, Heilongjiang, China. He is 188 cm tall and now lives in Shenzhen, Guangzhou and Vancouver. A cross-disciplinary cultural entrepreneur, writer, and former international supermodel.",ja:"罗文杰、ペンネームは炎灿。1993年11月13日、中国黒竜江省虎林市生まれ、身長188cm。現在は深圳、広州、バンクーバーを拠点に活動する、多領域で活躍する文化起業家、作家、元インターナショナル・トップモデル。"},
-    "bio-sec-1":{zh:"时尚与演艺生涯",en:"Fashion & Performing Arts",ja:"ファッション・芸能キャリア"},
-    "bio-p-2":{zh:"2012年签约龙腾精英，入选MDC全球模特榜单NEW FACE。2013年4月担任DIOR HOMME中国北京首秀开场模特，曾为VERSACE及中国国际时装周走秀，登上 GQ、时尚先生、时尚芭莎，代言三星、速写、AGATHA 等品牌。2015年主演电影《地下香》（永乐），影片入围第72届威尼斯电影节“威尼斯日”单元，获该单元Fedeora最佳影片奖。",en:"In 2012 he signed with Longteng Elite and was named MDC NEW FACE. In April 2013 he opened the DIOR HOMME debut show in Beijing, China, and went on to walk for VERSACE and China Fashion Week, appearing in GQ, Esquire and Harper's Bazaar, and fronting campaigns for Samsung, SUXI and AGATHA, among other brands. In 2015 he starred as Yong Le in the film Underground Fragrance, which was selected for the Venice Days section of the 72nd Venice International Film Festival and won the section's Fedeora Best Film award.",ja:"2012年に龙腾精英と契約し、MDCのグローバルモデルランキング「NEW FACE」に選出される。2013年4月、DIOR HOMMEの中国・北京初ショーでオープニングモデルを務め、VERSACEや中国国際ファッションウィークのランウェイに登場。GQ、时尚先生、时尚芭莎などの雑誌を飾り、三星、速写、AGATHAなど数々のブランドの顔となった。2015年には映画《地下香》で永楽役として主演した。同作は第72回ヴェネチア国際映画祭「ヴェネチア・デイズ」部門に選出され、同部門のFedeora最優秀作品賞を受賞した。"},
-    "bio-sec-2":{zh:"商业构建与品牌运营",en:"Business & Brand Building",ja:"ビジネス構築とブランド運営"},
-    "bio-p-3":{zh:"2018年6月创立哈尔滨莱亚文化传媒。2026年创立东方文化与香氛品牌“炎灿”，推出兔儿神香囊、否极泰来香囊。",en:"In June 2018 he founded Harbin Laiya Culture Media. In 2026 he founded Yan Can, an Oriental culture and fragrance brand, launching the Rabbit God sachet and the Fortune Turns sachet.",ja:"2018年6月、哈尔滨莱亚文化传媒を創業。2026年には東洋文化とフレグランスのブランド「炎灿」を立ち上げ、兔儿神サシェ、「否極泰来」サシェを発表。"},
-    "bio-sec-3":{zh:"文学创作与文化数字保育",en:"Writing & Digital Cultural Preservation",ja:"文学創作と文化的デジタル保存"},
-    "bio-p-4":{zh:"著有《兔儿神》与《兔儿神2》，已在海外及数字阅读平台出版。创办独立文化档案网站，主理《兔儿神日历》。毕业于不列颠哥伦比亚大学（UBC）哲学系，获学士学位。",en:"He is the author of The Rabbit God and The Rabbit God 2, published overseas and on digital reading platforms. He founded an independent cultural archive website and curates the Rabbit God Calendar. He holds a bachelor's degree in philosophy from the University of British Columbia (UBC).",ja:"著書に《兔儿神》《兔儿神2》があり、海外およびデジタル読書プラットフォームで刊行されている。独立系文化アーカイブサイトを創設し、《兔儿神日历》を主宰している。ブリティッシュコロンビア大学（UBC）哲学科を卒業し、学士号を取得した。"},
-    "bio-sec-4":{zh:"玄学研习与生活美学",en:"Metaphysics & the Art of Living",ja:"玄学の研鑽と生活美学"},
-    "bio-p-5":{zh:"研习中国传统玄学与古典哲学，擅长八字、六爻、相面、风水、先天八卦与《高岛易断》。承鸠摩罗什译经文风，尚侘寂之美，精通芳香疗法。",en:"He studies traditional Chinese metaphysics and classical philosophy, specialising in BaZi, Liu Yao (Six Lines), physiognomy, Feng Shui, the Xiantian Bagua and the Takashima Ekidan (《高岛易断》). His prose follows the translation style of Kumarajiva; he cherishes the beauty of wabi-sabi and is skilled in aromatherapy.",ja:"中国の伝統玄学と古典哲学を研鑽し、八字、六爻、人相、風水、先天八卦、《高岛易断》を得意とする。鳩摩羅什の経典翻訳の文体を受け継ぎ、侘び寂びの美を尊び、アロマセラピーに精通している。"},
-    "bio-books":{zh:"查看著作 →",en:"View All Books →",ja:"著作一覧へ →"},
-    "bio-home":{zh:"返回首页",en:"Back to Home",ja:"ホームに戻る"},
-    "fragrance-buy":{zh:"抖音商城购买 →",en:"Buy on Douyin Mall →",ja:"抖音モールで購入 →"},
-    "biz-1-title":{zh:"出版合作",en:"Publishing",ja:"出版提携"},
-    "biz-1-desc":{zh:"已出版 6 本，另有待出版与撰写中作品。",en:"Six books published, with more forthcoming and in preparation.",ja:"既刊6冊。ほかに刊行予定・執筆中の作品あり。"},
-    "biz-2-title":{zh:"媒体与商务联系",en:"Media & Business",ja:"メディア・ビジネスのお問い合わせ"},
-    "biz-2-desc":{zh:"请通过微信公众号“兔儿神胡天保”或 Instagram @luoyancan 联系。",en:"Please contact us via the WeChat Official Account “兔儿神胡天保” or Instagram @luoyancan.",ja:"WeChat公式アカウント「兔儿神胡天保」または Instagram @luoyancan よりお問い合わせください。"},
-    "foot-archive":{zh:"档案",en:"Archive",ja:"アーカイブ"},
-    "foot-books":{zh:"全部著作",en:"All Books",ja:"全著作"},
-    "books-h1":{zh:"著作",en:"Books",ja:"著作"},
-    "books-sec-pub":{zh:"已出版",en:"Published",ja:"既刊"},
-    "books-foot-bio":{zh:"完整履历 →",en:"Full Biography →",ja:"全経歴を見る →"},
-    "books-foot-faq":{zh:"常见问题 →",en:"FAQ →",ja:"よくある質問 →"},
-    "books-search-ph":{zh:"搜书名、ISBN、问题…",en:"Search titles, ISBNs, questions…",ja:"書名・ISBN・質問を検索…"},
-    "faq-h1":{zh:"常见问题 · FAQ — 罗文杰炎灿 (Roma Luo)",en:"FAQ — Roma Luo",ja:"よくある質問 · FAQ — 罗文杰炎灿 (Roma Luo)"},
-    "faq-intro":{zh:"以下为关于罗文杰炎灿及其图书的常见问题。Frequently asked questions about Roma Luo (罗文杰炎灿) and his books.",en:"Frequently asked questions about Roma Luo and his books.",ja:"罗文杰炎灿およびその著作に関するよくあるご質問。"},
-    "faq-search-ph":{zh:"搜书名、ISBN、问题…",en:"Search titles, ISBNs, questions…",ja:"書名・ISBN・質問を検索…"},
-    "faq-q1":{zh:"Who is Roma Luo? / 罗文杰炎灿是谁？",en:"Who is Roma Luo?",ja:"Roma Luo（羅文杰炎燦）とは？"},
-    "faq-q2":{zh:"What books has Roma Luo written? / Roma Luo 写过哪些书？",en:"What books has Roma Luo written?",ja:"Roma Luo の著書にはどのようなものがありますか？"},
-    "faq-q3":{zh:"Where can I buy the books? / 在哪里可以购买这些书？",en:"Where can I buy the books?",ja:"書籍はどこで購入できますか？"},
-    "faq-q4":{zh:"What are the three sacred dates of the Rabbit God? / 兔儿神三个日子是哪三天？",en:"What are the three sacred dates of the Rabbit God?",ja:"兔儿神の「三つの聖日」とはいつのことですか？"},
-    "faq-q5":{zh:"What is the Rabbit God Calendar? / 什么是兔儿神日历？",en:"What is the Rabbit God Calendar?",ja:"《兔儿神日历》とは何ですか？"},
-    "nav-home":{zh:"首页",en:"Home",ja:"ホーム"},
-    "nav-books":{zh:"著作",en:"Books",ja:"著作"},
-    "nav-film":{zh:"影视",en:"Film & TV",ja:"映画・映像"},
-    "nav-ads":{zh:"广告",en:"Advertising",ja:"広告"},
-    "nav-magazine":{zh:"杂志",en:"Magazine",ja:"雑誌"},
-    "nav-gallery":{zh:"图集",en:"Gallery",ja:"ギャラリー"},
-    "nav-bio":{zh:"履历",en:"Biography",ja:"経歴"},
-    "nav-faq":{zh:"常见问题",en:"FAQ",ja:"よくある質問"},
-    "nav-fragrance":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス"},
-    "nav-menu":{zh:"目录",en:"Menu",ja:"メニュー"},
-    "film-h1":{zh:"影视",en:"Film & TV",ja:"映画・映像"},
-    "film-h2-underground":{zh:"《地下香》",en:"Underground Fragrance",ja:"《地下香》"},
-    "film-p-underground":{zh:"2015年，罗文杰跨界大银幕，在影片《地下香》中担纲男主角，饰演“永乐”一角；该片入围第72届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片）。",en:"In 2015, Roma Luo crossed over to the big screen, taking the male lead as Yong Le in Underground Fragrance. The film was selected for the Venice Days section of the 72nd Venice International Film Festival and won the section's Fedeora Best Film award (the award belongs to the film).",ja:"2015年、罗文杰は映画界に進出し、《地下香》で永乐役として主演を務めた。同作は第72回ヴェネチア国際映画祭「ヴェネチア・デイズ」部門に選出され、同部門のFedeora最優秀作品賞を受賞した（賞は映画作品のものです）。"},
-    "film-video-cap":{zh:"2016 年第 18 届台北电影节官方预告",en:"Official trailer, 18th Taipei Film Festival, 2016",ja:"2016年 第18回台北映画祭公式予告編"},
-    "film-meta":{zh:"2015 年，DCP，彩色，75 分钟，法国 / 中国。导演鹏飞，罗文杰饰演北漂青年永乐。影片入围第 72 届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片），并获 2015 年芝加哥国际电影节金雨果最佳影片奖，入围釜山影展。",en:"2015. DCP, colour, 75 min, France / China. Directed by Peng Fei; Roma Luo plays Yong Le, a young drifter in Beijing. The film was selected for the Venice Days section of the 72nd Venice International Film Festival and won the section's Fedeora Best Film award (the award belongs to the film), won the Gold Hugo for Best Film at the 2015 Chicago International Film Festival, and was selected for the Busan International Film Festival.",ja:"2015年、DCP、カラー、75分、フランス / 中国。監督は鹏飞、罗文杰は北漂の青年・永乐を演じた。同作は第72回ヴェネチア国際映画祭「ヴェネチア・デイズ」部門に選出され、同部門のFedeora最優秀作品賞を受賞し（賞は映画作品のものです）、2015年シカゴ国際映画祭で金雨果最優秀作品賞を受賞、釜山国際映画祭にも出品された。"},
-    "film-h2-talkshow":{zh:"《今晚80后脱口秀》",en:"Tonight's Post-80s Talk Show",ja:"《今晚80后脱口秀》"},
-    "film-p-talkshow":{zh:"罗文杰曾参与《今晚80后脱口秀》。",en:"Roma Luo appeared on Tonight's Post-80s Talk Show.",ja:"罗文杰は《今晚80后脱口秀》に出演した。"},
-    "film-h2-venice":{zh:"威尼斯 · 2015",en:"Venice · 2015",ja:"ヴェネチア · 2015"},
-    "film-cap-redcarpet":{zh:"2015年威尼斯电影节红毯",en:"Red carpet, Venice Film Festival 2015",ja:"2015年ヴェネチア国際映画祭 レッドカーペット"},
-    "film-cap-photocall":{zh:"2015年威尼斯电影节拍照环节",en:"Photocall, Venice Film Festival 2015",ja:"2015年ヴェネチア国際映画祭 フォトコール"},
-    "film-cap-still":{zh:"《地下香》剧照",en:"Still from Underground Fragrance",ja:"《地下香》劇中スチール"},
-    "film-meta-photos":{zh:"照片点开放大。更多影视剧照与视频陆续补充。",en:"Tap a photo to enlarge. More stills and videos coming soon.",ja:"写真をクリックすると拡大表示されます。スチールや映像は順次追加予定です。"},
-    "film-nav-home":{zh:"← 返回首页",en:"← Back to Home",ja:"← ホームに戻る"},
-    "film-nav-ads":{zh:"广告 →",en:"Advertising →",ja:"広告 →"},
-    "film-nav-mag":{zh:"杂志 →",en:"Magazine →",ja:"雑誌 →"},
-    "film-lightbox-close":{zh:"关闭",en:"Close",ja:"閉じる"},
-    "mag-h1":{zh:"杂志",en:"Magazine",ja:"雑誌"},
-    "mag-lead":{zh:"Magazine · 时尚杂志",en:"Magazine",ja:"マガジン"},
-    "mag-intro":{zh:"罗文杰频繁亮相 GQ、时尚先生、时尚芭莎等顶尖时尚杂志。",en:"Roma Luo frequently appears in top fashion magazines such as GQ, Esquire and Harper's Bazaar.",ja:"罗文杰は GQ、时尚先生、时尚芭莎などのトップファッション誌にたびたび登場している。"},
-    "mag-sec-list":{zh:"杂志",en:"Magazines",ja:"雑誌"},
-    "mag-list-1":{zh:"GQ",en:"GQ",ja:"GQ"},
-    "mag-list-2":{zh:"时尚先生",en:"时尚先生",ja:"时尚先生"},
-    "mag-list-3":{zh:"时尚芭莎",en:"时尚芭莎",ja:"时尚芭莎"},
-    "mag-list-4":{zh:"时尚芭莎男士版",en:"时尚芭莎男士版",ja:"时尚芭莎男士版"},
-    "mag-sec-gallery":{zh:"组图",en:"Photo Sets",ja:"写真ギャラリー"},
-    "mag-ph":{zh:"杂志组图待补充",en:"Magazine photos coming soon",ja:"雑誌の写真は近日追加予定"},
-    "mag-meta":{zh:"杂志组图陆续上线，敬请期待。",en:"Magazine photo sets will be published here as they arrive — stay tuned.",ja:"雑誌の写真は順次公開予定です。どうぞお楽しみに。"},
-    "mag-nav-home":{zh:"← 返回首页",en:"← Back to Home",ja:"← ホームに戻る"},
-    "mag-nav-film":{zh:"影视 →",en:"Film & TV →",ja:"映画・映像 →"},
-    "mag-nav-ads":{zh:"广告 →",en:"Advertising →",ja:"広告 →"}
+    "home-manifesto":{zh:"<span class=\"m-line\">以文字记录思想，</span><span class=\"m-line\">以影像记录时代，</span><br class=\"m-br\"><span class=\"m-line\">以东方文化探索生命，</span><span class=\"m-line\">以气味连接记忆。</span>",en:"<span class=\"m-line\">Record thought in words,</span> <span class=\"m-line\">record the age in images —</span><br class=\"m-br\"><span class=\"m-line\">explore life through Eastern culture,</span> <span class=\"m-line\">and hold memory in scent.</span>",ja:"<span class=\"m-line\">言葉に思想を刻み、</span><span class=\"m-line\">映像に時代を映す。</span><br class=\"m-br\"><span class=\"m-line\">東洋文化を通じて生を探求し、</span><span class=\"m-line\">香りに記憶を宿す。</span>",es:"<span class=\"m-line\">Registra el pensamiento en palabras,</span> <span class=\"m-line\">registra la época en imágenes:</span><br class=\"m-br\"><span class=\"m-line\">explora la vida a través de la cultura oriental,</span> <span class=\"m-line\">y retiene la memoria en el aroma.</span>"},
+    "home-sec-systems":{zh:"四大体系",en:"Four Pillars",ja:"4つの柱",es:"Cuatro Pilares"},
+    "home-sec-works":{zh:"精选作品",en:"Selected Works",ja:"主要作品",es:"Obras Seleccionadas"},
+    "home-sec-bio":{zh:"个人档案",en:"Profile",ja:"プロフィール",es:"Perfil"},
+    "home-sec-fragrance":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス",es:"Fragancia Yancan"},
+    "home-sec-biz":{zh:"品牌与商业合作",en:"Brand & Business",ja:"ブランド＆ビジネス",es:"Marca y Negocios"},
+    "sys-1-title":{zh:"ROMA LUO 时尚与演艺",en:"ROMA LUO · Fashion & Performing Arts",ja:"ROMA LUO・ファッション＆パフォーミングアーツ",es:"ROMA LUO · Moda y Artes Escénicas"},
+    "sys-1-desc":{zh:"DIOR HOMME 首秀开场、VERSACE、GQ、时装周，电影《地下香》。",en:"DIOR HOMME debut opener, VERSACE, GQ, Fashion Week — and the film Underground Fragrance.",ja:"DIOR HOMME デビューショーのオープニング、VERSACE、GQ、ファッションウィーク、そして映画《地下香》。",es:"Apertura del debut de DIOR HOMME, VERSACE, GQ, Semana de la Moda y la película Underground Fragrance."},
+    "sys-2-title":{zh:"ROMA LUO 文学与出版",en:"ROMA LUO · Literature & Publishing",ja:"ROMA LUO・文学＆出版",es:"ROMA LUO · Literatura y Publicaciones"},
+    "sys-2-desc":{zh:"《兔儿神》系列与《与兔儿神对话》。",en:"The Rabbit God series and Dialogues with Tu'er Shen.",ja:"《兎児神》シリーズと《与兎児神対話》。",es:"La serie El Dios Conejo y Diálogos con Tu'er Shen."},
+    "sys-3-title":{zh:"罗文杰讲系列",en:"Roma Luo Lecture Series",ja:"「罗文杰讲」シリーズ",es:"Serie de Conferencias de Roma Luo"},
+    "sys-3-desc":{zh:"已出版 · 《罗文杰讲高岛易断》《罗文杰讲药师经》<br>已完稿 · 《罗文杰讲萨满》（三卷）《罗文杰讲显化》<br>撰写中 · 《罗文杰讲神道教》",en:"Published · Roma Luo on the Takashima Ekidan · Roma Luo on the Medicine Buddha Sutra<br>Completed · Roma Luo on Shamanism (3 vols.) · Roma Luo on Manifestation<br>In preparation · Roma Luo on Shinto",ja:"既刊 · 《羅文傑講高島易断》《羅文傑講薬師経》<br>脱稿済み · 《羅文傑講薩満》（全3巻）《羅文傑講顕化》<br>執筆中 · 《羅文傑講神道教》",es:"Publicados · Roma Luo sobre el Takashima Ekidan · Roma Luo sobre el Sutra del Buda de la Medicina<br>Completados · Roma Luo sobre el chamanismo (3 vols.) · Roma Luo sobre la manifestación<br>En preparación · Roma Luo sobre el sintoísmo"},
+    "sys-4-title":{zh:"炎灿 YANCAN 东方香氛",en:"YANCAN Oriental Fragrance",ja:"炎灿 YANCAN オリエンタルフレグランス",es:"Fragancia Oriental YANCAN"},
+    "sys-4-desc":{zh:"兔儿神香囊、妲己香囊、米缸香囊。",en:"Rabbit God sachet, Daji sachet, Rice Jar sachet.",ja:"兔儿神サシェ、妲己サシェ、米甕サシェ。",es:"Saquito del Dios Conejo, saquito de Daji, saquito del Tarro de Arroz."},
+    "wk-fashion-title":{zh:"个人时尚大片",en:"Fashion Editorials",ja:"パーソナル・ファッション・エディトリアル",es:"Editoriales de Moda"},
+    "wk-fashion-name":{zh:"时尚大片",en:"Fashion Editorial",ja:"ファッション・エディトリアル",es:"Editorial de Moda"},
+    "wk-film-title":{zh:"电影《地下香》",en:"The Film Underground Fragrance",ja:"映画《地下香》",es:"La Película Underground Fragrance"},
+    "wk-fragrance-title":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス",es:"Fragancia Yancan"},
+    "wk-fragrance-name":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス",es:"Fragancia Yancan"},
+    "tl-2012":{zh:"签约龙腾精英，入选 MDC NEW FACE。",en:"Signed with Longteng Elite; named MDC NEW FACE.",ja:"龍騰精英と契約、MDC NEW FACE に選出。",es:"Contratado por Longteng Elite; nombrado MDC NEW FACE."},
+    "tl-2013":{zh:"DIOR HOMME 中国北京首秀开场模特。",en:"Opened the DIOR HOMME Beijing debut show.",ja:"DIOR HOMME 中国・北京デビューショーでオープニングモデルを務める。",es:"Modelo de apertura del desfile debut de DIOR HOMME en Pekín."},
+    "tl-2015":{zh:"主演《地下香》，威尼斯日 Fedeora 最佳影片奖。",en:"Starred in Underground Fragrance — Fedeora Best Film, Venice Days.",ja:"《地下香》に主演。ヴェネチア・デイズにて Fedeora 最優秀作品賞を受賞。",es:"Protagonista de Underground Fragrance — premio Fedeora a la mejor película en Venice Days."},
+    "tl-2018":{zh:"创立哈尔滨莱亚文化传媒。",en:"Founded Harbin Laiya Culture Media.",ja:"ハルビン莱亜文化メディアを設立。",es:"Fundación de Harbin Laiya Culture Media."},
+    "tl-2026":{zh:"六本书出版；创立炎灿东方香氛品牌。",en:"Six books published; founded the Yancan fragrance brand.",ja:"著書6冊を刊行、東洋フレグランスブランド「炎灿」を創設。",es:"Seis libros publicados; fundación de la marca de fragancias Yancan."},
+    "bio-link":{zh:"完整履历 →",en:"Full Biography →",ja:"全経歴を見る →",es:"Biografía completa →"},
+    "bio-h1":{zh:"罗文杰（炎灿）个人简介",en:"Roma Luo (Yan Can) — Personal Profile",ja:"罗文杰（炎灿）プロフィール",es:"Roma Luo (Yan Can) — Perfil Personal"},
+    "bio-p-1":{zh:"罗文杰，笔名炎灿，1993年11月13日生于黑龙江省虎林市，身高188厘米，现居深圳、广州与温哥华。跨界文化创业者、作家、前国际超模。",en:"Roma Luo, pen name Yan Can, was born on 13 November 1993 in Hulin, Heilongjiang, China. He is 188 cm tall and now lives in Shenzhen, Guangzhou and Vancouver. A cross-disciplinary cultural entrepreneur, writer, and former international supermodel.",ja:"罗文杰、ペンネームは炎灿。1993年11月13日、中国黒竜江省虎林市生まれ、身長188cm。現在は深圳、広州、バンクーバーを拠点に活動する、多領域で活躍する文化起業家、作家、元インターナショナル・トップモデル。",es:"Roma Luo, con seudónimo Yan Can, nació el 13 de noviembre de 1993 en Hulin, Heilongjiang, China. Mide 188 cm de altura y actualmente vive en Shenzhen, Cantón y Vancouver. Emprendedor cultural interdisciplinario, escritor y antiguo supermodelo internacional."},
+    "bio-sec-1":{zh:"时尚与演艺生涯",en:"Fashion & Performing Arts",ja:"ファッション・芸能キャリア",es:"Moda y Artes Escénicas"},
+    "bio-p-2":{zh:"2012年签约龙腾精英，入选MDC全球模特榜单NEW FACE。2013年4月担任DIOR HOMME中国北京首秀开场模特，曾为VERSACE及中国国际时装周走秀，登上 GQ、时尚先生、时尚芭莎，代言三星、速写、AGATHA 等品牌。2015年主演电影《地下香》（永乐），影片入围第72届威尼斯电影节“威尼斯日”单元，获该单元Fedeora最佳影片奖。",en:"In 2012 he signed with Longteng Elite and was named MDC NEW FACE. In April 2013 he opened the DIOR HOMME debut show in Beijing, China, and went on to walk for VERSACE and China Fashion Week, appearing in GQ, Esquire and Harper's Bazaar, and fronting campaigns for Samsung, SUXI and AGATHA, among other brands. In 2015 he starred as Yong Le in the film Underground Fragrance, which was selected for the Venice Days section of the 72nd Venice International Film Festival and won the section's Fedeora Best Film award.",ja:"2012年に龙腾精英と契約し、MDCのグローバルモデルランキング「NEW FACE」に選出される。2013年4月、DIOR HOMMEの中国・北京初ショーでオープニングモデルを務め、VERSACEや中国国際ファッションウィークのランウェイに登場。GQ、时尚先生、时尚芭莎などの雑誌を飾り、三星、速写、AGATHAなど数々のブランドの顔となった。2015年には映画《地下香》で永楽役として主演した。同作は第72回ヴェネチア国際映画祭「ヴェネチア・デイズ」部門に選出され、同部門のFedeora最優秀作品賞を受賞した。",es:"En 2012 firmó con Longteng Elite y fue nombrado MDC NEW FACE. En abril de 2013 abrió el desfile debut de DIOR HOMME en Pekín, China, y desfiló para VERSACE y la Semana de la Moda de China. Ha aparecido en GQ, Esquire y Harper's Bazaar, además de protagonizar campañas para Samsung, SUXI y AGATHA, entre otras marcas. En 2015 protagonizó el papel de Yong Le en la película Underground Fragrance, seleccionada para la sección Venice Days del 72.° Festival Internacional de Cine de Venecia, donde ganó el premio Fedeora a la mejor película de dicha sección."},
+    "bio-sec-2":{zh:"商业构建与品牌运营",en:"Business & Brand Building",ja:"ビジネス構築とブランド運営",es:"Negocios y Desarrollo de Marca"},
+    "bio-p-3":{zh:"2018年6月创立哈尔滨莱亚文化传媒。2026年创立东方文化与香氛品牌“炎灿”，推出兔儿神香囊、否极泰来香囊。",en:"In June 2018 he founded Harbin Laiya Culture Media. In 2026 he founded Yan Can, an Oriental culture and fragrance brand, launching the Rabbit God sachet and the Fortune Turns sachet.",ja:"2018年6月、哈尔滨莱亚文化传媒を創業。2026年には東洋文化とフレグランスのブランド「炎灿」を立ち上げ、兔儿神サシェ、「否極泰来」サシェを発表。",es:"En junio de 2018 fundó Harbin Laiya Culture Media. En 2026 fundó Yan Can, una marca de cultura oriental y fragancias, lanzando el saquito aromático del Dios Conejo y el saquito aromático de la Buena Fortuna."},
+    "bio-sec-3":{zh:"文学创作与文化数字保育",en:"Writing & Digital Cultural Preservation",ja:"文学創作と文化的デジタル保存",es:"Creación Literaria y Conservación Cultural Digital"},
+    "bio-p-4":{zh:"著有《兔儿神》与《兔儿神2》，已在海外及数字阅读平台出版。创办独立文化档案网站，主理《兔儿神日历》。毕业于不列颠哥伦比亚大学（UBC）哲学系，获学士学位。",en:"He is the author of The Rabbit God and The Rabbit God 2, published overseas and on digital reading platforms. He founded an independent cultural archive website and curates the Rabbit God Calendar. He holds a bachelor's degree in philosophy from the University of British Columbia (UBC).",ja:"著書に《兔儿神》《兔儿神2》があり、海外およびデジタル読書プラットフォームで刊行されている。独立系文化アーカイブサイトを創設し、《兔儿神日历》を主宰している。ブリティッシュコロンビア大学（UBC）哲学科を卒業し、学士号を取得した。",es:"Es autor de El Dios Conejo y El Dios Conejo 2, publicados en el extranjero y en plataformas de lectura digital. Fundó un sitio web de archivo cultural independiente y dirige el Calendario del Dios Conejo. Es licenciado en Filosofía por la Universidad de la Columbia Británica (UBC)."},
+    "bio-sec-4":{zh:"玄学研习与生活美学",en:"Metaphysics & the Art of Living",ja:"玄学の研鑽と生活美学",es:"Estudio de la Metafísica y Estética de la Vida"},
+    "bio-p-5":{zh:"研习中国传统玄学与古典哲学，擅长八字、六爻、相面、风水、先天八卦与《高岛易断》。承鸠摩罗什译经文风，尚侘寂之美，精通芳香疗法。",en:"He studies traditional Chinese metaphysics and classical philosophy, specialising in BaZi, Liu Yao (Six Lines), physiognomy, Feng Shui, the Xiantian Bagua and the Takashima Ekidan (《高岛易断》). His prose follows the translation style of Kumarajiva; he cherishes the beauty of wabi-sabi and is skilled in aromatherapy.",ja:"中国の伝統玄学と古典哲学を研鑽し、八字、六爻、人相、風水、先天八卦、《高岛易断》を得意とする。鳩摩羅什の経典翻訳の文体を受け継ぎ、侘び寂びの美を尊び、アロマセラピーに精通している。",es:"Estudia la metafísica tradicional china y la filosofía clásica, especializado en BaZi, Liu Yao (Seis Líneas), fisonomía, Feng Shui, el Xiantian Bagua y el Takashima Ekidan (《高岛易断》). Su prosa sigue el estilo de traducción de Kumarajiva; valora la belleza del wabi-sabi y es experto en aromaterapia."},
+    "bio-books":{zh:"查看著作 →",en:"View All Books →",ja:"著作一覧へ →",es:"Ver Obras →"},
+    "bio-home":{zh:"返回首页",en:"Back to Home",ja:"ホームに戻る",es:"Volver al Inicio"},
+    "fragrance-buy":{zh:"抖音商城购买 →",en:"Buy on Douyin Mall →",ja:"抖音モールで購入 →",es:"Comprar en Douyin Mall →"},
+    "biz-1-title":{zh:"出版合作",en:"Publishing",ja:"出版提携",es:"Publicaciones"},
+    "biz-1-desc":{zh:"已出版 6 本，另有待出版与撰写中作品。",en:"Six books published, with more forthcoming and in preparation.",ja:"既刊6冊。ほかに刊行予定・執筆中の作品あり。",es:"Seis libros publicados, con más obras próximas y en preparación."},
+    "biz-2-title":{zh:"媒体与商务联系",en:"Media & Business",ja:"メディア・ビジネスのお問い合わせ",es:"Prensa y Negocios"},
+    "biz-2-desc":{zh:"请通过微信公众号“兔儿神胡天保”或 Instagram @luoyancan 联系。",en:"Please contact us via the WeChat Official Account “兔儿神胡天保” or Instagram @luoyancan.",ja:"WeChat公式アカウント「兔儿神胡天保」または Instagram @luoyancan よりお問い合わせください。",es:"Póngase en contacto a través de la cuenta oficial de WeChat \"兔儿神胡天保\" o en Instagram @luoyancan."},
+    "foot-archive":{zh:"档案",en:"Archive",ja:"アーカイブ",es:"Archivo"},
+    "foot-books":{zh:"全部著作",en:"All Books",ja:"全著作",es:"Todos los libros"},
+    "books-h1":{zh:"著作",en:"Books",ja:"著作",es:"Libros"},
+    "books-sec-pub":{zh:"已出版",en:"Published",ja:"既刊",es:"Publicados"},
+    "books-foot-bio":{zh:"完整履历 →",en:"Full Biography →",ja:"全経歴を見る →",es:"Biografía completa →"},
+    "books-foot-faq":{zh:"常见问题 →",en:"FAQ →",ja:"よくある質問 →",es:"Preguntas frecuentes →"},
+    "books-search-ph":{zh:"搜书名、ISBN、问题…",en:"Search titles, ISBNs, questions…",ja:"書名・ISBN・質問を検索…",es:"Buscar títulos, ISBN, preguntas…"},
+    "faq-h1":{zh:"常见问题 · FAQ — 罗文杰炎灿 (Roma Luo)",en:"FAQ — Roma Luo",ja:"よくある質問 · FAQ — 罗文杰炎灿 (Roma Luo)",es:"FAQ — Roma Luo"},
+    "faq-intro":{zh:"以下为关于罗文杰炎灿及其图书的常见问题。Frequently asked questions about Roma Luo (罗文杰炎灿) and his books.",en:"Frequently asked questions about Roma Luo and his books.",ja:"罗文杰炎灿およびその著作に関するよくあるご質問。",es:"Preguntas frecuentes sobre Roma Luo y sus libros."},
+    "faq-search-ph":{zh:"搜书名、ISBN、问题…",en:"Search titles, ISBNs, questions…",ja:"書名・ISBN・質問を検索…",es:"Buscar títulos, ISBN, preguntas…"},
+    "faq-q1":{zh:"Who is Roma Luo? / 罗文杰炎灿是谁？",en:"Who is Roma Luo?",ja:"Roma Luo（羅文杰炎燦）とは？",es:"¿Quién es Roma Luo?"},
+    "faq-q2":{zh:"What books has Roma Luo written? / Roma Luo 写过哪些书？",en:"What books has Roma Luo written?",ja:"Roma Luo の著書にはどのようなものがありますか？",es:"¿Qué libros ha escrito Roma Luo?"},
+    "faq-q3":{zh:"Where can I buy the books? / 在哪里可以购买这些书？",en:"Where can I buy the books?",ja:"書籍はどこで購入できますか？",es:"¿Dónde puedo comprar los libros?"},
+    "faq-q4":{zh:"What are the three sacred dates of the Rabbit God? / 兔儿神三个日子是哪三天？",en:"What are the three sacred dates of the Rabbit God?",ja:"兔儿神の「三つの聖日」とはいつのことですか？",es:"¿Cuáles son las tres fechas sagradas del Dios Conejo?"},
+    "faq-q5":{zh:"What is the Rabbit God Calendar? / 什么是兔儿神日历？",en:"What is the Rabbit God Calendar?",ja:"《兔儿神日历》とは何ですか？",es:"¿Qué es el calendario del Dios Conejo?"},
+    "nav-home":{zh:"首页",en:"Home",ja:"ホーム",es:"Inicio"},
+    "nav-books":{zh:"著作",en:"Books",ja:"著作",es:"Libros"},
+    "nav-film":{zh:"影视",en:"Film & TV",ja:"映画・映像",es:"Cine y TV"},
+    "nav-ads":{zh:"广告",en:"Advertising",ja:"広告",es:"Publicidad"},
+    "nav-magazine":{zh:"杂志",en:"Magazine",ja:"雑誌",es:"Revista"},
+    "nav-gallery":{zh:"图集",en:"Gallery",ja:"ギャラリー",es:"Galería"},
+    "nav-bio":{zh:"履历",en:"Biography",ja:"経歴",es:"Biografía"},
+    "nav-faq":{zh:"常见问题",en:"FAQ",ja:"よくある質問",es:"FAQ"},
+    "nav-fragrance":{zh:"炎灿香氛",en:"Yancan Fragrance",ja:"炎灿 フレグランス",es:"Fragancia Yancan"},
+    "nav-menu":{zh:"目录",en:"Menu",ja:"メニュー",es:"Menú"},
+    "film-h1":{zh:"影视",en:"Film & TV",ja:"映画・映像",es:"Cine y Televisión"},
+    "film-h2-underground":{zh:"《地下香》",en:"Underground Fragrance",ja:"《地下香》",es:"《地下香》"},
+    "film-p-underground":{zh:"2015年，罗文杰跨界大银幕，在影片《地下香》中担纲男主角，饰演“永乐”一角；该片入围第72届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片）。",en:"In 2015, Roma Luo crossed over to the big screen, taking the male lead as Yong Le in Underground Fragrance. The film was selected for the Venice Days section of the 72nd Venice International Film Festival and won the section's Fedeora Best Film award (the award belongs to the film).",ja:"2015年、罗文杰は映画界に進出し、《地下香》で永乐役として主演を務めた。同作は第72回ヴェネチア国際映画祭「ヴェネチア・デイズ」部門に選出され、同部門のFedeora最優秀作品賞を受賞した（賞は映画作品のものです）。",es:"En 2015, Roma Luo dio el salto a la gran pantalla interpretando al protagonista Yong Le en la película Underground Fragrance. La cinta fue seleccionada para la sección Venice Days del 72.° Festival Internacional de Cine de Venecia y ganó el premio Fedeora a la mejor película de la sección (el premio pertenece a la película)."},
+    "film-video-cap":{zh:"2016 年第 18 届台北电影节官方预告",en:"Official trailer, 18th Taipei Film Festival, 2016",ja:"2016年 第18回台北映画祭公式予告編",es:"Tráiler oficial, 18.° Festival de Cine de Taipéi, 2016"},
+    "film-meta":{zh:"2015 年，DCP，彩色，75 分钟，法国 / 中国。导演鹏飞，罗文杰饰演北漂青年永乐。影片入围第 72 届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片），并获 2015 年芝加哥国际电影节金雨果最佳影片奖，入围釜山影展。",en:"2015. DCP, colour, 75 min, France / China. Directed by Peng Fei; Roma Luo plays Yong Le, a young drifter in Beijing. The film was selected for the Venice Days section of the 72nd Venice International Film Festival and won the section's Fedeora Best Film award (the award belongs to the film), won the Gold Hugo for Best Film at the 2015 Chicago International Film Festival, and was selected for the Busan International Film Festival.",ja:"2015年、DCP、カラー、75分、フランス / 中国。監督は鹏飞、罗文杰は北漂の青年・永乐を演じた。同作は第72回ヴェネチア国際映画祭「ヴェネチア・デイズ」部門に選出され、同部門のFedeora最優秀作品賞を受賞し（賞は映画作品のものです）、2015年シカゴ国際映画祭で金雨果最優秀作品賞を受賞、釜山国際映画祭にも出品された。",es:"2015. DCP, color, 75 min, Francia / China. Dirigida por Peng Fei; Roma Luo interpreta a Yong Le, un joven vagabundo en Pekín. La película fue seleccionada para la sección Venice Days del 72.° Festival Internacional de Cine de Venecia y ganó el premio Fedeora a la mejor película de la sección (el premio pertenece a la película), obtuvo el Hugo de Oro a la mejor película en el Festival Internacional de Cine de Chicago de 2015 y fue seleccionada para el Festival Internacional de Cine de Busan."},
+    "film-h2-talkshow":{zh:"《今晚80后脱口秀》",en:"Tonight's Post-80s Talk Show",ja:"《今晚80后脱口秀》",es:"《今晚80后脱口秀》"},
+    "film-p-talkshow":{zh:"罗文杰曾参与《今晚80后脱口秀》。",en:"Roma Luo appeared on Tonight's Post-80s Talk Show.",ja:"罗文杰は《今晚80后脱口秀》に出演した。",es:"Roma Luo apareció en Tonight's Post-80s Talk Show."},
+    "film-h2-venice":{zh:"威尼斯 · 2015",en:"Venice · 2015",ja:"ヴェネチア · 2015",es:"Venecia · 2015"},
+    "film-cap-redcarpet":{zh:"2015年威尼斯电影节红毯",en:"Red carpet, Venice Film Festival 2015",ja:"2015年ヴェネチア国際映画祭 レッドカーペット",es:"Alfombra roja, Festival de Cine de Venecia 2015"},
+    "film-cap-photocall":{zh:"2015年威尼斯电影节拍照环节",en:"Photocall, Venice Film Festival 2015",ja:"2015年ヴェネチア国際映画祭 フォトコール",es:"Sesión fotográfica, Festival de Cine de Venecia 2015"},
+    "film-cap-still":{zh:"《地下香》剧照",en:"Still from Underground Fragrance",ja:"《地下香》劇中スチール",es:"Fotograma de Underground Fragrance"},
+    "film-meta-photos":{zh:"照片点开放大。更多影视剧照与视频陆续补充。",en:"Tap a photo to enlarge. More stills and videos coming soon.",ja:"写真をクリックすると拡大表示されます。スチールや映像は順次追加予定です。",es:"Toca una foto para ampliarla. Próximamente más fotogramas y vídeos."},
+    "film-nav-home":{zh:"← 返回首页",en:"← Back to Home",ja:"← ホームに戻る",es:"← Volver al Inicio"},
+    "film-nav-ads":{zh:"广告 →",en:"Advertising →",ja:"広告 →",es:"Publicidad →"},
+    "film-nav-mag":{zh:"杂志 →",en:"Magazine →",ja:"雑誌 →",es:"Revistas →"},
+    "film-lightbox-close":{zh:"关闭",en:"Close",ja:"閉じる",es:"Cerrar"},
+    "mag-h1":{zh:"杂志",en:"Magazine",ja:"雑誌",es:"Revista"},
+    "mag-lead":{zh:"Magazine · 时尚杂志",en:"Magazine",ja:"マガジン",es:"Revista"},
+    "mag-intro":{zh:"罗文杰频繁亮相 GQ、时尚先生、时尚芭莎等顶尖时尚杂志。",en:"Roma Luo frequently appears in top fashion magazines such as GQ, Esquire and Harper's Bazaar.",ja:"罗文杰は GQ、时尚先生、时尚芭莎などのトップファッション誌にたびたび登場している。",es:"Roma Luo aparece frecuentemente en revistas de moda de primer nivel como GQ, Esquire y Harper's Bazaar."},
+    "mag-sec-list":{zh:"杂志",en:"Magazines",ja:"雑誌",es:"Revistas"},
+    "mag-list-1":{zh:"GQ",en:"GQ",ja:"GQ",es:"GQ"},
+    "mag-list-2":{zh:"时尚先生",en:"时尚先生",ja:"时尚先生",es:"时尚先生"},
+    "mag-list-3":{zh:"时尚芭莎",en:"时尚芭莎",ja:"时尚芭莎",es:"时尚芭莎"},
+    "mag-list-4":{zh:"时尚芭莎男士版",en:"时尚芭莎男士版",ja:"时尚芭莎男士版",es:"时尚芭莎男士版"},
+    "mag-sec-gallery":{zh:"组图",en:"Photo Sets",ja:"写真ギャラリー",es:"Galerías"},
+    "mag-ph":{zh:"杂志组图待补充",en:"Magazine photos coming soon",ja:"雑誌の写真は近日追加予定",es:"Fotos de revistas próximamente"},
+    "mag-meta":{zh:"杂志组图陆续上线，敬请期待。",en:"Magazine photo sets will be published here as they arrive — stay tuned.",ja:"雑誌の写真は順次公開予定です。どうぞお楽しみに。",es:"Las galerías de fotos de revistas se publicarán aquí a medida que estén disponibles; manténgase atento."},
+    "mag-nav-home":{zh:"← 返回首页",en:"← Back to Home",ja:"← ホームに戻る",es:"← Volver al inicio"},
+    "mag-nav-film":{zh:"影视 →",en:"Film & TV →",ja:"映画・映像 →",es:"Cine y Televisión →"},
+    "mag-nav-ads":{zh:"广告 →",en:"Advertising →",ja:"広告 →",es:"Publicidad →"}
   };
   var HTML_KEYS={"home-manifesto":1,"sys-3-desc":1};
   function ycGetLang(){try{return localStorage.getItem('yc-lang')||'zh';}catch(e){return 'zh';}}
@@ -444,7 +457,7 @@
     var wrap=document.createElement('div');
     wrap.className='yc-lang-switch'+(extraCls?' '+extraCls:'');
     wrap.setAttribute('role','group');
-    wrap.setAttribute('aria-label','Language / 语言 / 言語');
+    wrap.setAttribute('aria-label','Language / 语言 / 言語 / Idioma');
     LANGS.forEach(function(l){
       var btn=document.createElement('button');
       btn.type='button';
@@ -456,9 +469,49 @@
     });
     return wrap;
   }
+  function ycBuildLangDropdown(){
+    var wrap=document.createElement('div');
+    wrap.className='yc-lang-dropdown';
+    var btn=document.createElement('button');
+    btn.type='button';
+    btn.className='yc-lang-dropbtn';
+    btn.setAttribute('aria-haspopup','true');
+    btn.setAttribute('aria-expanded','false');
+    var lbl=document.createElement('span');
+    lbl.textContent='语言';
+    var caret=document.createElement('span');
+    caret.className='yc-lang-caret';
+    caret.setAttribute('aria-hidden','true');
+    caret.textContent='▾';
+    btn.appendChild(lbl);
+    btn.appendChild(caret);
+    var menu=document.createElement('div');
+    menu.className='yc-lang-menu';
+    menu.setAttribute('role','menu');
+    LANGS.forEach(function(l){
+      var b=document.createElement('button');
+      b.type='button';
+      b.className='yc-lang-opt';
+      b.setAttribute('data-yc-lang-btn',l);
+      b.setAttribute('aria-pressed','false');
+      b.setAttribute('role','menuitem');
+      b.textContent=LABELS[l];
+      b.addEventListener('click',function(){ycSetLang(l);closeDrop();});
+      menu.appendChild(b);
+    });
+    function closeDrop(){wrap.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    btn.addEventListener('click',function(e){e.stopPropagation();var open=wrap.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});
+    document.addEventListener('click',function(e){if(!wrap.contains(e.target))closeDrop();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrop();});
+    wrap.appendChild(btn);
+    wrap.appendChild(menu);
+    return wrap;
+  }
   document.addEventListener('DOMContentLoaded',function(){
-    var toggle=document.querySelector('.theme-toggle');
-    if(toggle&&toggle.parentNode){toggle.parentNode.insertBefore(ycBuildSwitcher(),toggle);}
+    var headerInner=document.querySelector('.site-header-inner');
+    var langDrop=ycBuildLangDropdown();
+    if(headerInner){headerInner.insertBefore(langDrop,headerInner.firstChild);}
+    else{var tg=document.querySelector('.theme-toggle');if(tg&&tg.parentNode){tg.parentNode.insertBefore(langDrop,tg);}}
     var btn=document.createElement('button');
     btn.className='yc-menu-btn';
     btn.type='button';
