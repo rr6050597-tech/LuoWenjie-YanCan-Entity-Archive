@@ -50,6 +50,12 @@ permalink: /gallery/
   <img src="/visual_assets/magazine/photo-203.jpg" alt="" loading="lazy" decoding="async">
   <img src="/visual_assets/magazine/photo-236.jpg" alt="" loading="lazy" decoding="async">
   <img src="/visual_assets/sohu-2022-fengshangzhi/sohu-2022-fengshangzhi-04.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/fashion-flash/fashion-flash-01.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/fashion-flash/fashion-flash-02.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/fashion-flash/fashion-flash-03.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/fashion-flash/fashion-flash-04.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/fashion-flash/fashion-flash-06.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/fashion-flash/fashion-flash-07.jpg" alt="" loading="lazy" decoding="async">
 </div>
 <div class="gallery-gap"></div>
 <div class="gallery-grid">
