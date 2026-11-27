@@ -7,8 +7,8 @@ permalink: /
 <style>
 .home{max-width:760px;margin:0 auto}
 /* —— 第一屏：品牌视觉（黑白肖像全幅） —— */
-.hero-full{position:relative;margin:0 -24px;padding:0;background:#F7F5F0;border-radius:12px;overflow:hidden}
-.hero-full .hero-img{display:block;width:100%;height:78vh;min-height:520px;object-fit:cover;object-position:center 18%}
+.hero-full{position:relative;margin:0 -24px;padding:0;background:#F7F5F0;border:1px solid #e6e1d6;border-radius:28px;overflow:hidden;box-shadow:0 10px 32px rgba(44,44,44,.08)}
+.hero-full .hero-img{display:block;width:100%;height:62vh;min-height:400px;object-fit:cover;object-position:center 18%;will-change:transform}
 .hero-full .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.06) 45%,rgba(255,255,255,.78) 100%)}
 .hero-full .hero-copy{position:absolute;left:0;right:0;bottom:0;padding:0 24px 34px;color:#2C2C2C;text-align:center}
 .hero-full .hero-copy .hero-en{font-size:15px;letter-spacing:.5em;text-transform:uppercase;color:#2C2C2C;margin:0 0 10px;text-indent:.5em}
@@ -27,8 +27,8 @@ permalink: /
 /* —— 四大体系 —— */
 .sys-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:560px){.sys-grid{grid-template-columns:1fr}}
-.sys-card{display:block;text-decoration:none;color:#F7F5F0;border:1px solid #2C2C2C;background:#2C2C2C;padding:22px 20px 18px;border-radius:16px}
-.sys-card.sys-red{background:#6E1B1B;border-color:#6E1B1B}
+.sys-card{display:block;text-decoration:none;color:#F7F5F0;border:1px solid rgba(255,255,255,.22);background:rgba(44,44,44,.78);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);padding:22px 20px 18px;border-radius:16px;box-shadow:0 8px 24px rgba(44,44,44,.10),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(255,255,255,.06)}
+.sys-card.sys-red{background:rgba(110,27,27,.72);border-color:rgba(255,255,255,.22)}
 .sys-card.sys-gold{background:#F7F5F0;color:#2C2C2C;border-color:#e6e1d6}
 .sys-card .sys-en{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#C5A059;margin:0 0 8px}
 .sys-card.sys-gold .sys-en{color:#C5A059}
@@ -204,3 +204,21 @@ permalink: /
 <p class="home-foot"><a href="/archive/" data-i18n="foot-archive">档案</a> · <a href="/books/" data-i18n="foot-books">全部著作</a></p>
 
 </div>
+
+<script>
+/* 首页主视觉：随滚动轻轻缩放（克制优雅，transform 只影响图片本身，不动排版） */
+(function(){
+  var img=document.querySelector('.hero-full .hero-img');
+  if(!img)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var hero=img.closest('.hero-full');var ticking=false;
+  function update(){
+    ticking=false;
+    var h=(hero&&hero.offsetHeight)||1;
+    var p=Math.min(Math.max(window.scrollY/h,0),1);
+    img.style.transform='scale('+(1+p*0.07).toFixed(3)+')';
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  update();
+})();
+</script>
