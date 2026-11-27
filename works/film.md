@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 影视 — 罗文杰炎灿 | Roma Luo
-description: 罗文杰炎灿影视作品：电影《地下香》（2015，主演永乐）与《今晚80后脱口秀》，附 2015 年威尼斯影像。
+description: 罗文杰炎灿影视作品：自导自演沙漠微电影《神不渡我》（2026）、电影《地下香》（2015，主演永乐）与《今晚80后脱口秀》，附 2015 年威尼斯影像。
 permalink: /works/film/
 ---
 
@@ -30,6 +30,15 @@ permalink: /works/film/
 <div class="works-page">
 
 <h1 data-i18n="film-h1">影视</h1>
+
+<h2 data-i18n="film-h2-shenbuduwo">《神不渡我》</h2>
+
+<p data-i18n="film-p-shenbuduwo">2026年，罗文杰炎灿自导自演沙漠个人微电影《神不渡我》，全片自述旁白。神不渡我，我自渡。倒下，醒来，行走，抵达。</p>
+
+<div class="video-embed"><video controls preload="metadata" src="/assets/videos/desert-film.mp4" title="神不渡我 │ 罗文杰炎灿自导自演沙漠微电影"></video></div>
+<p class="video-cap" data-i18n="film-video-cap-shenbuduwo">2026 年 · 沙漠个人微电影 · 3分25秒 · 自导自演 · 自述旁白</p>
+
+<p class="work-meta" data-i18n="film-meta-shenbuduwo">2026 年，彩色，3分25秒。导演、主演、旁白：罗文杰炎灿。神不渡我，我自渡。</p>
 
 <h2 data-i18n="film-h2-underground">《地下香》</h2>
 
