@@ -120,7 +120,7 @@ permalink: /
 <div class="works-grid">
   <a class="work-card" href="/works/magazine/">
     <div class="work-card-dark">
-      <img src="/visual_assets/magazine-esquire-hero/esquire-barefoot-red-velvet.jpg" alt="罗文杰炎灿时尚大片" loading="lazy" decoding="async">
+      <img src="/visual_assets/fashion-flash/fashion-flash-05.jpg" alt="罗文杰炎灿时尚大片" loading="lazy" decoding="async">
       <div class="wk-text">
         <p class="wk-en">Fashion Editorial</p>
         <p class="wk-title" data-i18n="wk-fashion-title">个人时尚大片</p>
