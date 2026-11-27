@@ -8,12 +8,11 @@ permalink: /works/film/
 <style>
 .works-page{max-width:760px;margin:0 auto}
 .works-page h1{font-family:"Songti SC","Noto Serif SC",serif;font-size:30px;color:#2C2C2C;margin:8px 0 6px;font-weight:600}
-.works-page .works-lead{font-size:15px;color:#8a8578;margin:0 0 8px}
 .works-page h2{font-family:"Songti SC","Noto Serif SC",serif;font-size:21px;margin:36px 0 12px;color:#2C2C2C;border-bottom:1px solid #e6e1d6;padding-bottom:8px;font-weight:600}
 .works-page p{font-size:16px;line-height:2.0;color:#2C2C2C}
 .works-page .work-meta{font-size:14px;color:#8a8578;line-height:1.9}
 .video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:16px 0;background:#000}
-.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.video-embed video{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .video-cap{font-size:14px;color:#8a8578;line-height:1.9;margin:0 0 8px}
 .video-cap a{color:#2C2C2C;text-decoration:underline}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
@@ -30,38 +29,36 @@ permalink: /works/film/
 
 <div class="works-page">
 
-# 影视
+<h1 data-i18n="film-h1">影视</h1>
 
-<p class="works-lead">Film &amp; TV · 电影与电视作品</p>
+<h2 data-i18n="film-h2-underground">《地下香》</h2>
 
-## 《地下香》
+<p data-i18n="film-p-underground">2015年，罗文杰跨界大银幕，在影片《地下香》中担纲男主角，饰演“永乐”一角；该片入围第72届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片）。</p>
 
-2015年，罗文杰跨界大银幕，在影片《地下香》中担纲男主角，饰演“永乐”一角；该片入围第72届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片）。
+<div class="video-embed"><video controls preload="metadata" src="/assets/videos/underground-fragrance-trailer.mp4" title="2016台北电影节官方预告 │ 地下香 Underground Fragrance"></video></div>
+<p class="video-cap" data-i18n="film-video-cap">2016 年第 18 届台北电影节官方预告</p>
 
-<div class="video-embed"><iframe src="https://www.youtube.com/embed/89crwGblfrA" title="2016台北電影節 │ 地下香 Underground Frangrance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-<p class="video-cap">2016 年第 18 届台北电影节官方预告（页面标题原样：「2016台北電影節 │ 地下香 Underground Frangrance」）· <a href="https://youtu.be/89crwGblfrA" target="_blank" rel="noopener">在 YouTube 上观看</a></p>
+<p class="work-meta" data-i18n="film-meta">2015 年，DCP，彩色，75 分钟，法国 / 中国。导演鹏飞，罗文杰饰演北漂青年永乐。影片入围第 72 届威尼斯电影节“威尼斯日”单元，并获该单元 Fedeora 最佳影片奖（奖项属于影片），并获 2015 年芝加哥国际电影节金雨果最佳影片奖，入围釜山影展。</p>
 
-<p class="work-meta">电影 · 2015 · DCP · 彩色 · 75分钟 · 法国 / 中国<br>导演：鹏飞 · 罗文杰饰演北漂青年永乐<br>2015 威尼斯影展威尼斯日最佳影片 · 2015 芝加哥影展青年导演最佳影片 · 2015 釜山影展<br>第72届威尼斯电影节“威尼斯日”单元入围，并获该单元 Fedeora 最佳影片奖（奖项属于影片）</p>
+<h2 data-i18n="film-h2-talkshow">《今晚80后脱口秀》</h2>
 
-## 《今晚80后脱口秀》
+<p data-i18n="film-p-talkshow">罗文杰曾参与《今晚80后脱口秀》。</p>
 
-罗文杰曾参与《今晚80后脱口秀》。
-
-## 威尼斯 · 2015
+<h2 data-i18n="film-h2-venice">威尼斯 · 2015</h2>
 
 <div class="gallery-grid">
-  <figure><img src="/visual_assets/venice-2015/luo-wenjie-venice-red-carpet-2015.jpg" alt="2015年威尼斯电影节红毯，罗文杰炎灿"><figcaption>2015年威尼斯电影节红毯</figcaption></figure>
-  <figure><img src="/visual_assets/venice-2015/luo-wenjie-venice-2015-photocall.jpg" alt="2015年威尼斯电影节拍照环节，罗文杰炎灿"><figcaption>2015年威尼斯电影节拍照环节</figcaption></figure>
-  <figure><img src="/visual_assets/venice-2015/luo-wenjie-underground-fragrance-film-still.jpg" alt="电影《地下香》剧照"><figcaption>《地下香》剧照</figcaption></figure>
+  <figure><img src="/visual_assets/venice-2015/luo-wenjie-venice-red-carpet-2015.jpg" alt="2015年威尼斯电影节红毯，罗文杰炎灿"><figcaption data-i18n="film-cap-redcarpet">2015年威尼斯电影节红毯</figcaption></figure>
+  <figure><img src="/visual_assets/venice-2015/luo-wenjie-venice-2015-photocall.jpg" alt="2015年威尼斯电影节拍照环节，罗文杰炎灿"><figcaption data-i18n="film-cap-photocall">2015年威尼斯电影节拍照环节</figcaption></figure>
+  <figure><img src="/visual_assets/venice-2015/luo-wenjie-underground-fragrance-film-still.jpg" alt="电影《地下香》剧照"><figcaption data-i18n="film-cap-still">《地下香》剧照</figcaption></figure>
 </div>
 
-<p class="work-meta">照片点开放大。更多影视剧照与视频陆续补充。</p>
+<p class="work-meta" data-i18n="film-meta-photos">照片点开放大。更多影视剧照与视频陆续补充。</p>
 
-<p class="works-nav"><a href="/">← 返回首页</a> · <a href="/works/ads/">广告 →</a> · <a href="/works/magazine/">杂志 →</a></p>
+<p class="works-nav"><a href="/" data-i18n="film-nav-home">← 返回首页</a> · <a href="/works/ads/" data-i18n="film-nav-ads">广告 →</a> · <a href="/works/magazine/" data-i18n="film-nav-mag">杂志 →</a></p>
 
 </div>
 
-<div class="lightbox" id="lightbox" hidden><img id="lightbox-img" alt=""><button id="lightbox-close" type="button">关闭</button></div>
+<div class="lightbox" id="lightbox" hidden><img id="lightbox-img" alt=""><button id="lightbox-close" type="button" data-i18n="film-lightbox-close">关闭</button></div>
 <script>
 (function(){
   var box=document.getElementById('lightbox');

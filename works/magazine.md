@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 杂志 — 罗文杰炎灿 | Roma Luo
-description: 罗文杰炎灿杂志：《GQ》《时尚先生》《时尚芭莎》与《时尚芭莎》男士版等时尚杂志。
+description: 罗文杰炎灿杂志：GQ、时尚先生、时尚芭莎与时尚芭莎男士版等时尚杂志。
 permalink: /works/magazine/
 ---
 
@@ -22,32 +22,32 @@ permalink: /works/magazine/
 
 <div class="works-page">
 
-# 杂志
+<h1 data-i18n="mag-h1">杂志</h1>
 
-<p class="works-lead">Magazine · 时尚杂志</p>
+<p class="works-lead" data-i18n="mag-lead">Magazine · 时尚杂志</p>
 
-罗文杰频繁亮相《GQ》《时尚先生》《时尚芭莎》等顶尖时尚杂志。
+<p data-i18n="mag-intro">罗文杰频繁亮相 GQ、时尚先生、时尚芭莎等顶尖时尚杂志。</p>
 
-## 杂志
+<h2 data-i18n="mag-sec-list">杂志</h2>
 
 <ul class="mag-list">
-  <li>《GQ》</li>
-  <li>《时尚先生》</li>
-  <li>《时尚芭莎》</li>
-  <li>《时尚芭莎》男士版</li>
+  <li data-i18n="mag-list-1">GQ</li>
+  <li data-i18n="mag-list-2">时尚先生</li>
+  <li data-i18n="mag-list-3">时尚芭莎</li>
+  <li data-i18n="mag-list-4">时尚芭莎男士版</li>
 </ul>
 
-## 组图
+<h2 data-i18n="mag-sec-gallery">组图</h2>
 
 <div class="grid-ph">
-  <div class="ph">杂志组图待补充</div>
-  <div class="ph">杂志组图待补充</div>
-  <div class="ph">杂志组图待补充</div>
-  <div class="ph">杂志组图待补充</div>
+  <div class="ph" data-i18n="mag-ph">杂志组图待补充</div>
+  <div class="ph" data-i18n="mag-ph">杂志组图待补充</div>
+  <div class="ph" data-i18n="mag-ph">杂志组图待补充</div>
+  <div class="ph" data-i18n="mag-ph">杂志组图待补充</div>
 </div>
 
-<p class="work-meta">杂志组图陆续上线，敬请期待。</p>
+<p class="work-meta" data-i18n="mag-meta">杂志组图陆续上线，敬请期待。</p>
 
-<p class="works-nav"><a href="/">← 返回首页</a> · <a href="/works/film/">影视 →</a> · <a href="/works/ads/">广告 →</a></p>
+<p class="works-nav"><a href="/" data-i18n="mag-nav-home">← 返回首页</a> · <a href="/works/film/" data-i18n="mag-nav-film">影视 →</a> · <a href="/works/ads/" data-i18n="mag-nav-ads">广告 →</a></p>
 
 </div>
