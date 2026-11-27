@@ -6,108 +6,6 @@
 # - 平台链接：只用已核实的 URL。四个已删的豆瓣图书条目绝不出现。
 # - 封面：只有兔儿神3（中/英）、高岛易断、药师经四张；其余留空。
 # - 书名、ISBN、出版状态以此文件为准；改状态只改这里，首页与详情页自动同步。
-
-- id: tu-er-shen
-  slug: tu-er-shen
-  title: 《兔儿神》
-  en_title: "The Rabbit God: The Long Pilgrimage and Return of the Soul"
-  status: published
-  status_label: 已出版
-  isbn: "9798192440322"
-  published: 2026年8月
-  desc: 兔儿神系列开篇，讲回家。一个关于回家的故事：深夜对话，清代胡天保民间传说，写孤独、接纳与找回自己。
-  author_note: 写下《兔儿神》，最初只是源于深夜里对自我、欲望与人间执念的不断追问。我希望借由一场跨越时空与身份的对话，剥开世俗标签的裹挟，去触碰人性最本真、也最脆弱的角落。这不仅是一次关于古老传说与现代灵魂的碰撞，更是一场写给所有在迷茫中寻找自我之人的心灵独白。愿你在这些对话里，照见自己的影子，也获得一份直面内心的坦然与力量。
-  author_note_source: 豆瓣阅读作者自述
-  cover: /assets/covers/tu-er-shen.jpg
-  read_zh:
-    - format: web
-      file: /books/tu-er-shen/read/
-      label: 中文版 · 网页章节
-    - format: pdf
-      file: /assets/books/pdf/tu-er-shen.pdf
-      label: 中文版 · 印刷版 PDF
-    - format: pdf
-      file: /assets/books/pdf/tu-er-shen-full.pdf
-      label: 中文版 · PDF（A4 版）
-  read_en: null
-  audio: null
-  platforms:
-    - name: 豆瓣阅读 · 《兔儿神》
-      url: https://read.douban.com/ebook/739683426/
-    - name: 亚马逊纸质版
-      url: https://www.amazon.com/dp/B0HFCNFJ4J
-
-- id: tu-er-shen-2
-  slug: tu-er-shen-2
-  title: 《兔儿神2：无墙之庙》
-  en_title: "The Rabbit God Book Two: The Temple Without Walls"
-  status: published
-  status_label: 已出版
-  isbn: "9798160539331"
-  published: 2026年10月
-  desc: 神住下来了，人也住下来了。无墙之庙，写安放与接纳。
-  author_note: null
-  cover: /assets/covers/tu-er-shen-2.jpg
-  read_zh: null
-  read_en:
-    - format: pdf
-      file: /assets/books/pdf/tu-er-shen-2.pdf
-      label: 英文版 · 印刷版 PDF
-  audio: null
-  platforms:
-    - name: 豆瓣阅读 · 兔儿神2（英文版）
-      url: https://read.douban.com/ebook/826383725/
-    - name: 亚马逊纸质版
-      url: https://www.amazon.com/dp/B0HM6QJDS2
-
-- id: tu-er-shen-3
-  slug: tu-er-shen-3
-  title: 《兔儿神3：身后之事》
-  en_title: "The Rabbit God Book Three: What Survives Us"
-  status: published
-  status_label: 已出版
-  isbn: "9798198098343"
-  published: 2026年10月
-  desc: 人住进来之后。教导离开传授者之手，三卷十八章：接过、长成、承继。
-  author_note: 书里写的是身后与归处，落笔时却常回望人间日常。把神明、香火与人心放在一起看，生死不是断裂，而是换一种方式照见彼此。写完这一卷，少了几分执念，多了几分从容。
-  author_note_source: 豆瓣阅读作者自述
-  cover_en: /assets/covers/tu-er-shen-3-en.jpg
-  cover_zh: /assets/covers/tu-er-shen-3-zh.jpg
-  cover: null
-  read_zh: null
-  read_en:
-    - format: web
-      file: /books/tu-er-shen-3/read/
-      label: 英文版 · 网页章节
-    - format: pdf
-      file: /assets/books/pdf/tu-er-shen-3.pdf
-      label: 英文版 · 印刷版 PDF
-  audio: null
-  platforms:
-    - name: 豆瓣阅读专栏
-      url: https://read.douban.com/column/80211707/
-    - name: 豆瓣阅读 · 《兔儿神3：身后之事》
-      url: https://read.douban.com/ebook/829975831/
-
-- id: dialogues
-  slug: dialogues
-  title: 《与兔儿神对话》
-  en_title: "DIALOGUES WITH TU'ER SHEN"
-  status: published
-  status_label: 已出版
-  isbn: "9798160527109"
-  published: null
-  desc: 十八个夜晚的对话。DIALOGUES WITH TU'ER SHEN，对坐长谈。
-  author_note: null
-  cover: /assets/covers/dialogues.jpg
-  read_zh: null
-  read_en:
-    - format: pdf
-      file: /assets/books/pdf/dialogues.pdf
-      label: 英文版 · 印刷版 PDF
-  audio: null
-  platforms: null
-
 - id: gaodao-yiduan
   slug: gaodao-yiduan
   title: 《罗文杰讲高岛易断》
@@ -138,7 +36,6 @@
       url: https://www.amazon.com/dp/B0HSVVHS6Q
     - name: 亚马逊 Kindle 电子版
       url: https://www.amazon.com/dp/B0HKD4YVF8
-
 - id: yaoshijing
   slug: yaoshijing
   title: 《罗文杰讲药师经》
@@ -175,7 +72,6 @@
       url: https://www.amazon.com/dp/B0HSVMRMX5
     - name: 亚马逊 Kindle 电子版
       url: https://www.amazon.com/dp/B0H4XH9XMQ
-
 - id: shaman
   slug: shaman
   title: 《罗文杰讲萨满》
@@ -184,7 +80,7 @@
   status_label: 已完稿，待出版
   isbn: null
   published: null
-  desc: 三卷本。上册世界角度，中册中国角度，下册与宗教的渊源。
+  desc: 三卷本。上册世界角度，中册中国角度，下册与宗教的渊源。在线试读前 28%。
   author_note: null
   cover: /assets/covers/shaman-world.jpg
   covers:
@@ -194,18 +90,17 @@
       label: 宗教篇
   read_zh:
     - format: pdf
-      file: /assets/books/pdf/shaman-world.pdf
-      label: 上卷 · 世界
+      file: /assets/books/pdf/shaman-world-preview.pdf
+      label: 上卷 · 世界（前 28% 试读）
     - format: pdf
-      file: /assets/books/pdf/shaman-china.pdf
-      label: 中卷 · 中国
+      file: /assets/books/pdf/shaman-china-preview.pdf
+      label: 中卷 · 中国（前 28% 试读）
     - format: pdf
-      file: /assets/books/pdf/shaman-religion.pdf
-      label: 下卷 · 宗教渊源
+      file: /assets/books/pdf/shaman-religion-preview.pdf
+      label: 下卷 · 宗教渊源（前 28% 试读）
   read_en: null
   audio: null
   platforms: null
-
 - id: xianhua
   slug: xianhua
   title: 《罗文杰讲显化》
@@ -227,7 +122,6 @@
   read_en: null
   audio: null
   platforms: null
-
 - id: shinto
   slug: shinto
   title: 《罗文杰讲神道教》
@@ -243,7 +137,148 @@
   read_en: null
   audio: null
   platforms: null
-
+- id: fengshui
+  slug: fengshui
+  title: 《罗文杰讲风水》
+  en_title: null
+  status: planned
+  status_label: 规划中
+  isbn: null
+  published: null
+  desc: 讲系列下一本，规划中。
+  author_note: null
+  cover: null
+  read_zh: null
+  read_en: null
+  audio: null
+  platforms: null
+- id: daodejing
+  slug: daodejing
+  title: 《罗文杰讲道德经》
+  en_title: null
+  status: planned
+  status_label: 规划中
+  isbn: null
+  published: null
+  desc: 风水之后，规划中。
+  author_note: null
+  cover: null
+  read_zh: null
+  read_en: null
+  audio: null
+  platforms: null
+- id: bazi
+  slug: bazi
+  title: 《罗文杰讲八字》
+  en_title: null
+  status: planned
+  status_label: 规划中
+  isbn: null
+  published: null
+  desc: 已确认列入讲系列规划，顺序未定。
+  author_note: null
+  cover: null
+  read_zh: null
+  read_en: null
+  audio: null
+  platforms: null
+- id: tu-er-shen
+  slug: tu-er-shen
+  title: 《兔儿神》
+  en_title: "The Rabbit God: The Long Pilgrimage and Return of the Soul"
+  status: published
+  status_label: 已出版
+  isbn: "9798192440322"
+  published: 2026年8月
+  desc: 兔儿神系列开篇，讲回家。一个关于回家的故事：深夜对话，清代胡天保民间传说，写孤独、接纳与找回自己。
+  author_note: 写下《兔儿神》，最初只是源于深夜里对自我、欲望与人间执念的不断追问。我希望借由一场跨越时空与身份的对话，剥开世俗标签的裹挟，去触碰人性最本真、也最脆弱的角落。这不仅是一次关于古老传说与现代灵魂的碰撞，更是一场写给所有在迷茫中寻找自我之人的心灵独白。愿你在这些对话里，照见自己的影子，也获得一份直面内心的坦然与力量。
+  author_note_source: 豆瓣阅读作者自述
+  cover: /assets/covers/tu-er-shen.jpg
+  read_zh:
+    - format: web
+      file: /books/tu-er-shen/read/
+      label: 中文版 · 网页章节
+    - format: pdf
+      file: /assets/books/pdf/tu-er-shen.pdf
+      label: 中文版 · 印刷版 PDF
+    - format: pdf
+      file: /assets/books/pdf/tu-er-shen-full.pdf
+      label: 中文版 · PDF（A4 版）
+  read_en: null
+  audio: null
+  platforms:
+    - name: 豆瓣阅读 · 《兔儿神》
+      url: https://read.douban.com/ebook/739683426/
+    - name: 亚马逊纸质版
+      url: https://www.amazon.com/dp/B0HFCNFJ4J
+- id: tu-er-shen-2
+  slug: tu-er-shen-2
+  title: 《兔儿神2：无墙之庙》
+  en_title: "The Rabbit God Book Two: The Temple Without Walls"
+  status: published
+  status_label: 已出版
+  isbn: "9798160539331"
+  published: 2026年10月
+  desc: 神住下来了，人也住下来了。无墙之庙，写安放与接纳。
+  author_note: null
+  cover: /assets/covers/tu-er-shen-2.jpg
+  read_zh: null
+  read_en:
+    - format: pdf
+      file: /assets/books/pdf/tu-er-shen-2.pdf
+      label: 英文版 · 印刷版 PDF
+  audio: null
+  platforms:
+    - name: 豆瓣阅读 · 兔儿神2（英文版）
+      url: https://read.douban.com/ebook/826383725/
+    - name: 亚马逊纸质版
+      url: https://www.amazon.com/dp/B0HM6QJDS2
+- id: tu-er-shen-3
+  slug: tu-er-shen-3
+  title: 《兔儿神3：身后之事》
+  en_title: "The Rabbit God Book Three: What Survives Us"
+  status: published
+  status_label: 已出版
+  isbn: "9798198098343"
+  published: 2026年10月
+  desc: 人住进来之后。教导离开传授者之手，三卷十八章：接过、长成、承继。
+  author_note: 书里写的是身后与归处，落笔时却常回望人间日常。把神明、香火与人心放在一起看，生死不是断裂，而是换一种方式照见彼此。写完这一卷，少了几分执念，多了几分从容。
+  author_note_source: 豆瓣阅读作者自述
+  cover_en: /assets/covers/tu-er-shen-3-en.jpg
+  cover_zh: /assets/covers/tu-er-shen-3-zh.jpg
+  cover: null
+  read_zh: null
+  read_en:
+    - format: web
+      file: /books/tu-er-shen-3/read/
+      label: 英文版 · 网页章节
+    - format: pdf
+      file: /assets/books/pdf/tu-er-shen-3.pdf
+      label: 英文版 · 印刷版 PDF
+  audio: null
+  platforms:
+    - name: 豆瓣阅读专栏
+      url: https://read.douban.com/column/80211707/
+    - name: 豆瓣阅读 · 《兔儿神3：身后之事》
+      url: https://read.douban.com/ebook/829975831/
+- id: dialogues
+  slug: dialogues
+  title: 《与兔儿神对话》
+  en_title: "DIALOGUES WITH TU'ER SHEN"
+  status: published
+  status_label: 已出版
+  isbn: "9798160527109"
+  published: null
+  desc: 十八个夜晚的对话。DIALOGUES WITH TU'ER SHEN，对坐长谈。
+  author_note: null
+  cover: /assets/covers/dialogues.jpg
+  read_zh: null
+  read_en:
+    - format: pdf
+      file: /assets/books/pdf/dialogues.pdf
+      label: 英文版 · 印刷版 PDF
+  audio: null
+  platforms: null
 - id: fox-fairy
   slug: fox-fairy
   title: 《兔儿神，把我跟狐仙焊死了》
@@ -268,51 +303,3 @@
     - name: QQ阅读
       url: null
       note: 链接待用户提供
-
-- id: fengshui
-  slug: fengshui
-  title: 《罗文杰讲风水》
-  en_title: null
-  status: planned
-  status_label: 规划中
-  isbn: null
-  published: null
-  desc: 讲系列下一本，规划中。
-  author_note: null
-  cover: null
-  read_zh: null
-  read_en: null
-  audio: null
-  platforms: null
-
-- id: daodejing
-  slug: daodejing
-  title: 《罗文杰讲道德经》
-  en_title: null
-  status: planned
-  status_label: 规划中
-  isbn: null
-  published: null
-  desc: 风水之后，规划中。
-  author_note: null
-  cover: null
-  read_zh: null
-  read_en: null
-  audio: null
-  platforms: null
-
-- id: bazi
-  slug: bazi
-  title: 《罗文杰讲八字》
-  en_title: null
-  status: planned
-  status_label: 规划中
-  isbn: null
-  published: null
-  desc: 已确认列入讲系列规划，顺序未定。
-  author_note: null
-  cover: null
-  read_zh: null
-  read_en: null
-  audio: null
-  platforms: null

@@ -165,3 +165,26 @@
     });
   })();
 </script>
+
+<!-- 2026-11-27 Dior 式滚动动效：区块进入视口时淡入 + 轻微上移（原生 IntersectionObserver，无动画库、无插件） -->
+<style>
+  .yc-reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease-out, transform .7s ease-out; will-change: opacity, transform; }
+  .yc-reveal.yc-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .yc-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+    var targets = document.querySelectorAll(".hero-full, .manifesto, .home-sec, .sys-card, .work-card, .book-card, .tl-item, .prod, .biz-card, .home-foot, .books-grid, .books-list li, .book-covers figure, .book-detail h1, .book-detail h2, .book-desc, .book-meta, .bio-page h2, .bio-page p");
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add("yc-visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    targets.forEach(function(el) { el.classList.add("yc-reveal"); io.observe(el); });
+  });
+</script>
+
