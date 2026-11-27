@@ -79,7 +79,7 @@ permalink: /
 <div class="home">
 
 <div class="hero-full">
-  <img class="hero-img" src="/assets/img/portrait-white-cutout.png" alt="罗文杰炎灿">
+  <img class="hero-img" src="/assets/img/fashion-flash-2026-11-27.gif" alt="罗文杰炎灿时尚快闪" fetchpriority="high" onerror="this.onerror=null;this.src='/assets/img/portrait-white-cutout.png';">
   <div class="hero-veil"></div>
   <div class="hero-copy">
     <p class="hero-en">Roma Luo</p>
@@ -217,6 +217,8 @@ permalink: /
   <a href="https://www.imdb.com/name/nm7587912/" target="_blank" rel="noopener">IMDb</a>
   <a href="https://www.instagram.com/luoyancan/" target="_blank" rel="noopener">Instagram</a>
   <a href="https://www.facebook.com/profile.php?id=61596530016263" target="_blank" rel="noopener">Facebook</a>
+  <a href="https://www.douyin.com/user/MS4wLjABAAAAHw1Jmov3dkm6ieqaQmTibsAKdiS8Ck0QLlcDSIj2zVVc78im497WKOnRPI-hWtD6" target="_blank" rel="noopener">炎灿抖音</a>
+  <a href="https://weibo.com/u/2773030401" target="_blank" rel="noopener">释悟光-龙婆光</a>
   <button type="button" id="yc-wechat-btn">微信公众号</button>
   <a href="https://baike.baidu.com/item/%E7%BD%97%E6%96%87%E6%9D%B0/22678094" target="_blank" rel="noopener">百度百科</a>
   <a href="https://www.douban.com/personage/32568031/" target="_blank" rel="noopener">豆瓣影人</a>

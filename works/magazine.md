@@ -68,6 +68,12 @@ permalink: /works/magazine/
   <img src="/visual_assets/sohu-2022-fengshangzhi/sohu-2022-fengshangzhi-01.jpg" alt="" loading="lazy" decoding="async">
   <img src="/visual_assets/sohu-2022-fengshangzhi/sohu-2022-fengshangzhi-02.jpg" alt="" loading="lazy" decoding="async">
   <img src="/visual_assets/sohu-2022-fengshangzhi/sohu-2022-fengshangzhi-03.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/magazine/photo-011.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/magazine/photo-098.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/magazine/photo-115.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/magazine/photo-197.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/magazine/photo-203.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/magazine/photo-236.jpg" alt="" loading="lazy" decoding="async">
   <img src="/visual_assets/sohu-2022-fengshangzhi/sohu-2022-fengshangzhi-04.jpg" alt="" loading="lazy" decoding="async">
 </div>
 

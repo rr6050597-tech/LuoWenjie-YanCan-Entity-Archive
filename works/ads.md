@@ -21,6 +21,8 @@ permalink: /works/ads/
 .brand-carousel figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
 .brand-carousel figure.active{opacity:1;pointer-events:auto}
 .brand-carousel img{width:100%;height:100%;object-fit:contain;display:block;cursor:zoom-in}
+.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:16px 0}
+.ads-grid img{width:100%;height:auto;display:block;cursor:zoom-in;border:1px solid var(--yc-glass-border);border-radius:8px;box-shadow:var(--yc-glass-shadow-sm)}
 .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--yc-glass-bg-strong);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);color:var(--yc-glass-ink);border:1px solid var(--yc-glass-border);width:40px;height:40px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;z-index:2;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.75)}
 .car-prev{left:10px}
 .car-next{right:10px}
@@ -167,6 +169,23 @@ permalink: /works/ads/
   <p class="car-count">1 / 1</p>
 </div>
 
+<div class="ads-grid">
+  <img src="/visual_assets/ads/photo-025.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-062.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-063.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-128.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-150.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-167.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-185.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-198.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-222.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-232.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-234.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-244.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-248.jpg" alt="" loading="lazy" decoding="async">
+  <img src="/visual_assets/ads/photo-250.jpg" alt="" loading="lazy" decoding="async">
+</div>
+
 <p class="work-meta">更多广告照片陆续补充。</p>
 
 <p class="works-nav"><a href="/">← 返回首页</a> · <a href="/works/film/">影视 →</a> · <a href="/works/magazine/">杂志 →</a></p>
@@ -216,6 +235,9 @@ permalink: /works/ads/
       im.addEventListener('click',function(){ openBox(im.src,im.alt); });
     });
     show(0); start();
+  });
+  document.querySelectorAll('.ads-grid img').forEach(function(im){
+    im.addEventListener('click',function(){ openBox(im.src,im.alt); });
   });
 })();
 </script>
