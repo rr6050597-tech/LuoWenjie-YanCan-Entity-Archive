@@ -40,16 +40,8 @@ permalink: /books/
   <ul id="yc-search-results" class="yc-search-results"></ul>
 </div>
 
-<h2 data-i18n="books-sec-pub">已出版</h2>
-
 <div class="books-grid">
-{% assign _pub = site.data.books | where: "status", "published" %}
-{% for book in _pub %}{% include book-card.html book=book %}{% endfor %}
-</div>
-
-<div class="books-grid">
-{% assign _slugs = "shaman-world,shaman-china,shaman-religion,xianhua,shinto,fox-fairy,fengshui,daodejing,bazi" | split: "," %}
-{% for _slug in _slugs %}{% for b in site.data.books %}{% if b.slug == _slug %}{% include book-card.html book=b %}{% endif %}{% endfor %}{% endfor %}
+{% for book in site.data.books %}{% include book-card.html book=book %}{% endfor %}
 </div>
 
 ---
