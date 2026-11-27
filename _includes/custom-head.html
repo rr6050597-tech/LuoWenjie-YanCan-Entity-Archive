@@ -188,6 +188,69 @@
   });
 </script>
 
+<!-- 2026-11-27 Liquid Glass 体系：透明浅色磨砂玻璃（light/dark 均用浅透明玻璃，绝无黑底与重阴影；克制极简，品牌色不变；目录按钮与黑白切换同尺寸窄长药丸） -->
+<style>
+  :root{
+    --yc-glass-bg:rgba(255,255,255,.32);
+    --yc-glass-bg-strong:rgba(255,255,255,.58);
+    --yc-glass-border:rgba(255,255,255,.55);
+    --yc-glass-border-soft:rgba(44,44,44,.08);
+    --yc-glass-ink:#2C2C2C;
+    --yc-glass-muted:#6d675c;
+    --yc-glass-shadow:0 4px 16px rgba(44,44,44,.06);
+    --yc-glass-shadow-sm:0 2px 8px rgba(44,44,44,.05);
+  }
+  html[data-theme="dark"]{
+    --yc-glass-bg:rgba(255,255,255,.16);
+    --yc-glass-bg-strong:rgba(255,255,255,.24);
+    --yc-glass-border:rgba(255,255,255,.22);
+    --yc-glass-border-soft:rgba(255,255,255,.10);
+    --yc-glass-ink:#F7F5F0;
+    --yc-glass-muted:#c9c2b4;
+    --yc-glass-shadow:0 4px 16px rgba(0,0,0,.25);
+    --yc-glass-shadow-sm:0 2px 8px rgba(0,0,0,.20);
+  }
+  /* 顶部导航栏：磨砂玻璃 */
+  header.site-header{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--yc-glass-border-soft);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+  html[data-theme="dark"] header.site-header{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+  /* 黑白切换 pill：透明玻璃 */
+  .theme-toggle{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);border-radius:999px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  html[data-theme="dark"] .theme-toggle{box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.08)}
+  /* 语言切换：玻璃 pill（滑出面板内嵌的去玻璃，保持扁平） */
+  .yc-lang-switch{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);border-radius:999px;padding:2px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  .yc-menu-panel .yc-lang-switch{background:transparent;border-color:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  /* 搜索框：玻璃（books.md 与 faq.md 的内嵌样式用 #id 特异度覆盖） */
+  #yc-search-input{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);border-radius:999px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  #yc-search-input:focus{box-shadow:0 0 0 2px rgba(197,160,89,.35),var(--yc-glass-shadow-sm)}
+  /* 书卡：封面玻璃框 + 占位卡玻璃 */
+  .books-grid .book-card-img,.works-grid .book-card-img{border:1px solid var(--yc-glass-border);border-radius:8px;box-shadow:var(--yc-glass-shadow-sm)}
+  .books-grid .book-card-ph,.works-grid .book-card-ph{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);outline:1px solid rgba(197,160,89,.35);outline-offset:-7px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  /* 首页：浅色卡片玻璃化（深色品牌卡片保持原色不动） */
+  .home .sys-card.sys-gold{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  .home .biz-card{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  .home .home-products .prod{background:var(--yc-glass-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.5)}
+  .home .home-products .prod img{border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm)}
+  /* 页脚链接：玻璃小 pill */
+  .home .home-foot a{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--yc-glass-bg);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm);text-decoration:none;color:var(--yc-glass-ink)}
+  /* 履历页：肖像玻璃框 + 底部链接玻璃 pill */
+  .bio-page .bio-portrait{border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm)}
+  .bio-page p a{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--yc-glass-bg);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm);text-decoration:none}
+  /* 图集：图片玻璃框 */
+  .gallery-page .gallery-grid img{border:1px solid var(--yc-glass-border);border-radius:8px;box-shadow:var(--yc-glass-shadow-sm)}
+  /* dark 模式：浅色卡片与输入框保持浅色磨砂（深色字可读），绝无黑块 */
+  html[data-theme="dark"] .home .sys-card.sys-gold,
+  html[data-theme="dark"] .home .biz-card,
+  html[data-theme="dark"] .home .home-products .prod,
+  html[data-theme="dark"] .books-grid .book-card-ph,
+  html[data-theme="dark"] .works-grid .book-card-ph{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.5)}
+  html[data-theme="dark"] #yc-search-input{color:#F7F5F0;background:rgba(255,255,255,.22)}
+  html[data-theme="dark"] .home .home-foot a,
+  html[data-theme="dark"] .bio-page p a{background:rgba(255,255,255,.22)}
+  @media (prefers-reduced-motion: reduce){
+    header.site-header,.theme-toggle,.yc-lang-switch,#yc-search-input{transition:none}
+  }
+</style>
+
 <!-- 2026-11-27 中/英/日三语切换 + 手机端目录（原生 CSS/JS，无插件） -->
 <script>
   (function(){try{var l=localStorage.getItem('yc-lang')||'zh';if(['zh','en','ja'].indexOf(l)<0)l='zh';document.documentElement.setAttribute('data-yc-lang',l);document.documentElement.lang=l==='zh'?'zh-CN':l;}catch(e){document.documentElement.setAttribute('data-yc-lang','zh');}})();
@@ -207,17 +270,20 @@
   .yc-menu-btn{display:none}
   .yc-menu-panel,.yc-menu-backdrop{display:none}
   @media (max-width:860px){
-    .yc-menu-btn{display:inline-flex;position:fixed;right:16px;top:76px;z-index:10000;align-items:center;gap:6px;min-height:44px;padding:12px 18px;background:#2C2C2C;color:#F7F5F0;border:1px solid #2C2C2C;border-radius:999px;font-size:14px;letter-spacing:.25em;text-indent:.25em;box-shadow:0 8px 24px rgba(44,44,44,.28);cursor:pointer}
-    .yc-menu-backdrop{display:block;position:fixed;inset:0;background:rgba(44,44,44,.35);z-index:10000;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .yc-menu-btn{display:inline-flex;position:fixed;right:16px;top:76px;z-index:10000;align-items:center;justify-content:center;width:93px;height:24px;min-height:24px;padding:0;background:var(--yc-glass-bg);color:var(--yc-glass-ink);border:1px solid var(--yc-glass-border);border-radius:999px;box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);cursor:pointer}
+    .yc-menu-btn .yc-burger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.5px;width:18px}
+    .yc-menu-btn .yc-burger i{display:block;width:18px;height:1.5px;background:currentColor;border-radius:2px}
+    html[data-theme="dark"] .yc-menu-btn{box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.1)}
+    .yc-menu-backdrop{display:block;position:fixed;inset:0;background:rgba(44,44,44,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:10000;opacity:0;pointer-events:none;transition:opacity .3s ease}
     .yc-menu-backdrop.open{opacity:1;pointer-events:auto}
-    .yc-menu-panel{display:block;position:fixed;top:0;right:0;bottom:0;width:min(320px,86vw);background:#F7F5F0;z-index:10001;transform:translateX(102%);transition:transform .35s ease;padding:24px 24px 32px;overflow:auto;box-shadow:-8px 0 32px rgba(44,44,44,.18)}
+    .yc-menu-panel{display:block;position:fixed;top:0;right:0;bottom:0;width:min(320px,86vw);background:var(--yc-glass-bg-strong);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border-left:1px solid var(--yc-glass-border);z-index:10001;transform:translateX(102%);transition:transform .35s ease;padding:24px 24px 32px;overflow:auto;box-shadow:-12px 0 32px rgba(44,44,44,.10),inset 0 1px 0 rgba(255,255,255,.5)}
     .yc-menu-panel.open{transform:translateX(0)}
     .yc-menu-panel .yc-menu-close{display:flex;justify-content:flex-end}
     .yc-menu-panel .yc-menu-close button{appearance:none;background:transparent;border:0;font-size:22px;line-height:1;color:#8a8578;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
     .yc-menu-panel .yc-lang-panel{display:flex;justify-content:flex-end;margin:4px 0 12px}
-    .yc-menu-panel a.yc-menu-item{display:flex;align-items:center;justify-content:flex-end;min-height:48px;font-size:17px;color:#2C2C2C;text-decoration:none;border-bottom:1px solid #efebe2;text-align:right}
-    html[data-theme="dark"] .yc-menu-panel{background:#232320}
-    html[data-theme="dark"] .yc-menu-panel a.yc-menu-item{color:#F7F5F0;border-bottom-color:#3a3a36}
+    .yc-menu-panel a.yc-menu-item{display:flex;align-items:center;justify-content:flex-end;min-height:48px;font-size:17px;color:#2C2C2C;text-decoration:none;border-bottom:1px solid var(--yc-glass-border-soft);text-align:right}
+    html[data-theme="dark"] .yc-menu-panel{background:var(--yc-glass-bg-strong);box-shadow:-12px 0 32px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.10)}
+    html[data-theme="dark"] .yc-menu-panel a.yc-menu-item{color:#F7F5F0;border-bottom-color:var(--yc-glass-border-soft)}
     html[data-theme="dark"] .yc-menu-panel .yc-menu-close button{color:#a39d8f}
   }
 </style>
@@ -369,10 +435,11 @@
     btn.className='yc-menu-btn';
     btn.type='button';
     btn.setAttribute('aria-label','目录 Menu');
-    var btnLabel=document.createElement('span');
-    btnLabel.setAttribute('data-i18n','nav-menu');
-    btnLabel.textContent='目录';
-    btn.appendChild(btnLabel);
+    var burger=document.createElement('span');
+    burger.className='yc-burger';
+    burger.setAttribute('aria-hidden','true');
+    for(var bi=0;bi<3;bi++){burger.appendChild(document.createElement('i'));}
+    btn.appendChild(burger);
     var backdrop=document.createElement('div');
     backdrop.className='yc-menu-backdrop';
     var panel=document.createElement('nav');
