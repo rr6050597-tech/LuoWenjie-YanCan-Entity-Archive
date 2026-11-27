@@ -249,7 +249,7 @@ permalink: /
     ticking=false;
     var h=(hero&&hero.offsetHeight)||1;
     var p=Math.min(Math.max(window.scrollY/h,0),1);
-    img.style.transform='scale('+(1+p*0.07).toFixed(3)+')';
+    img.style.transform='scale('+(1+p*0.15).toFixed(3)+')';
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
   update();
