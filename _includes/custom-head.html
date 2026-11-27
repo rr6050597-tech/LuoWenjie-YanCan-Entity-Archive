@@ -376,8 +376,11 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
     function placeMenuBtn(){
       var header=document.querySelector('.site-header')||document.querySelector('header');
-      var h=header?Math.round(header.getBoundingClientRect().height):64;
-      btn.style.top=(h+12)+'px';
+      var toggle=document.querySelector('.theme-toggle');
+      var bottom=64;
+      if(header){bottom=Math.max(bottom,Math.round(header.getBoundingClientRect().bottom));}
+      if(toggle){bottom=Math.max(bottom,Math.round(toggle.getBoundingClientRect().bottom));}
+      btn.style.top=(bottom+12)+'px';
     }
     placeMenuBtn();
     window.addEventListener('resize',placeMenuBtn);
