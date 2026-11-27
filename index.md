@@ -88,7 +88,7 @@ permalink: /
 </div>
 
 <div class="manifesto">
-  <p data-i18n="home-manifesto"><span class="m-line">以文字记录思想，</span><span class="m-line">以影像记录时代，</span><br class="m-br"><span class="m-line">以东方文化探索生命，</span><span class="m-line">以气味连接记忆。</span></p>
+  <p data-i18n="home-manifesto"><span class="m-line">以文字记录思想，</span><span class="m-line">以影像记录时代，</span><br class="m-br"><span class="m-line">以文化探索生命，</span><span class="m-line">以气味连接记忆。</span></p>
   <hr class="m-rule">
 </div>
 
