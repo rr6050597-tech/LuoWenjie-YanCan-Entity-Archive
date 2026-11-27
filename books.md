@@ -47,15 +47,12 @@ permalink: /books/
 {% for book in _pub %}{% include book-card.html book=book %}{% endfor %}
 </div>
 
-<ul class="books-list">
-<li><a href="/books/shaman/">《罗文杰讲萨满》</a></li>
-<li><a href="/books/xianhua/">《罗文杰讲显化》</a></li>
-<li><a href="/books/shinto/">《罗文杰讲神道教》</a></li>
-<li><a href="/books/fox-fairy/">《兔儿神，把我跟狐仙焊死了》</a></li>
-<li><a href="/books/fengshui/">《罗文杰讲风水》</a></li>
-<li><a href="/books/daodejing/">《罗文杰讲道德经》</a></li>
-<li><a href="/books/bazi/">《罗文杰讲八字》</a></li>
-</ul>
+<div class="books-grid">
+{% for _slug in "shaman,xianhua,shinto,fox-fairy,fengshui,daodejing,bazi" | split: "," %}
+{% assign _b = site.data.books | where: "slug", _slug | first %}
+{% include book-card.html book=_b %}
+{% endfor %}
+</div>
 
 ---
 
