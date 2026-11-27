@@ -42,7 +42,9 @@ permalink: /
 .works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
 .work-card{display:block;text-decoration:none;color:#2C2C2C}
 .work-card-img{width:100%;height:auto;display:block;border:1px solid #e6e1d6;background:#F7F5F0;aspect-ratio:2/3;object-fit:cover;border-radius:8px;box-shadow:0 2px 10px rgba(44,44,44,.08)}
-.work-card-dark{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:2/3;background:#2C2C2C;color:#F7F5F0;padding:16px 14px;border:1px solid #2C2C2C;border-radius:12px}
+.work-card-dark{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:2/3;overflow:hidden;background:#2C2C2C;color:#F7F5F0;border:1px solid #2C2C2C;border-radius:12px}
+.work-card-dark>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.work-card-dark .wk-text{position:relative;z-index:1;width:100%;padding:16px 14px;background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0))}
 .work-card-dark.work-red{background:#6E1B1B;border-color:#6E1B1B}
 .work-card-dark .wk-en{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#C5A059;margin:0 0 8px}
 .work-card-dark .wk-title{font-family:"Songti SC","Noto Serif SC",serif;font-size:19px;line-height:1.4;margin:0 0 6px;font-weight:500}
@@ -118,15 +120,21 @@ permalink: /
 <div class="works-grid">
   <a class="work-card" href="/works/magazine/">
     <div class="work-card-dark">
-      <p class="wk-en">Fashion Editorial</p>
-      <p class="wk-title" data-i18n="wk-fashion-title">个人时尚大片</p>
+      <img src="/visual_assets/magazine-esquire-hero/esquire-barefoot-red-velvet.jpg" alt="罗文杰炎灿时尚大片" loading="lazy" decoding="async">
+      <div class="wk-text">
+        <p class="wk-en">Fashion Editorial</p>
+        <p class="wk-title" data-i18n="wk-fashion-title">个人时尚大片</p>
+      </div>
     </div>
     <span class="work-card-title" data-i18n="wk-fashion-name">时尚大片</span>
   </a>
   <a class="work-card" href="/works/film/">
     <div class="work-card-dark work-red">
-      <p class="wk-en">Film</p>
-      <p class="wk-title" data-i18n="wk-film-title">电影《地下香》</p>
+      <img src="/visual_assets/venice-2015/luo-wenjie-underground-fragrance-film-still.jpg" alt="电影《地下香》剧照" loading="lazy" decoding="async">
+      <div class="wk-text">
+        <p class="wk-en">Film</p>
+        <p class="wk-title" data-i18n="wk-film-title">电影《地下香》</p>
+      </div>
     </div>
     <span class="work-card-title">《地下香》</span>
   </a>
@@ -138,8 +146,11 @@ permalink: /
   {% include book-card.html book=_t1 %}
   <a class="work-card" href="#fragrance">
     <div class="work-card-dark">
-      <p class="wk-en">Yancan Fragrance</p>
-      <p class="wk-title" data-i18n="wk-fragrance-title">炎灿香氛</p>
+      <img src="/assets/products/sachet-tuershen.jpg" alt="炎灿兔儿神香囊" loading="lazy" decoding="async">
+      <div class="wk-text">
+        <p class="wk-en">Yancan Fragrance</p>
+        <p class="wk-title" data-i18n="wk-fragrance-title">炎灿香氛</p>
+      </div>
     </div>
     <span class="work-card-title" data-i18n="wk-fragrance-name">炎灿香氛</span>
   </a>

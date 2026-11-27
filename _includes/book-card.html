@@ -8,10 +8,10 @@
 {% if _en %}{% assign _enf = site.static_files | where: "path", _en | first %}{% endif %}
 <a class="book-card" href="/books/{{ include.book.slug }}/">
   {% if _zhf or _enf %}
-    {% if _zhf and _enf %}<img class="book-card-img yc-cover-zh" src="{{ _zh }}" alt="{{ include.book.title }} 封面">
-    <img class="book-card-img yc-cover-en" src="{{ _en }}" alt="{{ include.book.title }} 封面" loading="lazy">
-    {% elsif _zhf %}<img class="book-card-img" src="{{ _zh }}" alt="{{ include.book.title }} 封面">
-    {% else %}<img class="book-card-img" src="{{ _en }}" alt="{{ include.book.title }} 封面">{% endif %}
+    {% if _zhf and _enf %}<img class="book-card-img yc-cover-zh" src="{{ _zh }}" alt="{{ include.book.title }} 封面" loading="lazy" decoding="async">
+    <img class="book-card-img yc-cover-en" src="{{ _en }}" alt="{{ include.book.title }} 封面" loading="lazy" decoding="async">
+    {% elsif _zhf %}<img class="book-card-img" src="{{ _zh }}" alt="{{ include.book.title }} 封面" loading="lazy" decoding="async">
+    {% else %}<img class="book-card-img" src="{{ _en }}" alt="{{ include.book.title }} 封面" loading="lazy" decoding="async">{% endif %}
   {% else %}<span class="book-card-ph" data-book-title data-title-en="{{ include.book.title_en | escape }}" data-title-ja="{{ include.book.title_ja | escape }}" data-title-es="{{ include.book.title_es | escape }}">{{ include.book.title }}</span>{% endif %}
   <span class="book-card-title" data-book-title data-title-en="{{ include.book.title_en | escape }}" data-title-ja="{{ include.book.title_ja | escape }}" data-title-es="{{ include.book.title_es | escape }}">{{ include.book.title }}</span>
 </a>

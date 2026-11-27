@@ -10,7 +10,9 @@ permalink: /read/pdf/
 .reader-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}
 .reader-controls button{padding:8px 14px;border:1px solid #C5A059;background:#F7F5F0;color:#2C2C2C;font-size:14px;cursor:pointer;border-radius:2px}
 .reader-controls span{font-size:14px;color:#8a8578}
-#pdf-canvas{width:100%;height:auto;display:block;border:1px solid #e6e1d6;background:#fff}
+#pdf-viewer{border:1px solid #e6e1d6;background:#fff;height:75vh;min-height:600px;overflow:auto}
+.pdf-page{margin:0 auto 12px;background:#fff}
+.pdf-page canvas{width:100%;height:auto;display:block}
 #reader-status{font-size:14px;color:#8a8578}
 .reader-back{font-size:14px}
 .reader-back a{color:#8a8578}
@@ -26,7 +28,7 @@ permalink: /read/pdf/
     <button id="zoom-out" type="button" aria-label="缩小">-</button>
     <button id="zoom-in" type="button" aria-label="放大">+</button>
   </div>
-  <canvas id="pdf-canvas"></canvas>
+  <div id="pdf-viewer"></div>
   <p id="reader-status"></p>
 </div>
 
@@ -38,41 +40,101 @@ permalink: /read/pdf/
   var file = params.get('file') || '';
   var title = params.get('title') || '在线阅读';
   var statusEl = document.getElementById('reader-status');
+  var viewer = document.getElementById('pdf-viewer');
+  var pageNumEl = document.getElementById('page-num');
   document.getElementById('reader-title').textContent = title + ' · PDF';
   if(!file){ statusEl.textContent = '未指定 PDF 文件。'; return; }
-  var pdfDoc = null, pageNum = 1, scale = 1.2;
-  var canvas = document.getElementById('pdf-canvas');
-  var ctx = canvas.getContext('2d');
-  function renderPage(n){
-    pdfDoc.getPage(n).then(function(page){
-      var viewport = page.getViewport({ scale: scale });
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-      page.render({ canvasContext: ctx, viewport: viewport });
-      document.getElementById('page-num').textContent = '第 ' + n + ' / ' + pdfDoc.numPages + ' 页';
+  var pdfDoc = null, zoom = 1, total = 0, current = 1;
+  var pages = [];
+  var io = null;
+  function renderScale(page){
+    var v1 = page.getViewport({ scale: 1 });
+    var w = viewer.clientWidth || 700;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    return (w / v1.width) * dpr * zoom;
+  }
+  function renderPage(p){
+    if(p.rendered) return;
+    p.rendered = true;
+    pdfDoc.getPage(p.num).then(function(page){
+      var viewport = page.getViewport({ scale: renderScale(page) });
+      p.canvas.width = viewport.width;
+      p.canvas.height = viewport.height;
+      page.render({ canvasContext: p.canvas.getContext('2d'), viewport: viewport });
     });
   }
+  function observe(){
+    if(io) io.disconnect();
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var n = +en.target.getAttribute('data-page');
+          renderPage(pages[n-1]);
+          io.unobserve(en.target);
+        }
+      });
+    }, { root: viewer, rootMargin: '600px 0px' });
+    pages.forEach(function(p){ if(!p.rendered) io.observe(p.el); });
+  }
+  function markCurrent(){
+    var best = 1, bestTop = Infinity;
+    var vr = viewer.getBoundingClientRect();
+    pages.forEach(function(p){
+      var d = Math.abs(p.el.getBoundingClientRect().top - vr.top);
+      if(d < bestTop){ bestTop = d; best = p.num; }
+    });
+    current = best;
+    pageNumEl.textContent = '第 ' + current + ' / 共 ' + total + ' 页';
+  }
+  function rerenderAll(){
+    pages.forEach(function(p){
+      p.rendered = false;
+      var ctx = p.canvas.getContext('2d');
+      ctx.clearRect(0, 0, p.canvas.width, p.canvas.height);
+    });
+    observe();
+  }
   pdfjsLib.getDocument(file).promise.then(function(pdf){
-    pdfDoc = pdf;
-    renderPage(pageNum);
+    pdfDoc = pdf; total = pdf.numPages;
+    pageNumEl.textContent = '第 1 / 共 ' + total + ' 页';
+    var chain = Promise.resolve();
+    for(var n = 1; n <= total; n++){
+      (function(n){
+        chain = chain.then(function(){
+          return pdfDoc.getPage(n).then(function(page){
+            var v1 = page.getViewport({ scale: 1 });
+            var wrap = document.createElement('div');
+            wrap.className = 'pdf-page';
+            wrap.setAttribute('data-page', n);
+            wrap.style.aspectRatio = v1.width + ' / ' + v1.height;
+            var cv = document.createElement('canvas');
+            wrap.appendChild(cv);
+            viewer.appendChild(wrap);
+            pages.push({ num: n, el: wrap, canvas: cv, rendered: false });
+          });
+        });
+      })(n);
+    }
+    chain.then(function(){ observe(); markCurrent(); });
+    viewer.addEventListener('scroll', function(){ markCurrent(); });
   }).catch(function(){
     statusEl.textContent = 'PDF 加载失败：文件尚未上传或网络异常，请稍后再试。';
   });
   document.getElementById('prev-pg').addEventListener('click', function(){
-    if(!pdfDoc) return;
-    if(pageNum > 1){ pageNum--; renderPage(pageNum); }
+    if(!pdfDoc || current <= 1) return;
+    pages[current-2].el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   document.getElementById('next-pg').addEventListener('click', function(){
-    if(!pdfDoc) return;
-    if(pageNum < pdfDoc.numPages){ pageNum++; renderPage(pageNum); }
+    if(!pdfDoc || current >= total) return;
+    pages[current].el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   document.getElementById('zoom-in').addEventListener('click', function(){
     if(!pdfDoc) return;
-    scale = Math.min(scale + 0.2, 3); renderPage(pageNum);
+    zoom = Math.min(zoom + 0.2, 2.5); rerenderAll();
   });
   document.getElementById('zoom-out').addEventListener('click', function(){
     if(!pdfDoc) return;
-    scale = Math.max(scale - 0.2, 0.6); renderPage(pageNum);
+    zoom = Math.max(zoom - 0.2, 0.6); rerenderAll();
   });
 })();
 </script>
