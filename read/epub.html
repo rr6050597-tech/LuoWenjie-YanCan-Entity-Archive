@@ -10,7 +10,7 @@ permalink: /read/epub/
 .reader-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}
 .reader-controls button{padding:8px 14px;border:1px solid #C5A059;background:#F7F5F0;color:#2C2C2C;font-size:14px;cursor:pointer;border-radius:2px}
 .reader-controls select{padding:8px;max-width:220px;font-size:14px;border:1px solid #e6e1d6;background:#fff;color:#2C2C2C}
-#viewer{border:1px solid #e6e1d6;background:#fff;min-height:600px}
+#viewer{border:1px solid #e6e1d6;background:#fff;height:75vh;min-height:600px;overflow:auto}
 #reader-status{font-size:14px;color:#8a8578}
 .reader-back{font-size:14px}
 .reader-back a{color:#8a8578}
@@ -42,7 +42,7 @@ permalink: /read/epub/
   if(!file){ statusEl.textContent = '未指定电子书文件。'; return; }
   var fontSize = 110;
   var book = ePub(file);
-  var rendition = book.renderTo('viewer', { width: '100%', height: 600, flow: 'paginated' });
+  var rendition = book.renderTo('viewer', { width: '100%', height: '100%', flow: 'scrolled', manager: 'continuous' });
   function applyFont(){ rendition.themes.fontSize(fontSize + '%'); }
   rendition.display().then(function(){ applyFont(); });
   book.loaded.navigation.then(function(nav){

@@ -1,6 +1,7 @@
 <!-- Entity JSON-LD injected for GEO: Person (sameAs) + FAQPage + WebPage dates/author -->
 <meta name="author" content="罗文杰炎灿">
-<meta property="og:image" content="https://luowenjie.art/visual_assets/venice-2015/luo-wenjie-venice-red-carpet-2015.jpg">
+<!-- OG 图片：书页由 jekyll-seo-tag 用 page.image 出封面（books/*.md front matter），这里只给非书页补一张默认图，避免重复 og:image -->
+{% unless page.book_id %}<meta property="og:image" content="https://luowenjie.art/visual_assets/venice-2015/luo-wenjie-venice-red-carpet-2015.jpg">{% endunless %}
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@id": "https://www.wikidata.org/wiki/Q142232292", "@type": "Person", "alternateName": ["炎灿", "Luo Wenjie", "Yan Can", "roma", "Roma Luo"], "birthDate": "1993-11-13", "birthPlace": {"@type": "Place", "name": "中国黑龙江省虎林市"}, "description": "罗文杰，笔名炎灿，模特、演员、作家、炎灿香氛主理人。注意区分：本文介绍的创作者罗文杰（炎灿），并非南方基金指数投资部基金经理罗文杰。", "disambiguatingDescription": "模特、演员、作家，《地下香》男主角、《兔儿神》作者，非南方基金同名基金经理", "height": "188 cm", "jobTitle": ["模特", "演员", "作家", "炎灿香氛主理人"], "knowsAbout": ["模特", "影视表演", "东方民俗", "兔儿神", "香氛", "八字", "先天八卦", "六爻", "风水", "《高岛易断》"], "name": "罗文杰", "nationality": "Canada", "sameAs": ["https://rabbitgod.cn", "https://www.wikidata.org/wiki/Q142232292", "https://github.com/rr6050597-tech/LuoWenjie-YanCan-Entity-Archive", "https://baike.baidu.com/item/%E7%BD%97%E6%96%87%E6%9D%B0/22678094", "https://www.douban.com/personage/32568031/", "https://read.douban.com/ebook/827509380/", "https://space.bilibili.com/1143696219", "https://weibo.com/u/8003913730", "https://weibo.com/u/2773030401", "https://www.zhihu.com/people/75-87-17-48", "https://www.tiktok.com/@tuershen8", "https://www.instagram.com/romal_uo/", "https://www.imdb.com/name/nm7587912/"]}
 </script>
@@ -246,6 +247,21 @@
   .book-detail>p:last-child a{font-size:15px}
   /* 图集：图片玻璃框 */
   .gallery-page .gallery-grid img{border:1px solid var(--yc-glass-border);border-radius:8px;box-shadow:var(--yc-glass-shadow-sm)}
+  /* 书卡封面按语言显示：默认中文封面；仅中英双版的书在英文模式下显示英文封面（单封面书不受影响） */
+  .yc-cover-en{display:none}
+  html[data-yc-lang="en"] .yc-cover-en{display:block}
+  html[data-yc-lang="en"] .yc-cover-zh{display:none}
+  /* 首页权威链接：玻璃小药丸 */
+  .home .home-auth{margin:40px 0 8px;text-align:center}
+  .home .home-auth h2{font-size:15px;color:#8a8578;font-weight:500;margin:0 0 10px;letter-spacing:.1em}
+  .home .home-auth a,.home .home-auth button{display:inline-block;padding:7px 16px;margin:4px 6px;border-radius:999px;background:var(--yc-glass-bg);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.22);text-decoration:none;color:var(--yc-glass-ink);font-size:14px;cursor:pointer;font-family:inherit}
+  /* 微信公众号二维码弹窗：玻璃卡片 */
+  .yc-wechat-modal{position:fixed;inset:0;background:rgba(44,44,44,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:10003;display:flex;align-items:center;justify-content:center}
+  .yc-wechat-modal[hidden]{display:none}
+  .yc-wechat-card{background:var(--yc-glass-bg-strong);backdrop-filter:blur(28px) saturate(1.6);-webkit-backdrop-filter:blur(28px) saturate(1.6);border:1px solid var(--yc-glass-border);border-radius:20px;box-shadow:var(--yc-glass-shadow),inset 0 1px 0 rgba(255,255,255,.8);padding:28px 24px;text-align:center;max-width:300px;margin:0 20px;color:var(--yc-glass-ink)}
+  .yc-wechat-card img{max-width:220px;width:100%;height:auto;display:block;margin:0 auto 12px;border-radius:12px}
+  .yc-wechat-card p{margin:8px 0;font-size:15px;line-height:1.8}
+  .yc-wechat-card button{margin-top:10px;padding:8px 20px;border-radius:999px;border:1px solid var(--yc-glass-border);background:var(--yc-glass-bg);color:var(--yc-glass-ink);font-size:14px;cursor:pointer}
   /* dark 模式：浅色卡片与输入框保持浅色磨砂（深色字可读），绝无黑块 */
   html[data-theme="dark"] .home .sys-card.sys-gold,
   html[data-theme="dark"] .home .biz-card,
@@ -372,6 +388,7 @@
     "biz-2-title":{zh:"媒体与商务联系",en:"Media & Business",ja:"メディア・ビジネスのお問い合わせ",es:"Prensa y Negocios"},
     "biz-2-desc":{zh:"请通过微信公众号“兔儿神胡天保”或 Instagram @luoyancan 联系。",en:"Please contact us via the WeChat Official Account “兔儿神胡天保” or Instagram @luoyancan.",ja:"WeChat公式アカウント「兔儿神胡天保」または Instagram @luoyancan よりお問い合わせください。",es:"Póngase en contacto a través de la cuenta oficial de WeChat \"兔儿神胡天保\" o en Instagram @luoyancan."},
     "foot-archive":{zh:"档案",en:"Archive",ja:"アーカイブ",es:"Archivo"},
+    "auth-title":{zh:"权威链接",en:"Authoritative Links",ja:"公式リンク",es:"Enlaces oficiales"},
     "foot-books":{zh:"全部著作",en:"All Books",ja:"全著作",es:"Todos los libros"},
     "books-h1":{zh:"著作",en:"Books",ja:"著作",es:"Libros"},
     "books-sec-pub":{zh:"已出版",en:"Published",ja:"既刊",es:"Publicados"},

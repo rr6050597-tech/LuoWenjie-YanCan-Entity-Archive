@@ -201,6 +201,26 @@ permalink: /
   </a>
 </div>
 
+<div class="home-auth">
+  <h2 data-i18n="auth-title">权威链接</h2>
+  <a href="https://www.imdb.com/name/nm7587912/" target="_blank" rel="noopener">IMDb</a>
+  <a href="https://www.instagram.com/luoyancan/" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://www.facebook.com/profile.php?id=61596530016263" target="_blank" rel="noopener">Facebook</a>
+  <button type="button" id="yc-wechat-btn">微信公众号</button>
+  <a href="https://baike.baidu.com/item/%E7%BD%97%E6%96%87%E6%9D%B0/22678094" target="_blank" rel="noopener">百度百科</a>
+  <a href="https://www.douban.com/personage/32568031/" target="_blank" rel="noopener">豆瓣影人</a>
+</div>
+<div class="yc-wechat-modal" id="yc-wechat-modal" hidden>
+  <div class="yc-wechat-card">
+    {% assign _qr = site.static_files | where: "path", "/assets/img/wechat-oa-qr.jpg" | first %}
+    {% if _qr %}<img src="/assets/img/wechat-oa-qr.jpg" alt="微信公众号二维码">{% endif %}
+    <p>微信公众号</p>
+    <p><strong>兔儿神胡天保</strong></p>
+    <p style="font-size:13px;color:var(--yc-glass-muted)">微信搜索“兔儿神胡天保”关注</p>
+    <button type="button" id="yc-wechat-close">关闭</button>
+  </div>
+</div>
+
 <p class="home-foot"><a href="/archive/" data-i18n="foot-archive">档案</a> · <a href="/books/" data-i18n="foot-books">全部著作</a></p>
 
 </div>
@@ -220,5 +240,15 @@ permalink: /
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
   update();
+})();
+/* 微信公众号二维码弹窗 */
+(function(){
+  var btn=document.getElementById('yc-wechat-btn');
+  var modal=document.getElementById('yc-wechat-modal');
+  var close=document.getElementById('yc-wechat-close');
+  if(!btn||!modal)return;
+  btn.addEventListener('click',function(){modal.hidden=false;});
+  if(close)close.addEventListener('click',function(){modal.hidden=true;});
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.hidden=true;});
 })();
 </script>

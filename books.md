@@ -28,7 +28,7 @@ permalink: /books/
 .books-list li{font-size:15px;line-height:2.0;color:#2C2C2C;border-bottom:1px solid #efebe2;padding:6px 0}
 .books-list li a{color:#2C2C2C}
 .books-foot{margin-top:36px;font-size:15px}
-.books-foot a{color:#2C2C2C;text-decoration:underline}
+.books-foot a{display:inline-block;padding:7px 16px;margin:4px 8px 4px 0;border-radius:999px;background:var(--yc-glass-bg);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid var(--yc-glass-border);box-shadow:var(--yc-glass-shadow-sm),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.22);text-decoration:none;color:var(--yc-glass-ink)}
 </style>
 
 <div class="books-landing">
@@ -44,10 +44,7 @@ permalink: /books/
 {% for book in site.data.books %}{% include book-card.html book=book %}{% endfor %}
 </div>
 
----
-
-- <a href="/bio/" data-i18n="books-foot-bio">完整履历 →</a>
-- <a href="https://luowenjie.art/faq/" data-i18n="books-foot-faq">常见问题 →</a>
+<p class="books-foot"><a href="/bio/" data-i18n="books-foot-bio">完整履历 →</a> <a href="https://luowenjie.art/faq/" data-i18n="books-foot-faq">常见问题 →</a></p>
 
 </div>
 

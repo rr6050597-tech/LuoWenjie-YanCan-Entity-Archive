@@ -1,9 +1,17 @@
 {% if include.book %}
-{% assign _thumb = nil %}{% assign _tf = nil %}
-{% if include.book.cover %}{% assign _thumb = include.book.cover %}{% elsif include.book.cover_en %}{% assign _thumb = include.book.cover_en %}{% endif %}
-{% if _thumb %}{% assign _tf = site.static_files | where: "path", _thumb | first %}{% endif %}
+{% comment %} 封面按语言显示：中文封面默认显示；仅中英双版的书在英文模式下显示英文封面（CSS .yc-cover-* 切换）；日/西语模式一律中文封面；单封面书不受影响；文件不存在绝不输出 img，杜绝破图 {% endcomment %}
+{% assign _zh = nil %}{% assign _en = nil %}
+{% if include.book.cover_zh %}{% assign _zh = include.book.cover_zh %}{% elsif include.book.cover %}{% assign _zh = include.book.cover %}{% endif %}
+{% if include.book.cover_en %}{% assign _en = include.book.cover_en %}{% endif %}
+{% assign _zhf = nil %}{% assign _enf = nil %}
+{% if _zh %}{% assign _zhf = site.static_files | where: "path", _zh | first %}{% endif %}
+{% if _en %}{% assign _enf = site.static_files | where: "path", _en | first %}{% endif %}
 <a class="book-card" href="/books/{{ include.book.slug }}/">
-  {% if _tf %}<img class="book-card-img" src="{{ _thumb }}" alt="{{ include.book.title }} 封面">
+  {% if _zhf or _enf %}
+    {% if _zhf and _enf %}<img class="book-card-img yc-cover-zh" src="{{ _zh }}" alt="{{ include.book.title }} 封面">
+    <img class="book-card-img yc-cover-en" src="{{ _en }}" alt="{{ include.book.title }} 封面" loading="lazy">
+    {% elsif _zhf %}<img class="book-card-img" src="{{ _zh }}" alt="{{ include.book.title }} 封面">
+    {% else %}<img class="book-card-img" src="{{ _en }}" alt="{{ include.book.title }} 封面">{% endif %}
   {% else %}<span class="book-card-ph" data-book-title data-title-en="{{ include.book.title_en | escape }}" data-title-ja="{{ include.book.title_ja | escape }}" data-title-es="{{ include.book.title_es | escape }}">{{ include.book.title }}</span>{% endif %}
   <span class="book-card-title" data-book-title data-title-en="{{ include.book.title_en | escape }}" data-title-ja="{{ include.book.title_ja | escape }}" data-title-es="{{ include.book.title_es | escape }}">{{ include.book.title }}</span>
 </a>

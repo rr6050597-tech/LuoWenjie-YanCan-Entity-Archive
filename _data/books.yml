@@ -4,7 +4,7 @@
 #   哪个版本有文件就列哪个；没有的留空（null），详情页会自动显示"待补充"，不要编造。
 # - 音频：只挂已有的播客文件；布局会注明"播客导读，非整本朗读"。
 # - 平台链接：只用已核实的 URL。四个已删的豆瓣图书条目绝不出现。
-# - 封面：只有兔儿神3（中/英）、高岛易断、药师经四张；其余留空。
+# - 封面：13 本有封面（兔儿神3 中/英双版，其余中文版）；风水、八字暂无封面，留空。
 # - 书名、ISBN、出版状态以此文件为准；改状态只改这里，首页与详情页自动同步。
 - id: gaodao-yiduan
   slug: gaodao-yiduan
@@ -310,7 +310,7 @@
   author_note_source: 豆瓣阅读作者自述
   cover_en: /assets/covers/tu-er-shen-3-en.jpg
   cover_zh: /assets/covers/tu-er-shen-3-zh.jpg
-  cover: null
+  cover: /assets/covers/tu-er-shen-3-zh.jpg
   read_zh: null
   read_en:
     - format: web
