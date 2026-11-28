@@ -46,6 +46,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-remote-theme
+  - jekyll-sitemap
 
 night_mode: manual
 
