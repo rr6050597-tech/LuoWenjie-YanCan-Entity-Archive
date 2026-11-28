@@ -32,6 +32,9 @@
   audio:
     file: /assets/audio/gaodao-podcast.m4a
     label: 播客对谈 · 约25分钟
+  deck:
+    file: /assets/books/decks/gaodao-yiduan-deck.pdf
+    label: 演示文稿 · 12 页
   platforms:
     - name: 豆瓣阅读专栏
       url: https://read.douban.com/column/80204147/

@@ -477,6 +477,15 @@ html[data-theme="dark"] .book-platforms a {
       {% else %}
         <p class="book-note">本书暂无音频。整本朗读需作者录音做声音克隆，敬请期待。</p>
       {% endif %}
+      {% if book.deck %}
+      <h2>演示文稿</h2>
+        {% assign _d = site.static_files | where: "path", book.deck.file | first %}
+        {% if _d %}
+          <p><a class="btn" href="{{ book.deck.file }}" target="_blank" rel="noopener">{{ book.deck.label }} · PDF 下载</a></p>
+        {% else %}
+          <p class="book-note">演示文稿待上传：{{ book.deck.label }}。</p>
+        {% endif %}
+      {% endif %}
       <h2>在其他平台读</h2>
       {% if book.platforms %}
         <ul class="book-platforms">
