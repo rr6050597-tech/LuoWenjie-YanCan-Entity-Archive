@@ -426,6 +426,7 @@ html .yc-m.yc-run{will-change:opacity,transform}   /* 仅在动画进行中存�
 <script id="yc-book-scroll-zoom-js">
 (function(){
   'use strict';
+  function init(){
   var path = location.pathname
     .replace(/index\.html$/, '')
     .replace(/\/+$/, '') || '/';
@@ -580,6 +581,8 @@ html .yc-m.yc-run{will-change:opacity,transform}   /* 仅在动画进行中存�
     );
   });
   requestUpdate();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
 
@@ -612,6 +615,7 @@ html .yc-m.yc-run{will-change:opacity,transform}   /* 仅在动画进行中存�
 <script id="yc-tts-js">
 (function(){
   'use strict';
+  function init(){
   if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)) return;
   var path=location.pathname.replace(/index\.html$/,'').replace(/\/+$/,'')||'/';
   var BOOK=/^\/books\/[^\/]+$/;
@@ -674,6 +678,8 @@ html .yc-m.yc-run{will-change:opacity,transform}   /* 仅在动画进行中存�
     if(e.target.closest&&e.target.closest('a[href]')) speechSynthesis.cancel();
   });
   if(speechSynthesis.getVoices) speechSynthesis.getVoices();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
 
