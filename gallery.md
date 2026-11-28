@@ -19,6 +19,56 @@ permalink: /gallery/
 <div class="gallery-page">
 
 <div class="gallery-grid">
+  <img src="/visual_assets/user-sent-2026-11-28/01-daily-yi-ji-poster.jpg" alt="每日宜忌海报 · 设计-海报" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/02-studio-magenta-shirtless-profile.jpg" alt="品红背景棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/03-studio-magenta-shirtless-hand-shoulder.jpg" alt="品红背景棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/04-white-solucky-tee-portrait.jpg" alt="白色 Solucky T 恤肖像 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/05-grey-patterned-tee-black-joggers-full.jpg" alt="深灰暗纹印花 T 恤全身 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/06-grey-patterned-tee-closeup.jpg" alt="深灰暗纹印花 T 恤近景 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/07-grey-polo-fahrenheit-mars-closeup.jpg" alt="深灰 FAHRENHEIT MARS Polo · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/08-white-solucky-tee-jeans-full.jpg" alt="白色 Solucky T 恤牛仔裤全身 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/09-grey-polo-fahrenheit-jeans.jpg" alt="深灰 Polo 牛仔裤全身 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/10-white-polo-roof-sleeve-jeans.jpg" alt="白色 Polo 牛仔裤 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/11-california-denim-tee-cap-geometric.jpg" alt="加州丹宁印花 Tee · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/12-ira-fahrenheit-suitcase-jump.jpg" alt="IRA FAHRENHEIT 形象大使 · 模特-广告代言" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/14-vk-2019-judging-backdrop.jpg" alt="2019 V&K 少儿模特大赛评委 · 活动-评委" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/15-vk-2019-judges-table-namecard.jpg" alt="2019 V&K 评委席 · 活动-评委" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/16-studio-grey-green-blazer-white-trousers.jpg" alt="灰绿西装棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/17-studio-grey-green-blazer-profile.jpg" alt="灰绿西装棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/18-white-outfit-red-sash-pine-trees.jpg" alt="白衣红腰带松树下 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/19-green-shirt-red-light-glasses.jpg" alt="绿衬衫红光眼镜 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/20-kodak-striped-jacket-hand-mouth.jpg" alt="Kodak 胶片边框棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/21-kodak-striped-jacket-eyes-closed.jpg" alt="Kodak 胶片边框棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/22-kodak-striped-jacket-checkered-skirt.jpg" alt="Kodak 胶片边框棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/23-kodak-green-bomber-white-trousers.jpg" alt="Kodak 胶片边框棚拍 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/24-wet-hair-headshot-white-bg.jpg" alt="湿发头像 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/25-sivico-2016-aw-billboard.jpg" alt="SIVICO 2016/17 秋冬海报 · 模特-时装秀" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/26-runway-grey-lost-my-love-sweatshirt.jpg" alt="户外 T 台灰卫衣 · 模特-时装秀" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/27-runway-white-call-me-uncle.jpg" alt="户外 T 台白套装 · 模特-时装秀" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/28-dongtian-maggie-store-blue-sunglasses.jpg" alt="DONGTIAN&MAGGIE 眼镜店广告屏 · 模特-广告代言" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/29-dongtian-maggie-store-round-sunglasses.jpg" alt="DONGTIAN&MAGGIE 眼镜店广告屏 · 模特-广告代言" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/30-venice-2015-with-director.jpg" alt="威尼斯电影节 2015 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/31-venice-2015-with-festival-guest.jpg" alt="威尼斯电影节 2015 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/32-venice-2015-72nd-mostra-backdrop.jpg" alt="第 72 届威尼斯电影节 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/33-venice-2015-signing-autographs-1.jpg" alt="威尼斯为小朋友签名 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/34-venice-2015-signing-autographs-2.jpg" alt="威尼斯为小朋友签名 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/35-venice-2015-signing-autographs-3.jpg" alt="威尼斯为小朋友签名 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/36-venice-2015-signing-autographs-4.jpg" alt="威尼斯为小朋友签名 · 活动-发布会" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/37-talkshow-80s-runway-black-suit-1.jpg" alt="《今晚80后脱口秀》T 台黑西装 · 模特-时装秀" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/38-dongtian-maggie-poster-selfie-wide.jpg" alt="与 DONGTIAN&MAGGIE 海报合影 · 日常-生活" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/39-dongtian-maggie-poster-selfie-tight.jpg" alt="与 DONGTIAN&MAGGIE 海报合影 · 日常-生活" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/43-talkshow-80s-runway-black-suit-2.jpg" alt="《今晚80后脱口秀》T 台黑西装 · 模特-时装秀" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/44-talkshow-80s-runway-grey-suit.jpg" alt="《今晚80后脱口秀》T 台灰西装 · 模特-时装秀" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/45-portrait-green-blue-artistic-yuzimo.jpg" alt="绿蓝双色艺术肖像（摄影：余子沫） · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/46-studio-diptych-blurred-black-tee.jpg" alt="影棚双联磨砂模糊黑印花 T 恤 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/47-studio-diptych-hat-profile-back.jpg" alt="影棚双联灰礼帽侧脸与背面 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/48-studio-diptych-blurred-white-black.jpg" alt="影棚双联磨砂模糊白 T 与黑衣 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/49-studio-diptych-seated-closeup-silver-hair.jpg" alt="影棚双联银发坐姿与特写 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/50-studio-diptych-blurred-beige-olive-coats.jpg" alt="影棚双联磨砂模糊米色与橄榄绿长外套 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/51-studio-diptych-standing-seated-silver-hair.jpg" alt="影棚双联银发站姿与坐姿 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/52-studio-diptych-orange-hooded-jacket.jpg" alt="影棚双联黑底亮橙连帽夹克 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/53-studio-diptych-white-knit-sweater.jpg" alt="影棚双联黑底白针织毛衣 · 模特-影棚" decoding="async">
+  <img src="/visual_assets/user-sent-2026-11-28/54-studio-diptych-white-coat.jpg" alt="影棚双联黑底白连帽长外套 · 模特-影棚" decoding="async">
   <img src="/visual_assets/magazine-esquire-hero/esquire-barefoot-red-velvet.jpg" alt="" decoding="async">
   <img src="/visual_assets/magazine-esquire-hero/esquire-brown-coat-tie.jpg" alt="" decoding="async">
   <img src="/visual_assets/magazine-esquire-hero/esquire-red-braces-bike.jpg" alt="" decoding="async">
