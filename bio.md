@@ -16,7 +16,7 @@ permalink: /bio/
 
 <h1 data-i18n="bio-h1">罗文杰（炎灿）个人简介</h1>
 
-<img class="bio-portrait" src="/assets/img/portrait-white-cutout.png" alt="罗文杰炎灿">
+<img class="bio-portrait" src="/assets/img/portrait-red-suit-cutout.png" alt="罗文杰炎灿">
 
 <p data-i18n="bio-p-1">罗文杰，笔名炎灿，1993年11月13日生于黑龙江省虎林市，身高188厘米，现居深圳、广州与温哥华。跨界文化创业者、作家、前国际超模。</p>
 
