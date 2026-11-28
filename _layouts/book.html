@@ -486,6 +486,18 @@ html[data-theme="dark"] .book-platforms a {
           <p class="book-note">演示文稿待上传：{{ book.deck.label }}。</p>
         {% endif %}
       {% endif %}
+      {% if book.materials %}
+      <h2>研究资料</h2>
+        {% for m in book.materials %}
+          {% assign _m = site.static_files | where: "path", m.file | first %}
+          {% if _m %}
+            <p><a class="btn" href="{{ m.file }}" target="_blank" rel="noopener">{{ m.label }} · 查看</a></p>
+          {% else %}
+            <p class="book-note">资料待上传：{{ m.label }}。</p>
+          {% endif %}
+        {% endfor %}
+        <p class="book-note">以上为本书的研究资料与框架草案（非正文），正文待写、待出版。</p>
+      {% endif %}
       <h2>在其他平台读</h2>
       {% if book.platforms %}
         <ul class="book-platforms">
