@@ -9,14 +9,16 @@ permalink: /bio/
 .bio-page h1{font-size:28px;line-height:1.3;color:#2C2C2C;font-weight:500}
 .bio-page h2{font-size:20px;margin:32px 0 12px;color:#2C2C2C;border-bottom:1px solid #e6e1d6;padding-bottom:8px;font-weight:500}
 .bio-page p{font-size:16px;line-height:2.0;color:#2C2C2C}
-.bio-portrait{display:block;width:100%;max-width:720px;margin:20px auto 4px;border-radius:16px}
+.bio-portrait{display:block;width:100%;max-width:720px;margin:20px auto 4px;border-radius:16px;will-change:transform;transform-origin:center 30%}
+.bio-portrait-wrap{overflow:hidden;border-radius:16px;margin:20px auto 4px}
+.bio-portrait-wrap .bio-portrait{margin:0;max-width:none;border-radius:0}
 </style>
 
 <div class="bio-page">
 
 <h1 data-i18n="bio-h1">罗文杰（炎灿）个人简介</h1>
 
-<img class="bio-portrait" src="/assets/img/portrait-red-suit-cutout.png" alt="罗文杰炎灿">
+<div class="bio-portrait-wrap"><img class="bio-portrait" src="/assets/img/portrait-red-suit-cutout.png" alt="罗文杰炎灿"></div>
 
 <p data-i18n="bio-p-1">罗文杰，笔名炎灿，1993年11月13日生于黑龙江省虎林市，身高188厘米，现居深圳、广州与温哥华。跨界文化创业者、作家、前国际超模。</p>
 
@@ -39,3 +41,21 @@ permalink: /bio/
 <p><a href="/books/" data-i18n="bio-books">查看著作 →</a> · <a href="/" data-i18n="bio-home">返回首页</a></p>
 
 </div>
+
+<script>
+/* 简介页肖像：随滚动轻轻放大（和首页主视觉同一手感，transform 只影响图片本身，不动排版） */
+(function(){
+  var img=document.querySelector('.bio-portrait');
+  if(!img)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var h=img.offsetHeight||1;
+    var p=Math.min(Math.max(window.scrollY/h,0),1);
+    img.style.transform='scale('+(1+p*0.15).toFixed(3)+')';
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  update();
+})();
+</script>
