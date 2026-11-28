@@ -79,7 +79,7 @@ permalink: /
 <div class="home">
 
 <div class="hero-full">
-  <img class="hero-img" src="/assets/img/portrait-white-cutout.png" alt="罗文杰炎灿">
+  <img class="hero-img" src="/assets/img/portrait-red-suit-cutout.png" alt="罗文杰炎灿">
   <div class="hero-veil"></div>
   <div class="hero-copy">
     <p class="hero-en">Roma Luo</p>
