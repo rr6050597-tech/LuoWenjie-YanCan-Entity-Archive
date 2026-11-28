@@ -34,13 +34,13 @@ remote_theme: jeffreytse/jekyll-theme-yat
 theme_color: "#F7F5F0"
 brand_color: "#C5A059"
 header_pages:
-  - books.md
-  - bio.md
   - works/film.md
   - works/ads.md
   - works/magazine.md
   - gallery.md
+  - books.md
   - readings.md
+  - bio.md
   - faq.md
 plugins:
   - jekyll-feed
@@ -68,3 +68,45 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - .git/
+
+# ② rl_nav：新菜单的数据源（分组只能写在这里，header_pages 本身是平铺列表，无法分组）
+rl_nav:
+  groups:
+    - num: "01"
+      title: 时尚与演艺
+      children:
+        - { title: 影视, url: /works/film/ }
+        - { title: 广告, url: /works/ads/ }
+        - { title: 杂志, url: /works/magazine/ }
+        - { title: 图集, url: /gallery/ }
+
+    - num: "02"
+      title: 文学与出版
+      children:
+        - { title: 书籍, url: /books/ }
+        - { title: 诵读, url: /readings/ }
+
+    # 03：目前没有独立页面，先直达首页上已有的两本书详情页（URL 来自首页链接）。
+    # 以后新增《讲萨满》《讲显化》等页面，往 children 里加一行即可。
+    - num: "03"
+      title: 东方哲学
+      children:
+        - { title: 高岛易断, url: /books/gaodao-yiduan/ }
+        - { title: 药师经, url: /books/yaoshijing/ }
+
+    # 04：直达首页的香氛区块（现有锚点 #fragrance），没有子项，所以不展开。
+    - num: "04"
+      title: 炎灿香氛
+      url: /#fragrance
+
+  # 次要入口：抽屉底部 / 电脑端顶栏右侧
+  footer:
+    - { title: 简介, url: /bio/ }
+    - { title: 常见问题, url: /faq/ }
+
+  # 语言按钮：顶栏左上角，始终可见
+  languages:
+    - { code: zh-CN, label: 中文 }
+    - { code: en, label: EN }
+    - { code: ja, label: 日本語 }
+    - { code: es, label: ES }
