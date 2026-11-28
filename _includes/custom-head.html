@@ -391,6 +391,198 @@ html .yc-m.yc-run{will-change:opacity,transform}   /* 仅在动画进行中存�
 })();
 </script>
 
+<!-- =====================================================
+     YC BOOK COVER SCROLL ZOOM · 2026-11-28
+     仅作用于 /books/<slug>/
+     不作用于 /books/ 列表页
+     缩放：1.00 → 1.10
+     两张封面共享同一进度
+     requestAnimationFrame + passive scroll
+     只改变 transform，不改变布局尺寸
+     与 motion2 衔接：
+     外层 figure 的入场动画完成后才允许缩放；
+     内层图片独立 transform，不覆盖外层 transform。
+     Lightbox：
+     打开时复位到 1.00 并暂停；
+     关闭后恢复当前滚动位置对应的缩放。
+     reduced-motion：
+     完全不初始化滚动缩放。
+     ===================================================== -->
+<style id="yc-book-scroll-zoom-css">
+  .book-cover-viewport img {
+    transform: scale(var(--yc-cover-scale, 1));
+    transform-origin: center center;
+  }
+  html.yc-book-lightbox-open .book-cover-viewport img {
+    transform: scale(1) !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book-cover-viewport img {
+      transform: none !important;
+      will-change: auto !important;
+    }
+  }
+</style>
+<script id="yc-book-scroll-zoom-js">
+(function(){
+  'use strict';
+  var path = location.pathname
+    .replace(/index\.html$/, '')
+    .replace(/\/+$/, '') || '/';
+  /* 只匹配图书详情页，不匹配 /books/ */
+  if (!/^\/books\/[^/]+$/.test(path)) return;
+  /* 尊重系统减少动态效果的设置 */
+  var mq = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq && mq.matches) return;
+  var root = document.documentElement;
+  var figures = Array.prototype.slice.call(
+    document.querySelectorAll('.book-covers figure')
+  );
+  if (!figures.length) return;
+  var images = [];
+  figures.forEach(function(figure){
+    var image = figure.querySelector(
+      '.book-cover-viewport img'
+    );
+    if (image) {
+      images.push({
+        figure: figure,
+        image: image
+      });
+    }
+  });
+  if (!images.length) return;
+  /* 核心参数 */
+  var MIN_SCALE = 1.00;
+  var MAX_SCALE = 1.10;
+  /*
+   * 滚动约 90% 屏幕高度时完成放大。
+   * 回到顶部，进度回到 0。
+   * 所有封面共享同一进度，双封面完全同步。
+   */
+  var SCROLL_DISTANCE = Math.max(
+    320,
+    (window.innerHeight || 800) * 0.9
+  );
+  var ticking = false;
+  var lastScale = MIN_SCALE;
+  function clamp(value, min, max){
+    return Math.max(min, Math.min(max, value));
+  }
+  /*
+   * motion2 / motion 入场保护：
+   * 外层 figure 尚未完成入场时不启动缩放。
+   */
+  function entranceReady(figure){
+    if (figure.classList.contains('yc-m')) {
+      return false;
+    }
+    if (
+      figure.classList.contains('yc-reveal') &&
+      !figure.classList.contains('yc-visible')
+    ) {
+      return false;
+    }
+    return true;
+  }
+  function render(){
+    ticking = false;
+    /* Lightbox 打开时暂停，并复位 */
+    if (root.classList.contains('yc-book-lightbox-open')) {
+      images.forEach(function(item){
+        item.image.style.setProperty(
+          '--yc-cover-scale',
+          '1'
+        );
+      });
+      lastScale = MIN_SCALE;
+      return;
+    }
+    var scrollY = window.pageYOffset ||
+      document.documentElement.scrollTop || 0;
+    var progress = clamp(
+      scrollY / SCROLL_DISTANCE,
+      0,
+      1
+    );
+    var scale = MIN_SCALE +
+      (MAX_SCALE - MIN_SCALE) * progress;
+    lastScale = scale;
+    images.forEach(function(item){
+      /*
+       * 入场动画尚未结束的封面保持原样。
+       * 入场结束后，下一次滚动帧自然接管。
+       */
+      if (!entranceReady(item.figure)) return;
+      item.image.style.setProperty(
+        '--yc-cover-scale',
+        scale.toFixed(4)
+      );
+    });
+  }
+  function requestUpdate(){
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(render);
+  }
+  /*
+   * passive 监听：不阻塞手机原生滚动。
+   * rAF 合并同一帧内的多次滚动事件。
+   */
+  window.addEventListener(
+    'scroll',
+    requestUpdate,
+    { passive: true }
+  );
+  /*
+   * motion2 / reveal 的入场结束时主动更新一次，
+   * 避免入场结束后必须再次滚动才能接上缩放。
+   */
+  images.forEach(function(item){
+    item.figure.addEventListener(
+      'transitionend',
+      requestUpdate
+    );
+  });
+  /* 页面返回、窗口尺寸变化时重新计算 */
+  window.addEventListener(
+    'pageshow',
+    requestUpdate,
+    { passive: true }
+  );
+  window.addEventListener(
+    'resize',
+    function(){
+      SCROLL_DISTANCE = Math.max(
+        320,
+        (window.innerHeight || 800) * 0.9
+      );
+      requestUpdate();
+    },
+    { passive: true }
+  );
+  /* Lightbox 关闭后恢复当前滚动位置的缩放 */
+  var observer = new MutationObserver(function(){
+    if (!root.classList.contains('yc-book-lightbox-open')) {
+      requestUpdate();
+    }
+  });
+  observer.observe(root, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+  /* 初始化：页面顶部从 1.00 开始 */
+  images.forEach(function(item){
+    item.image.style.setProperty(
+      '--yc-cover-scale',
+      '1'
+    );
+  });
+  requestUpdate();
+})();
+</script>
+
 <!-- ═════════ YC TTS · 文字转语音（朗读） ═════════
      贴进 _includes/custom-head.html，放在 yc-motion2 动效块之后。
      纯浏览器内置 speechSynthesis，不新增库、不花钱、不用密钥、不上传任何内容。
