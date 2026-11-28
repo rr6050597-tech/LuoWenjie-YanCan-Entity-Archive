@@ -216,7 +216,8 @@
   document.addEventListener("DOMContentLoaded", function() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!("IntersectionObserver" in window)) return;
-    var targets = document.querySelectorAll(".hero-full, .manifesto, .home-sec, .sys-card, .work-card, .book-card, .tl-item, .prod, .biz-card, .home-foot, .books-grid, .books-list li, .book-covers figure, .book-detail h1, .book-detail h2, .book-desc, .book-meta, .bio-page h2, .bio-page p");
+    // 注意：不要把 .books-grid（整个书单容器）加进来——手机端它约 2600px 高，在短视口里永远达不到 0.12 的可见比例，opacity:0 会一直盖住全部 15 张卡片；卡片各自有 .book-card 动效就够了（2026-11-28 修复：375px 下卡片全程不可见即因此）。
+    var targets = document.querySelectorAll(".hero-full, .manifesto, .home-sec, .sys-card, .work-card, .book-card, .tl-item, .prod, .biz-card, .home-foot, .books-list li, .book-covers figure, .book-detail h1, .book-detail h2, .book-desc, .book-meta, .bio-page h2, .bio-page p");
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (e.isIntersecting) { e.target.classList.add("yc-visible"); io.unobserve(e.target); }
