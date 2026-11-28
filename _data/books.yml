@@ -85,14 +85,17 @@
   title_ja: "《羅文傑講道徳経》"
   title_es: "Roma Luo sobre el Daodejing"
   en_title: null
-  status: planned
-  status_label: 规划中
+  status: manuscript
+  status_label: 已完稿，待出版
   isbn: null
   published: null
-  desc: 风水之后，规划中。
+  desc: 马王堆帛书底本精选四十章活解与亲历手记。卷首四篇，六卷二十三章，附对照表。站内仅提供前 25% 试读，全文将于出版后开放购买。
   author_note: null
   cover: /assets/covers/daodejing.jpg
-  read_zh: null
+  read_zh:
+    - format: pdf
+      file: /assets/books/pdf/daodejing-preview.pdf
+      label: 中文版 · PDF（A4 版，前 25% 试读）
   read_en: null
   audio: null
   platforms: null
