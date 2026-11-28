@@ -1,0 +1,19 @@
+name: Submit Sitemap URLs to IndexNow
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  workflow_dispatch:
+jobs:
+  submit-sitemap:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit sitemap URLs to IndexNow
+        uses: jakob-bagterp/index-now-submit-sitemap-urls-action@v1
+        with:
+          host: luowenjie.art
+          api_key: ae7034579e046593498e0482d735e5d7
+          api_key_location: https://luowenjie.art/ae7034579e046593498e0482d735e5d7.txt
+          sitemap_locations: https://luowenjie.art/sitemap.xml
+          endpoint: bing
