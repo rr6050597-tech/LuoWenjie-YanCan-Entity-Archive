@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 诵读 — 罗文杰炎灿 | Roma Luo
+title: 诵读
 description: 罗文杰炎灿诵读：兔儿神胡天保赞与道家经典——吕祖百字铭、金光神咒、灶君宝诰、开经偈、五斗金章受生经、九天玄女天神赞。
 permalink: /readings/
 ---

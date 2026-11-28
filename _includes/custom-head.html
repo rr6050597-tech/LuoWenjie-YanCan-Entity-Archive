@@ -226,6 +226,170 @@
   });
 </script>
 
+<!-- ═════════ YC MOTION 2 · 书籍 / 图集 / 广告 / 杂志 / 影视 的滚动入场 ═════════
+     贴进 _includes/custom-head.html，放在现有 .yc-reveal 动效块之后。
+     不新增库，不改 books.md / 相册页 / 任何 markup；靠「结构」自动发现要动的元素，
+     所以以后新增书籍详情页、新增图片都会自动生效。
+     只用 transform + opacity。动画结束后会把自己加的 class 全部摘掉，元素回到站点原样。 -->
+<style id="yc-motion2-css">
+/* 起始态：只有 JS 给元素加了 .yc-m 才会生效；JS 不跑 → 一切照常可见 */
+html .yc-m{
+  --yc-dy:16px; --yc-s:1; --yc-t:.7s;
+  --yc-e:cubic-bezier(.22,.61,.36,1);          /* 接近现有 ease-out，尾部更柔 */
+  opacity:0;
+  transform:translate3d(0,var(--yc-dy),0) scale(var(--yc-s));
+  transition:opacity var(--yc-t) var(--yc-e),transform var(--yc-t) var(--yc-e);
+}
+/* 分层：卡片只升不缩（文字保持锐利）；图片带一点「落定」缩放，且只从 <1 缩到 1，不会撑出横向滚动条 */
+html .yc-m[data-yc="book"] {--yc-dy:20px;--yc-s:1;   --yc-t:.8s}
+html .yc-m[data-yc="cover"]{--yc-dy:24px;--yc-s:.96; --yc-t:.9s}
+html .yc-m[data-yc="photo"]{--yc-dy:14px;--yc-s:.985;--yc-t:.7s}
+html .yc-m.yc-in{opacity:1;transform:none}
+html .yc-m.yc-run{will-change:opacity,transform}   /* 仅在动画进行中存在，结束即摘 */
+
+@media (prefers-reduced-motion:reduce){html .yc-m{opacity:1!important;transform:none!important;transition:none!important}}
+@media print{html .yc-m{opacity:1!important;transform:none!important}}
+</style>
+
+<script id="yc-motion2-js">
+(function(){
+  'use strict';
+  var mq=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)');
+  if((mq&&mq.matches)||!('IntersectionObserver' in window)) return;    // 减弱动效：全部静止，与现有处理一致
+
+  /* ── 只在这几类页面生效；首页、/bio/ 已有自己的动效，不碰 ── */
+  var path=location.pathname.replace(/index\.html$/,'').replace(/\/+$/,'')||'/';
+  var BOOK=/^\/books\/[^\/]+$/, mode;
+  if(path==='/books') mode='list';
+  else if(BOOK.test(path)) mode='detail';
+  else if(path==='/gallery'||/^\/works(\/|$)/.test(path)) mode='photo';
+  else return;
+
+  /* ── 可调参数（全部集中在这里）── */
+  var STEP  ={book:70, photo:45, cover:0};   // 同一批进入视口时，相邻元素的错峰间隔 ms
+  var CAP   ={book:4,  photo:5,  cover:0};   // 最多错峰几档（快速滑动时不会越排越晚）
+  var EXEMPT={list:4,  photo:3,  detail:1};  // 首屏豁免：页面前几个元素不做入场（首屏不动）
+  var SKIP='.rl-nav,header,nav,footer,.site-header,.site-footer,.hero-full,.bio-page,[data-yc-skip]';
+
+  function isInline(el){return getComputedStyle(el).display==='inline';}   // inline 元素 transform 不生效
+  function pathOf(a){try{return new URL(a.getAttribute('href'),location.href).pathname.replace(/\/+$/,'');}catch(e){return '';}}
+  function slugsIn(el){var s={};[].forEach.call(el.querySelectorAll('a[href]'),function(a){var p=pathOf(a);if(BOOK.test(p))s[p]=1;});return Object.keys(s).length;}
+
+  function init(){                                   // 等 DOM 解析完再发现元素（脚本在 <head> 里）
+  var seen=new Set(), items=[];
+  function push(el,kind){
+    if(!el||seen.has(el)||el.closest(SKIP)||el.classList.contains('yc-reveal')) return;  // 已被现有 Observer 管的不重复
+    seen.add(el); items.push({el:el,kind:kind});
+  }
+
+  /* ── 发现要动的元素（按页面类型，不依赖 class 名）── */
+  if(mode==='list'){
+    // 书籍列表：每本书一张「卡」。优先整张卡（封面+书名一起），inline 链接则退回动封面图
+    [].forEach.call(document.querySelectorAll('a[href]'),function(a){
+      if(a.closest(SKIP)||!BOOK.test(pathOf(a))) return;
+      var card=a.closest('li,figure,article');
+      if(card&&!card.closest(SKIP)&&!isInline(card)&&slugsIn(card)===1) return push(card,'book');
+      if(!isInline(a)) return push(a,'book');
+      [].forEach.call(a.querySelectorAll('img'),function(im){push(im,'book');});
+    });
+  }else{
+    // 书详情 / 图集 / 广告 / 杂志 / 影视：页面里的图片
+    [].forEach.call(document.querySelectorAll('img'),function(im,idx){
+      if(im.closest(SKIP)) return;
+      if(im.offsetWidth>0&&im.offsetWidth<80) return;                    // 小图标不动
+      var fig=im.closest('figure');
+      var unit=(fig&&!fig.closest(SKIP)&&!isInline(fig))?fig:im;
+      push(unit,(mode==='detail'&&items.length===0)?'cover':'photo');   // 详情页第一张图是封面
+    });
+  }
+  if(!items.length) return;
+
+  /* ── 首屏豁免 + 打上起始态 ── */
+  var vh=window.innerHeight||800, ex=EXEMPT[mode], pending=[];
+  items.forEach(function(it,i){
+    var r=it.el.getBoundingClientRect();
+    var inFirstFold=(i<ex)||(r.height>0&&r.top<vh*0.92&&r.bottom>0);
+    if(inFirstFold) return;
+    [].forEach.call(it.el.tagName==='IMG'?[it.el]:it.el.querySelectorAll('img'),function(im){
+      if(im.decoding==='auto'||!im.decoding) im.decoding='async';         // 解码不占主线程；不改 loading 策略
+    });
+    it.el.classList.add('yc-m'); it.el.setAttribute('data-yc',it.kind);
+    pending.push(it.el);
+  });
+  if(!pending.length) return;
+  var remaining=new Set(pending), active=0, BUDGET=16;      // BUDGET：同时进行中的动画上限 = will-change 上限
+
+  /* ── 工具：图片就绪后再出场（懒加载图不会「空框先动」）── */
+  function imgsOf(el){return el.tagName==='IMG'?[el]:[].slice.call(el.querySelectorAll('img'));}
+  function whenReady(el,fn){
+    var wait=imgsOf(el).filter(function(i){return !(i.complete&&i.naturalWidth>0);});
+    if(!wait.length) return fn();
+    var n=wait.length,fired=false;
+    function go(){if(fired)return;fired=true;fn();}
+    wait.forEach(function(i){
+      var f=function(){if(--n<=0)go();};
+      i.addEventListener('load',f,{once:true});i.addEventListener('error',f,{once:true});
+    });
+    setTimeout(go,1500);                                                  // 兜底：慢网也不会一直藏着
+  }
+
+  /* ── 出场 / 收尾 ── */
+  function done(el){
+    el.classList.remove('yc-m','yc-in','yc-run');
+    el.style.transition='';el.style.transitionDelay='';el.removeAttribute('data-yc');
+    if(el._yca){el._yca=false;active--;}
+  }
+  function show(el,delay,instant){
+    remaining.delete(el);
+    if(instant||active>=BUDGET){                                        // 滑得很快、动画已满额：直接就位，不排队
+      el.style.transition='none';el.classList.add('yc-in');requestAnimationFrame(function(){done(el);});return;
+    }
+    el._yca=true;active++;
+    el.style.transitionDelay=delay+'ms';
+    el.classList.add('yc-run');                                           // will-change 只在动画期间存在
+    var fin=false;
+    function end(e){
+      if(fin||(e&&(e.target!==el||e.propertyName!=='opacity'))) return;
+      fin=true;el.removeEventListener('transitionend',end);done(el);
+    }
+    el.addEventListener('transitionend',end);
+    setTimeout(end,delay+1300);
+    requestAnimationFrame(function(){el.classList.add('yc-in');});
+  }
+
+  /* ── 单个 Observer 管全部（304 张图也只有 1 个实例，进入后立即 unobserve）──
+     threshold .08 + 底部内缩 6%：图真正露出来才动，瀑布流里高矮不一的图都能触发；
+     接近现有 Observer（.12 / -40px），但对很高的图更宽容 */
+  var lastY=window.pageYOffset||0;
+  var io=new IntersectionObserver(function(entries){
+    var hits=[],y=window.pageYOffset||0,jumped=Math.abs(y-lastY)>(window.innerHeight||800)*1.5;lastY=y;
+    entries.forEach(function(e){
+      if(e.isIntersecting) hits.push(e);
+      else if(e.boundingClientRect.bottom<=0){io.unobserve(e.target);show(e.target,0,true);}   // 已滑过（锚点跳转/回退恢复）：直接就位
+    });
+    // 瀑布流 DOM 顺序是按列排的，所以按「视觉位置」排序：先上后下、同一行先左后右
+    hits.sort(function(a,b){
+      var ra=a.boundingClientRect,rb=b.boundingClientRect,ya=Math.round(ra.top/24),yb=Math.round(rb.top/24);
+      return ya-yb||ra.left-rb.left;
+    });
+    if(jumped){                                                           // 大幅跳转（锚点/回到顶部/恢复滚动位置）：被跳过的直接就位，不留空白
+      var gone=[];remaining.forEach(function(el){if(el.getBoundingClientRect().bottom<0)gone.push(el);});
+      gone.forEach(function(el){io.unobserve(el);show(el,0,true);});
+    }
+    hits.forEach(function(e,i){
+      var el=e.target,k=el.getAttribute('data-yc');
+      io.unobserve(el);
+      var d=Math.min(i,CAP[k]||0)*(STEP[k]||0);
+      whenReady(el,function(){show(el,d,false);});
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
+
+  pending.forEach(function(el){io.observe(el);});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+
 <!-- 2026-11-27 Liquid Glass 体系：透明浅色磨砂玻璃（light/dark 均用浅透明玻璃，绝无黑底与重阴影；克制极简，品牌色不变；目录按钮与黑白切换同尺寸窄长药丸） -->
 <style>
   :root{
@@ -299,15 +463,37 @@
   .yc-wechat-card img{max-width:220px;width:100%;height:auto;display:block;margin:0 auto 12px;border-radius:12px}
   .yc-wechat-card p{margin:8px 0;font-size:15px;line-height:1.8}
   .yc-wechat-card button{margin-top:10px;padding:8px 20px;border-radius:999px;border:1px solid var(--yc-glass-border);background:var(--yc-glass-bg);color:var(--yc-glass-ink);font-size:14px;cursor:pointer}
-  /* dark 模式：浅色卡片与输入框保持浅色磨砂（深色字可读），绝无黑块 */
+  /* dark 模式：浅色卡片用近不透明白底（深色字可读）。之前 rgba(255,255,255,.55) 在深色页底上叠出来只是中灰，深色字几乎看不清 */
   html[data-theme="dark"] .home .sys-card.sys-gold,
   html[data-theme="dark"] .home .biz-card,
   html[data-theme="dark"] .home .home-products .prod,
   html[data-theme="dark"] .books-grid .book-card-ph,
-  html[data-theme="dark"] .works-grid .book-card-ph{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.5)}
+  html[data-theme="dark"] .works-grid .book-card-ph{background:rgba(247,245,240,.94);border-color:rgba(255,255,255,.5)}
   html[data-theme="dark"] #yc-search-input{color:#F7F5F0;background:rgba(255,255,255,.22)}
   html[data-theme="dark"] .home .home-foot a,
   html[data-theme="dark"] .bio-page p a{background:rgba(255,255,255,.22)}
+  /* dark 模式：正文里写死的深色标题/书名/产品名在深色页底上看不清，改浅色（books.md / index.md / book.html 的内嵌样式都写死 #2C2C2C，不跟主题走；卡片里的深色字不用改，卡片底已是不透明白） */
+  html[data-theme="dark"] .home .home-sec,
+  html[data-theme="dark"] .home .manifesto p,
+  html[data-theme="dark"] .home .tl-item .tl-year,
+  html[data-theme="dark"] .home .tl-item .tl-text b,
+  html[data-theme="dark"] .home .work-card,
+  html[data-theme="dark"] .books-landing h1,
+  html[data-theme="dark"] .books-landing h2,
+  html[data-theme="dark"] .books-landing p,
+  html[data-theme="dark"] .books-landing p a,
+  html[data-theme="dark"] .book-card-title,
+  html[data-theme="dark"] .books-list li,
+  html[data-theme="dark"] .books-list li a,
+  html[data-theme="dark"] .yc-search-results a,
+  html[data-theme="dark"] .book-detail h1,
+  html[data-theme="dark"] .book-detail h2,
+  html[data-theme="dark"] .book-detail .book-desc,
+  html[data-theme="dark"] .book-detail .book-platforms a{color:#F7F5F0}
+  html[data-theme="dark"] .home .tl-item .tl-text,
+  html[data-theme="dark"] .book-detail blockquote{color:#c9c2b4}
+  html[data-theme="dark"] .book-card-meta,
+  html[data-theme="dark"] .book-detail .book-meta{color:#a39d8f}
   /* 宣言：手机端按逗号断行（每句单独成行），绝不拆词 */
   .home .manifesto .m-line{display:inline}
   /* 手机端 header：禁用主题的滚动隐藏与透明塌陷，固定 64px 正常栏；主题导航收进自定义目录面板 */
@@ -635,7 +821,7 @@
 })();
 </script>
 
-<!-- ═════════ RL NAV · 悬浮玻璃顶栏 + 四大体系抽屉（2026-11-28，已按本站现状改：语言接 ycSetLang、明暗开关搬进顶栏、藏旧悬浮菜单按钮） ═════════ -->
+<!-- ═════════ RL NAV · 悬浮玻璃顶栏 + 四大体系抽屉（2026-11-28，语言接 ycSetLang；2026-11-28 修订：明暗开关拿掉，品牌常显居中，语言面板同步选中态，旧悬浮元素一律隐藏） ═════════ -->
 <!-- ═════════ RL NAV · 悬浮玻璃顶栏 + 四大体系抽屉 ═════════
      追加到 _includes/custom-head.html 末尾。自包含，所有类名以 rl- 开头，不影响其他样式。
      数据来自 _config.yml 的 rl_nav。JS 不可用或出错时，自动回退到原顶栏。 -->
@@ -658,7 +844,9 @@ html.rl-on header.site-header{display:none!important}
 /* 旧的悬浮菜单按钮不在顶栏里，藏顶栏藏不掉它，一并藏掉（旧语言下拉在顶栏内部，跟着顶栏走，不用管） */
 html.rl-on .yc-menu-btn,
 html.rl-on .yc-menu-backdrop,
-html.rl-on .yc-menu-panel{display:none!important}
+html.rl-on .yc-menu-panel,
+html.rl-on .theme-toggle,
+html.rl-on .yc-lang-dropdown{display:none!important}
 
 /* 非首页：给悬浮顶栏让出位置；首页不让，大图直接铺到顶栏下面 */
 html.rl-on:not(.rl-home) body::before{content:"";display:block;height:calc(var(--rl-top) + var(--rl-h) + 14px)}
@@ -687,13 +875,11 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
 .rl-bar{
   position:fixed;z-index:9992;top:var(--rl-top);left:var(--rl-gap);right:var(--rl-gap);
   max-width:1080px;margin:0 auto;height:var(--rl-h);border-radius:26px;
-  display:flex;align-items:center;padding:0 6px;transition:background-color .3s;
+  display:flex;align-items:center;justify-content:space-between;padding:0 6px;transition:background-color .3s;
 }
 .rl-lang-btn{height:40px;padding:0 14px 0 12px;border-radius:20px;display:flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.04em;white-space:nowrap}
 .rl-lang-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.3}
-.rl-brand{flex:1;text-align:center;font-family:var(--rl-serif);font-size:15px;letter-spacing:.32em;text-indent:.32em;white-space:nowrap;transition:opacity .4s}
-/* 首页顶部不显示字标（首屏已有大名），滚过首屏后淡入；不想要就删掉下一行 */
-.rl-home:not(.rl-far) .rl-brand{opacity:0;pointer-events:none}
+.rl-brand{position:absolute;left:50%;transform:translateX(-50%);z-index:1;font-family:var(--rl-serif);font-size:15px;letter-spacing:.32em;text-indent:.32em;white-space:nowrap}
 
 .rl-burger{width:40px;height:40px;border-radius:20px;position:relative;flex:none}
 .rl-burger i{position:absolute;left:11px;right:11px;height:1.5px;border-radius:1px;background:currentColor;transition:transform .35s var(--rl-ease),top .35s var(--rl-ease)}
@@ -702,9 +888,6 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
 .rl-open .rl-burger i:nth-child(1){top:19.5px;transform:rotate(45deg)}
 .rl-open .rl-burger i:nth-child(2){top:19.5px;transform:rotate(-45deg)}
 .rl-lang-btn:hover,.rl-burger:hover{background:rgba(44,44,44,.06)}
-.rl-theme-slot{display:flex;align-items:center;flex:none}
-.rl-theme-slot:empty{display:none}
-.rl-bar .theme-toggle{flex:none;margin:0 2px}
 
 /* ── 语言面板（始终从左上角按钮下方展开）── */
 .rl-pop{
@@ -759,7 +942,7 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
 .rl-panel a:hover{background:rgba(44,44,44,.06)}
 @media (min-width:960px){
   .rl-burger,.rl-drawer,.rl-scrim{display:none!important}
-  .rl-brand{flex:none;margin:0 24px 0 12px;text-align:left;text-indent:0}
+  .rl-brand{position:static;transform:none;flex:1;margin:0;text-align:center;text-indent:.32em}
   .rl-inline{display:flex;align-items:center;gap:2px;margin-left:auto;padding-right:6px}
   .rl-inline>button,.rl-inline>a{height:40px;padding:0 16px;border-radius:20px;display:flex;align-items:center;font-size:14px;letter-spacing:.1em;white-space:nowrap}
   .rl-inline>button:hover,.rl-inline>a:hover,.rl-inline>button[aria-expanded="true"]{background:rgba(44,44,44,.06)}
@@ -834,7 +1017,6 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
     +   '<a class="rl-brand" href="'+href('/')+'">罗文杰炎灿</a>'
     +   '<nav class="rl-inline" aria-label="Primary">'+G.map(inlineItem).join('')+'<span class="sep"></span>'
     +     F.map(function(k){return '<a href="'+href(k.url)+'"'+(isCur(k.url)?' class="cur"':'')+'>'+esc(k.title)+'</a>';}).join('')+'</nav>'
-    +   '<span class="rl-theme-slot" title="明暗切换"></span>'
     +   '<button type="button" class="rl-burger" aria-label="Menu" aria-expanded="false" aria-controls="rl-drawer"><i></i><i></i></button>'
     + '</div>'
     + '<div class="rl-pop rl-glass" role="menu" translate="no">'
@@ -853,9 +1035,6 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
   function wire(el){
     var $=function(s){return el.querySelector(s);}, $$=function(s){return [].slice.call(el.querySelectorAll(s));};
     var langBtn=$('.rl-lang-btn'), pop=$('.rl-pop'), burger=$('.rl-burger'), panel=$('.rl-panel'), bar=$('.rl-bar');
-    // 明暗开关：把旧顶栏里的 Yat 原版 .theme-toggle 节点搬进新顶栏（事件与状态都在节点上，搬移不破坏）
-    var tg=document.querySelector('.theme-toggle'), slot=el.querySelector('.rl-theme-slot');
-    if(tg&&slot){ slot.appendChild(tg); }
 
     function closePanel(){
       panel.classList.remove('on');
@@ -871,9 +1050,22 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
       e.stopPropagation(); var on=!pop.classList.contains('on'); closeAll();
       if(on){pop.classList.add('on'); langBtn.setAttribute('aria-expanded','true');}
     });
+    function syncLangUI(code){
+      var cur=LANGS.filter(function(l){return l.code===code;})[0]||LANGS[0];
+      $$('.rl-pop [data-lang]').forEach(function(b){b.setAttribute('aria-checked',b.getAttribute('data-lang')===cur.code?'true':'false');});
+      var sp=langBtn.querySelector('span'); if(sp) sp.textContent=cur.label;
+    }
     pop.addEventListener('click',function(e){
-      var b=e.target.closest('[data-lang]'); if(b) setLang(b.getAttribute('data-lang'));
+      var b=e.target.closest('[data-lang]'); if(!b) return;
+      var code=b.getAttribute('data-lang');
+      setLang(code);
+      syncLangUI(code);
+      closeAll();
     });
+    // 站内其他入口切了语言时（如旧语言下拉），面板选中态也要跟上
+    if(window.MutationObserver){
+      new MutationObserver(function(){ syncLangUI(curLang()); }).observe(root,{attributes:true,attributeFilter:['data-yc-lang']});
+    }
     burger.addEventListener('click',function(e){
       e.stopPropagation(); var on=!el.classList.contains('rl-open'); closeAll();
       if(on){el.classList.add('rl-open'); burger.setAttribute('aria-expanded','true');}
@@ -915,12 +1107,11 @@ html.rl-on{scroll-padding-top:calc(var(--rl-top) + var(--rl-h) + 16px)}
       n.addEventListener('mouseleave',function(){timer=setTimeout(closePanel,160);});
     });
 
-    // 滚动：加强玻璃底色；首页滚过首屏后显示字标
+    // 滚动：加强玻璃底色（品牌常显，不再随滚动淡入淡出）
     var ticking=false;
     function onScroll(){
       var y=window.pageYOffset||0;
       root.classList.toggle('rl-scrolled',y>8);
-      root.classList.toggle('rl-far',y>Math.max(180,window.innerHeight*0.4));
     }
     window.addEventListener('scroll',function(){
       if(ticking) return; ticking=true;
